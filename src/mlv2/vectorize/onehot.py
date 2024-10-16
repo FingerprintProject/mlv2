@@ -8,6 +8,8 @@ from mlv2.utils import FpBaseModel, logPipeline
 
 
 class OneHot(FpBaseModel):
+    """Not used at the moment"""
+
     data: Optional[pd.DataFrame] = None
     model: Optional[DictVectorizer] = None
     sparse: bool = False

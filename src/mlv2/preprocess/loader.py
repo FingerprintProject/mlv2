@@ -17,7 +17,7 @@ def checkDataFrame(df: Any) -> Any:
     return df
 
 
-class Adaptor(FpBaseModel):
+class Loader(FpBaseModel):
     data: Optional[pd.DataFrame] = None
 
     @logPipeline()

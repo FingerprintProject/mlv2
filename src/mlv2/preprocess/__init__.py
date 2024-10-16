@@ -1,3 +1,4 @@
-from .adaptor import Adaptor
-from .survey import Survey, WAPInfo
+from .loader import Loader
+from .fpDict import FpDict, WAPInfo
 from .le import LE
+from .fpVect import FpVect

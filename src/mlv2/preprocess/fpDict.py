@@ -27,7 +27,7 @@ def checkDataFrame(df: Any) -> Any:
     return df
 
 
-class Survey(FpBaseModel):
+class FpDict(FpBaseModel):
     data: Optional[pd.DataFrame] = None
     ignoredBSSID: List[str] = []
 

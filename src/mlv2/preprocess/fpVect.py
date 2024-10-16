@@ -1,4 +1,6 @@
-from typing import Dict, List, Optional
+""" Still need some work"""
+
+from typing import Optional
 
 import pandas as pd
 from pydantic import validate_call
@@ -6,7 +8,7 @@ from pydantic import validate_call
 from ..utils import logPipeline, FpBaseModel
 
 
-class Vector(FpBaseModel):
+class FpVect(FpBaseModel):
 
     data: Optional[pd.DataFrame] = None
 
