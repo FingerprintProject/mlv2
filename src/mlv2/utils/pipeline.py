@@ -23,21 +23,18 @@ def logPipeline():
 
             funcName = func.__name__
 
-            # If init function, add infoInit.
-            infoData = {}
-            printClassInst = False
-            if funcName in ["model_post_init", "__init__"] and hasattr(
-                self, "initInfo"
-            ):
-                infoData = self.initInfo
+            # If init function, print class instance.
+            if funcName in ["model_post_init", "__init__"]:
                 printClassInst = True
+            else:
+                printClassInst = False
 
             data = dict(
                 classInst=self,
                 funcName=func.__name__,
                 args=args,
                 kwargs=kwargs,
-                info=infoData,
+                info=self.info,
                 printClassInst=printClassInst,
             )
             self.pipeline.log(**data)

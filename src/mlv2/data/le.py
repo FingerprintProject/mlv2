@@ -1,31 +1,36 @@
 import pprint
-from typing import List
+from typing import List, Optional
 import pandas as pd
-from pydantic import Field
+from pydantic import Field, validate_call
 from sklearn.preprocessing import LabelEncoder
-from mlv2.utils import logPipeline, FpBaseModel
+from ..utils import logPipeline, FpBaseModel
 
 
 class LE(FpBaseModel):
-    data: List[str]
     encoderType: str = Field(pattern=r"^BSSID$|^NORMAL$", default="NORMAL")
     model: LabelEncoder = Field(default_factory=LabelEncoder)
     bssidPrefix: str = "W"
+    surveyId: Optional[str] = None
+    nameList: Optional[pd.Series] = None
 
     @logPipeline()
     def model_post_init(self, __context) -> None:
-        self.createUniqueSet()
-        self.fit()
+        pass
 
     @logPipeline()
-    def createUniqueSet(self):
-        sr = pd.Series(self.data).sort_values()
-        self.data = pd.unique(sr)
-        self.logger.info(f"Total Item: {len(self.data)}")
+    @validate_call
+    def fit(self, data: List[str], surveyId: str):
 
-    @logPipeline()
-    def fit(self):
-        self.model.fit(self.data)
+        if self.surveyId:
+            raise Exception(f"Already call fit data from {self.surveyId}.")
+
+        # Create unique list
+        sr = pd.Series(data).sort_values()
+        self.nameList = pd.unique(sr)
+        # Fit
+        self.model.fit(self.nameList)
+        self.surveyId = surveyId
+        self.logger.info(f"Total Item: {len(self.nameList)}")
 
     # @logPipeline()
     def transform(self, arr: List[str]):

@@ -3,7 +3,6 @@ import pandas as pd
 from pydantic import BaseModel, validate_call
 from pydantic.functional_validators import AfterValidator
 from mlv2.utils import logPipeline, FpBaseModel
-from .adaptor import debugCreateAdaptor
 from .le import LE
 
 
@@ -109,15 +108,3 @@ class Survey(FpBaseModel):
 
         res = self.data["fingerprint"].apply(rowFn)
         return res.values
-
-
-def debugCreateSurvey():
-
-    ada, pipeline = debugCreateAdaptor()
-    survey = Survey(data=ada.data, pipeline=pipeline)
-    survey.pipeline.print()
-    return survey
-
-
-if __name__ == "__main__":
-    debugCreateSurvey()
