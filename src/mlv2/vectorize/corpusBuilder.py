@@ -7,7 +7,7 @@ from pydantic import Field, validate_call
 from mlv2.utils import FpBaseModel, logPipeline
 
 
-class Corpus(FpBaseModel):
+class CorpusBuilder(FpBaseModel):
     corpus: Optional[List[str]] = None
     corpusBuildMethod: str = Field(pattern=r"^NR_random$", default="NR_random")
     corpusFilePath: str = "./corpus.txt"

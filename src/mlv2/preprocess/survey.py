@@ -81,9 +81,17 @@ class Survey(FpBaseModel):
 
         self.data = self.data[~filtDup]
 
-    def getZoneNames(self):
+    def getUniqueZoneNames(self) -> List[str]:
         sr = self.data["zoneName"].sort_values()
         return pd.unique(sr).tolist()
+
+    def getZoneNames(self) -> pd.Series:
+        return self.data["zoneName"]
+
+    def getZoneNamesEncoded(self, le) -> pd.Series:
+        sr = self.data["zoneName"]
+        srEnc = le.transform(sr)
+        return pd.Series(srEnc)
 
     def getBSSID(self):
         store = []

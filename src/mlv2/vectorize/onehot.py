@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 import pandas as pd
 from pydantic import validate_call
@@ -7,7 +7,7 @@ from sklearn.feature_extraction import DictVectorizer
 from mlv2.utils import FpBaseModel, logPipeline
 
 
-class Vectorizer(FpBaseModel):
+class OneHot(FpBaseModel):
     data: Optional[pd.DataFrame] = None
     model: Optional[DictVectorizer] = None
     sparse: bool = False

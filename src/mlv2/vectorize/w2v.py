@@ -3,12 +3,12 @@ from typing import Dict, List, Optional
 import numpy as np
 import pandas as pd
 from gensim.models import Word2Vec
-from pydantic import BaseModel, Field, validate_call
+from pydantic import validate_call
 
 from ..utils import logPipeline, FpBaseModel
 
 
-class Embedder(FpBaseModel):
+class W2V(FpBaseModel):
     vectorSize: int = 50
     window: int = 5
     minCount: int = 1
@@ -35,13 +35,14 @@ class Embedder(FpBaseModel):
         )
         self.isFitted = True
 
+    @logPipeline()
     @validate_call
-    def generate_embedding(self, dictArray: List[Dict]):
+    def generate_embedding(self, data: List[Dict], info={}):
         w2v = self.model
 
         vocab = [v for v in w2v.wv.key_to_index.keys()]
         tempArray1 = []
-        for el in dictArray:
+        for el in data:
             sr = pd.Series(el, dtype=object)
             # Check whether the WAP is in the vocab or not.
             filtVocab = sr.index.isin(vocab)
@@ -69,4 +70,6 @@ class Embedder(FpBaseModel):
             rpEmbed = []
         else:
             rpEmbed = np.concatenate(tempArray1, axis=0)
-        return rpEmbed
+        cols = [f"E{i+1}" for i in range(self.vectorSize)]
+        dft = pd.DataFrame(data=rpEmbed, columns=cols)
+        return dft

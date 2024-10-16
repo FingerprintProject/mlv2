@@ -115,7 +115,3 @@ class Pipeline(BaseModel):
             os.mkdir(self.logFolder)
         filepath = os.path.join(self.outFolder, self.filename)
         pd.DataFrame(self.data).to_excel(filepath, index=False)
-
-
-if __name__ == "__main__":
-    pass
