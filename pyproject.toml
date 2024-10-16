@@ -1,0 +1,18 @@
+[project]
+name = "mlv2"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [{ name = "Nirand Pisutha-Arnond", email = "nnnpooh@gmail.com" }]
+dependencies = [
+    "pandas>=2.2.3",
+    "pydantic>=2.9.2",
+    "scikit-learn>=1.5.2",
+    "openpyxl>=3.1.5",
+    "gensim>=4.3.3",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = { text = "MIT" }
+
+[tool.pdm]
+distribution = false
