@@ -10,7 +10,6 @@ class LE(FpBaseModel):
     encoderType: str = Field(pattern=r"^BSSID$|^NORMAL$", default="NORMAL")
     model: LabelEncoder = Field(default_factory=LabelEncoder)
     bssidPrefix: str = "W"
-    surveyId: Optional[str] = None
     nameList: Optional[pd.Series] = None
 
     @logPipeline()
@@ -19,18 +18,15 @@ class LE(FpBaseModel):
 
     @logPipeline()
     @validate_call
-    def fit(self, data: List[str], surveyId: str):
-
-        if self.surveyId:
-            raise Exception(f"Already call fit data from {self.surveyId}.")
-
+    def fit(self, data: List[str], info={}):
+        self.preventRefit()
         # Create unique list
         sr = pd.Series(data).sort_values()
         self.nameList = pd.unique(sr)
         # Fit
         self.model.fit(self.nameList)
-        self.surveyId = surveyId
         self.logger.info(f"Total Item: {len(self.nameList)}")
+        self.isFitted = True
 
     # @logPipeline()
     def transform(self, arr: List[str]):

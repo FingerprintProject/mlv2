@@ -1,8 +1,9 @@
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional
 
 import pandas as pd
-from sklearn.feature_extraction import DictVectorizer
 from pydantic import validate_call
+from sklearn.feature_extraction import DictVectorizer
+
 from mlv2.utils import FpBaseModel, logPipeline
 
 
@@ -17,9 +18,11 @@ class Vectorizer(FpBaseModel):
 
     @logPipeline()
     @validate_call
-    def fit(self, data: List[Dict[str, int]]):
+    def fit(self, data: List[Dict[str, int]], info={}):
+        self.preventRefit()
         self.model = DictVectorizer(sparse=self.sparse)
         self.model.fit(data)
         self.data = pd.DataFrame(
             self.model.transform(data), columns=self.model.get_feature_names_out()
         )
+        self.isFitted = True

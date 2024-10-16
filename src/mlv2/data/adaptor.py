@@ -3,7 +3,6 @@ import pandas as pd
 from pydantic import BaseModel
 from pydantic.functional_validators import AfterValidator
 from ..utils import logPipeline, FpBaseModel
-import pprint
 
 
 class DFValidator(BaseModel):
@@ -29,7 +28,8 @@ class Adaptor(FpBaseModel):
     def fit(
         self, data: Annotated[pd.DataFrame, AfterValidator(checkDataFrame)], info={}
     ) -> None:
-        self.addInfo(info)
+
+        self.preventRefit()
 
         def extractDataFromJSON(row):
             data = row["admin_json"]
@@ -39,3 +39,4 @@ class Adaptor(FpBaseModel):
         self.data = df.rename(
             columns={"id": "dbRowID", "point": "zoneName", "dataDictAll": "fingerprint"}
         )
+        self.isFitted = True

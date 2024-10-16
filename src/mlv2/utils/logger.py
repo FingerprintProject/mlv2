@@ -30,11 +30,11 @@ class Logger(BaseModel):
     }
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
-    def __str__(self):
-        return "Logger"
-
     def __repr__(self):
         return "Logger"
+
+    def __str__(self):
+        return self.__repr__()
 
     def model_post_init(self, __context):
         if not os.path.exists(self.logFolder):

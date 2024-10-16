@@ -29,12 +29,21 @@ def logPipeline():
             else:
                 printClassInst = False
 
+            infoDict = kwargs.get("info")
+            if infoDict:
+                # Store info into class instance
+                if hasattr(self, "addInfo"):
+                    self.addInfo(infoDict)
+            else:
+                infoDict = {}
+
+            # Store additional info
             data = dict(
                 classInst=self,
                 funcName=func.__name__,
                 args=args,
                 kwargs=kwargs,
-                info=self.info,
+                info=infoDict,
                 printClassInst=printClassInst,
             )
             self.pipeline.log(**data)
@@ -45,10 +54,9 @@ def logPipeline():
             end_time = time.perf_counter()
             total_time = end_time - start_time
 
-            if funcName not in ["model_post_init", "__init__"]:
-                self.logger.info(
-                    f"<{type(self).__name__}>.{func.__name__} took {total_time:.4f} seconds"
-                )
+            self.logger.info(
+                f"<{type(self).__name__}>.{func.__name__} took {total_time:.4f} seconds"
+            )
 
             return result
 
@@ -65,11 +73,11 @@ class Pipeline(BaseModel):
     filename: str = "pipeline.xlsx"
     outFolder: str = "./logs"
 
-    def __str__(self):
-        return "Pipeline"
-
     def __repr__(self):
         return "Pipeline"
+
+    def __str__(self):
+        return self.__repr__()
 
     def model_post_init(self, __context):
         pass

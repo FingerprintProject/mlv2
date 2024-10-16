@@ -1,25 +1,14 @@
-import json
-import logging
-import pathlib
-import pprint
-import sys
 from typing import Dict, List, Optional
-from uuid import uuid4
-import pandas as pd
+
 import numpy as np
+import pandas as pd
 from gensim.models import Word2Vec
-from pydantic import BaseModel, ConfigDict, Field, validate_call
+from pydantic import BaseModel, Field, validate_call
 
-# https://stackoverflow.com/a/68730946
-PACKAGE_PARENT = pathlib.Path(__file__).parent
-SCRIPT_DIR = PACKAGE_PARENT / "classes"
-sys.path.append(str(SCRIPT_DIR))
-from fpUtils import getLogger, initLogging, logPipeline
-
-logger = getLogger(__name__)
+from ..utils import logPipeline, FpBaseModel
 
 
-class Embed(BaseModel):
+class Embedder(FpBaseModel):
     vectorSize: int = 50
     window: int = 5
     minCount: int = 1
@@ -27,25 +16,15 @@ class Embed(BaseModel):
     sg: int = 0
     embBuildMethod: str = "weighted"
     model: Optional[Word2Vec] = None
-    isTrained: bool = False
 
-    # Config
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-    uuid: str = Field(default_factory=lambda: uuid4().hex)
-    pipeline: Dict = {}
-    initInfo: Dict = {}
-    logger: logging.Logger = logging.getLogger(__name__)
-
-    def pipelineInitInfo(self):
-        return json.dumps(dict(vectorSize=self.vectorSize))
-
-    @logPipeline(init=True)
+    @logPipeline()
     def model_post_init(self, __context) -> None:
         pass
 
-    @logPipeline(includeArgs=False)
+    @logPipeline()
     @validate_call
-    def fit(self, corpus: List[List[str]]):
+    def fit(self, corpus: List[List[str]], info={}):
+        self.preventRefit()
         self.model = Word2Vec(
             sg=self.sg,
             sentences=corpus,
@@ -54,9 +33,8 @@ class Embed(BaseModel):
             min_count=self.minCount,
             workers=self.workers,
         )
-        self.isTrained = True
+        self.isFitted = True
 
-    @logPipeline(includeArgs=False)
     @validate_call
     def generate_embedding(self, dictArray: List[Dict]):
         w2v = self.model
@@ -92,21 +70,3 @@ class Embed(BaseModel):
         else:
             rpEmbed = np.concatenate(tempArray1, axis=0)
         return rpEmbed
-
-
-# Testing
-from mlv2.embed.corpus import createCorpus
-
-if __name__ == "__main__":
-
-    initLogging()
-    corpus, survey = createCorpus()
-
-    embed = Embed()
-
-    embed.fit(corpus.corpus)
-
-    embed.generate_embedding(survey.genFPForCorpusBuilder())
-
-    pprint.pprint(embed.pipeline)
-    pass

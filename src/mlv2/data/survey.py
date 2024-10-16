@@ -1,8 +1,8 @@
-from typing import Annotated, Any, Dict, List
+from typing import Annotated, Any, Dict, List, Optional
 import pandas as pd
 from pydantic import BaseModel, validate_call
 from pydantic.functional_validators import AfterValidator
-from mlv2.utils import logPipeline, FpBaseModel
+from ..utils import logPipeline, FpBaseModel
 from .le import LE
 
 
@@ -28,17 +28,25 @@ def checkDataFrame(df: Any) -> Any:
 
 
 class Survey(FpBaseModel):
-    data: Annotated[pd.DataFrame, AfterValidator(checkDataFrame)]
+    data: Optional[pd.DataFrame] = None
     ignoredBSSID: List[str] = []
 
     @logPipeline()
     def model_post_init(self, __context) -> None:
+        pass
+
+    @logPipeline()
+    def fit(
+        self, data: Annotated[pd.DataFrame, AfterValidator(checkDataFrame)], info={}
+    ) -> None:
+        self.preventRefit()
+        self.data = data
         self.formatBSSID()
         self.formatZoneName()
         self.removeIgnoredBSSID()
         self.removeDuplicatedEntries()
+        self.isFitted = True
 
-    @logPipeline()
     def formatBSSID(self) -> None:
         def rowFN(fp):
             dft = pd.DataFrame.from_dict(fp)
@@ -47,11 +55,9 @@ class Survey(FpBaseModel):
 
         self.data["fingerprint"] = self.data["fingerprint"].apply(rowFN)
 
-    @logPipeline()
     def formatZoneName(self) -> None:
         self.data["zoneName"] = self.data["zoneName"].apply(lambda name: name.strip())
 
-    @logPipeline()
     def removeIgnoredBSSID(self):
         def rowFN(fp):
             dft = pd.DataFrame.from_dict(fp)
@@ -61,7 +67,6 @@ class Survey(FpBaseModel):
 
         self.data["fingerprint"] = self.data["fingerprint"].apply(rowFN)
 
-    @logPipeline()
     def removeDuplicatedEntries(self):
         def rowFN(fp):
             dft = pd.DataFrame.from_dict(fp)
@@ -76,12 +81,10 @@ class Survey(FpBaseModel):
 
         self.data = self.data[~filtDup]
 
-    @logPipeline()
     def getZoneNames(self):
         sr = self.data["zoneName"].sort_values()
         return pd.unique(sr).tolist()
 
-    @logPipeline()
     def getBSSID(self):
         store = []
 
@@ -93,7 +96,6 @@ class Survey(FpBaseModel):
         srBssid = pd.concat(store).sort_values().reset_index(drop=True)
         return pd.unique(srBssid).tolist()
 
-    @logPipeline()
     @validate_call
     def genFP(self, le: LE) -> List[Dict[str, int]]:
         """Generate dictionary for corpus builder (key is WX and value is level)"""
