@@ -1,0 +1,384 @@
+[
+  {
+    "id": 1,
+    "scanIdx": 1,
+    "point": "Crowdsource",
+    "site": "CRH PROD",
+    "device": "V2036",
+    "timestamp": 1702444942,
+    "building": "CRH PROD",
+    "dataDictAll": [
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:17:78",
+        "freq": 2412,
+        "level": -45
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:17:78",
+        "freq": 2412,
+        "level": -45
+      },
+      {
+        "ssid": "Poon",
+        "bssid": "7a:11:5c:bd:dd:6c",
+        "freq": 5745,
+        "level": -51
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:17:7c",
+        "freq": 5220,
+        "level": -58
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:17:7c",
+        "freq": 5220,
+        "level": -59
+      },
+      {
+        "ssid": "POCO F5 Pro",
+        "bssid": "86:59:7f:6b:68:8b",
+        "freq": 2437,
+        "level": -62
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:66:88",
+        "freq": 2412,
+        "level": -64
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:66:88",
+        "freq": 2412,
+        "level": -64
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:6e:28",
+        "freq": 2462,
+        "level": -65
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:6e:28",
+        "freq": 2462,
+        "level": -65
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:6e:2c",
+        "freq": 5180,
+        "level": -69
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:6e:2c",
+        "freq": 5180,
+        "level": -70
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:66:8c",
+        "freq": 5620,
+        "level": -70
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:66:8c",
+        "freq": 5620,
+        "level": -71
+      },
+      {
+        "ssid": ".@ TrueMove H",
+        "bssid": "34:f8:e7:14:8e:ae",
+        "freq": 5745,
+        "level": -72
+      },
+      {
+        "ssid": ".@ TRUEWIFI",
+        "bssid": "34:f8:e7:14:8e:af",
+        "freq": 5745,
+        "level": -72
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:1c:ec",
+        "freq": 5660,
+        "level": -78
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:1c:ec",
+        "freq": 5660,
+        "level": -78
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:1e:78",
+        "freq": 2412,
+        "level": -79
+      },
+      {
+        "ssid": ".@ TRUEWIFI",
+        "bssid": "00:df:1d:70:f8:ef",
+        "freq": 5540,
+        "level": -80
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:1e:78",
+        "freq": 2412,
+        "level": -80
+      },
+      {
+        "ssid": ".@ TrueMove H",
+        "bssid": "00:df:1d:70:f8:ee",
+        "freq": 5540,
+        "level": -81
+      },
+      {
+        "ssid": "QBIOSCI_2.4GHz",
+        "bssid": "c0:f6:c2:34:53:b0",
+        "freq": 2442,
+        "level": -81
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:0f:01:0c",
+        "freq": 5180,
+        "level": -84
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:4f:01:0c",
+        "freq": 5180,
+        "level": -85
+      },
+      {
+        "ssid": "CRH-WiFi",
+        "bssid": "12:82:3d:4a:aa:22",
+        "freq": 5700,
+        "level": -85
+      },
+      {
+        "ssid": "CRH-Staff",
+        "bssid": "12:82:3d:4a:aa:24",
+        "freq": 5700,
+        "level": -86
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:1e:7c",
+        "freq": 5785,
+        "level": -91
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "scanIdx": 1,
+    "point": "Crowdsource",
+    "site": "CRH PROD",
+    "device": "V2036",
+    "timestamp": 1702444942,
+    "building": "CRH PROD",
+    "dataDictAll": [
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:17:78",
+        "freq": 2412,
+        "level": -43
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:17:78",
+        "freq": 2412,
+        "level": -44
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:17:7c",
+        "freq": 5220,
+        "level": -51
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:17:7c",
+        "freq": 5220,
+        "level": -52
+      },
+      {
+        "ssid": "Poon",
+        "bssid": "7a:11:5c:bd:dd:6c",
+        "freq": 5745,
+        "level": -57
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:66:88",
+        "freq": 2412,
+        "level": -60
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:66:88",
+        "freq": 2412,
+        "level": -60
+      },
+      {
+        "ssid": "POCO F5 Pro",
+        "bssid": "86:59:7f:6b:68:8b",
+        "freq": 2437,
+        "level": -68
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:6e:28",
+        "freq": 2462,
+        "level": -68
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:6e:28",
+        "freq": 2462,
+        "level": -69
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:66:8c",
+        "freq": 5620,
+        "level": -70
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:66:8c",
+        "freq": 5620,
+        "level": -70
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:1c:ec",
+        "freq": 5660,
+        "level": -71
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:1c:ec",
+        "freq": 5660,
+        "level": -71
+      },
+      {
+        "ssid": ".@ TrueMove H",
+        "bssid": "34:f8:e7:14:8e:ae",
+        "freq": 5745,
+        "level": -73
+      },
+      {
+        "ssid": ".@ TRUEWIFI",
+        "bssid": "34:f8:e7:14:8e:af",
+        "freq": 5745,
+        "level": -74
+      },
+      {
+        "ssid": "QBIOSCI_2.4GHz",
+        "bssid": "c0:f6:c2:34:53:b0",
+        "freq": 2442,
+        "level": -75
+      },
+      {
+        "ssid": ".@ TrueMove H",
+        "bssid": "00:df:1d:70:f8:ee",
+        "freq": 5540,
+        "level": -77
+      },
+      {
+        "ssid": ".@ TRUEWIFI",
+        "bssid": "00:df:1d:70:f8:ef",
+        "freq": 5540,
+        "level": -77
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:4f:01:08",
+        "freq": 2462,
+        "level": -81
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:0f:01:08",
+        "freq": 2462,
+        "level": -81
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:6d:ac",
+        "freq": 5500,
+        "level": -82
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:6d:ac",
+        "freq": 5500,
+        "level": -83
+      },
+      {
+        "ssid": "CRH-Staff",
+        "bssid": "a2:82:3d:4a:ab:7d",
+        "freq": 5745,
+        "level": -85
+      },
+      {
+        "ssid": "CRH-WiFi",
+        "bssid": "a2:82:3d:4a:ab:7b",
+        "freq": 5745,
+        "level": -85
+      },
+      {
+        "ssid": "Nice636_2.4GHz",
+        "bssid": "30:e9:8e:3a:58:48",
+        "freq": 2462,
+        "level": -85
+      },
+      {
+        "ssid": ".@ AIS SUPER WiFi",
+        "bssid": "2c:5d:93:50:1e:7c",
+        "freq": 5785,
+        "level": -86
+      },
+      {
+        "ssid": "AIS SMART Login",
+        "bssid": "2c:5d:93:10:1e:7c",
+        "freq": 5785,
+        "level": -87
+      },
+      {
+        "ssid": "CRH-WiFi",
+        "bssid": "12:82:3d:4a:aa:22",
+        "freq": 5700,
+        "level": -90
+      },
+      {
+        "ssid": "CRH-Staff",
+        "bssid": "12:82:3d:4a:aa:24",
+        "freq": 5700,
+        "level": -91
+      },
+      {
+        "ssid": "CRH-WiFi",
+        "bssid": "72:82:3d:4a:ab:58",
+        "freq": 5220,
+        "level": -93
+      },
+      {
+        "ssid": "Referral Center Office",
+        "bssid": "88:5d:fb:ce:1a:f0",
+        "freq": 2462,
+        "level": -93
+      }
+    ]
+  }
+]

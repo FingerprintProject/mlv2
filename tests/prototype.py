@@ -4,15 +4,23 @@ from mlv2.preprocess import Loader, FpDict, LE, FpVect
 from mlv2.vectorize import CorpusBuilder, W2V
 from mlv2.utils import Pipeline
 
-folder = "data/supervised_survey"
-
-# filename = f"{folder}surveys/admin_json_hospital_id_15.json"
-filename = f"{folder}/admin_json_hospital_id_15_small.json"
-# filename = f"{folder}surveys/admin_json_hospital_id_15_error.json"
 
 pl = Pipeline()
 loader = Loader(pipeline=pl)
-fileData = [dict(filename=filename, fileType="SUPV2")]
+
+
+# folder = "data/supervised_survey"
+# # filename = f"{folder}surveys/admin_json_hospital_id_15.json"
+# filename = f"{folder}/admin_json_hospital_id_15_small.json"
+# # filename = f"{folder}surveys/admin_json_hospital_id_15_error.json"
+# fileData = [dict(filename=filename, fileType="SUPV2")]
+
+
+folder = "data/unsupervised_survey"
+filename = f"{folder}/CRH_PROD_unsupervised_1729116590_small.json"
+fileData = [dict(filename=filename, fileType="UNSUPV1")]
+
+
 loader.fit(fileData=fileData, info=dict(src=filename))
 fpDict = FpDict(pipeline=pl)
 fpDict.fit(data=loader.data, info=dict(src=loader.uuid))
