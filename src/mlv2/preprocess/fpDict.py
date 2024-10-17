@@ -1,6 +1,6 @@
-from typing import Annotated, Any, Dict, List, Optional
+from typing import Annotated, Any, Dict, List, Optional, Union
 import pandas as pd
-from pydantic import BaseModel, validate_call
+from pydantic import BaseModel, validate_call, Field
 from pydantic.functional_validators import AfterValidator
 from ..utils import logPipeline, FpBaseModel
 from .le import LE
@@ -14,12 +14,12 @@ class WAPInfo(BaseModel):
 
 
 class DFValidator(BaseModel):
-    dbRowID: str
-    zoneName: str
+    id: str
+    zoneName: Union[str, float]
     fingerprint: List[WAPInfo]
 
 
-def checkDataFrame(df: Any) -> Any:
+def checkDF(df: Any) -> Any:
     def rowFN(row):
         DFValidator.model_validate(row.to_dict())
 
@@ -30,22 +30,35 @@ def checkDataFrame(df: Any) -> Any:
 class FpDict(FpBaseModel):
     data: Optional[pd.DataFrame] = None
     ignoredBSSID: List[str] = []
+    dataType: str = Field(pattern=r"^SUPERVISED$|^UNSUPERVISED$|^MIXED$", default="")
 
     @logPipeline()
     def model_post_init(self, __context) -> None:
         pass
 
     @logPipeline()
-    def fit(
-        self, data: Annotated[pd.DataFrame, AfterValidator(checkDataFrame)], info={}
-    ) -> None:
+    def fit(self, data: pd.DataFrame, info={}) -> None:
+        checkDF(data)
         self.preventRefit()
         self.data = data
+        self.determineDataType()
         self.formatBSSID()
         self.formatZoneName()
         self.removeIgnoredBSSID()
         self.removeDuplicatedEntries()
         self.isFitted = True
+
+    def determineDataType(self):
+        numTot = self.data.shape[0]
+        filt = ~self.data["zoneName"].isna()
+        numSup = filt[filt].shape[0]
+        numUnsup = filt[~filt].shape[0]
+        if numSup == numTot:
+            self.dataType = "SUPERVISED"
+        elif numUnsup == numTot:
+            self.dataType = "UNSUPERVISED"
+        else:
+            self.dataType = "MIXED"
 
     def formatBSSID(self) -> None:
         def rowFN(fp):
@@ -56,7 +69,11 @@ class FpDict(FpBaseModel):
         self.data["fingerprint"] = self.data["fingerprint"].apply(rowFN)
 
     def formatZoneName(self) -> None:
-        self.data["zoneName"] = self.data["zoneName"].apply(lambda name: name.strip())
+        filt = ~self.data["zoneName"].isna()
+        idx = filt[filt].index.values
+        self.data.loc[idx, "zoneName"] = self.data.loc[idx, "zoneName"].apply(
+            lambda name: name.strip()
+        )
 
     def removeIgnoredBSSID(self):
         def rowFN(fp):
@@ -82,13 +99,26 @@ class FpDict(FpBaseModel):
         self.data = self.data[~filtDup]
 
     def getUniqueZoneNames(self) -> List[str]:
+        if self.dataType != "SUPERVISED":
+            raise Exception(
+                f"Data is found to be {self.dataType}. getUniqueZoneNames is only allowed for supervised data"
+            )
         sr = self.data["zoneName"].sort_values()
         return pd.unique(sr).tolist()
 
     def getZoneNames(self) -> pd.Series:
+        if self.dataType != "SUPERVISED":
+            raise Exception(
+                f"Data is found to be {self.dataType}. getZoneNames is only allowed for supervised data"
+            )
         return self.data["zoneName"]
 
     def getZoneNamesEncoded(self, le) -> pd.Series:
+        if self.dataType != "SUPERVISED":
+            raise Exception(
+                f"Data is found to be {self.dataType}. getZoneNamesEncoded is only allowed for supervised data"
+            )
+
         sr = self.data["zoneName"]
         srEnc = le.transform(sr)
         return pd.Series(srEnc)

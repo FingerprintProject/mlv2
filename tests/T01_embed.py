@@ -1,0 +1,46 @@
+from pprint import pp
+
+from mlv2.preprocess import LE, FpDict, FpLoader
+from mlv2.utils import Pipeline, PkSaver
+from mlv2.vectorize import W2V, CorpusBuilder
+
+pl = Pipeline(filename="pipeline_embed.xlsx")
+saver = PkSaver(folderName="embed")
+
+fpLoader = FpLoader(pipeline=pl)
+
+folder1 = "data/supervised_survey"
+filename1 = f"{folder1}/admin_json_hospital_id_15_small.json"
+# filename1 = f"{folder1}/admin_json_hospital_id_15.json"
+# filename1 = f"{folder1}/admin_json_hospital_id_15_error.json"
+
+folder2 = "data/unsupervised_survey"
+# filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590_small.json"
+filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590.json"
+
+fileData1 = dict(filename=filename1, fileType="SUPV2")
+fileData2 = dict(filename=filename2, fileType="UNSUPV1")
+fileData = [fileData1, fileData2]
+
+# Load
+fpLoader.fit(fileData=fileData, info=dict(src=fileData))
+
+# Dict data
+fpDict = FpDict(pipeline=pl)
+fpDict.fit(data=fpLoader.data, info=dict(src=fpLoader.uuid))
+
+# Encode BSSID
+leBssid = LE(encoderType="BSSID", pipeline=pl)
+leBssid.fit(data=fpDict.getBSSID(), info=dict(src=fpDict.uuid))
+
+# Corpus
+cb = CorpusBuilder(corpusLineRepeat=10, pipeline=pl)
+cb.fit(data=fpDict.genFP(le=leBssid), info=dict(src=fpDict.uuid))
+
+# Embed
+w2v = W2V(pipeline=pl)
+w2v.fit(corpus=cb.corpus, info=dict(src=cb.uuid))
+
+# Output
+pl.excel()
+saver.save([leBssid, w2v])

@@ -72,6 +72,7 @@ class Pipeline(BaseModel):
     uuid: str = Field(default_factory=lambda: uuid4().hex)
     filename: str = "pipeline.xlsx"
     outFolder: str = "./logs"
+    now: datetime.datetime = Field(default_factory=datetime.datetime.now)
 
     def __repr__(self):
         return "Pipeline"
@@ -113,5 +114,7 @@ class Pipeline(BaseModel):
     def excel(self):
         if not os.path.exists(self.outFolder):
             os.mkdir(self.logFolder)
-        filepath = os.path.join(self.outFolder, self.filename)
+        suffix = self.now.strftime("%Y-%m-%d_%H-%M-%S")
+        filename = f"{self.filename.split(".")[0]}_{suffix}.xlsx"
+        filepath = os.path.join(self.outFolder, filename)
         pd.DataFrame(self.data).to_excel(filepath, index=False)
