@@ -3,8 +3,9 @@ import os
 import pprint
 import time
 from functools import wraps
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 from uuid import uuid4
+import reprlib
 
 import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field, validate_call
@@ -73,6 +74,10 @@ class Pipeline(BaseModel):
     filename: str = "pipeline.xlsx"
     outFolder: str = "./logs"
     now: datetime.datetime = Field(default_factory=datetime.datetime.now)
+    # This provides a means for producing object representations with limits on the size of the resulting strings.
+    printer: Optional[reprlib.Repr] = None
+    indent: int = 1
+    maxlevel: int = 3
 
     def __repr__(self):
         return "Pipeline"
@@ -81,6 +86,7 @@ class Pipeline(BaseModel):
         return self.__repr__()
 
     def model_post_init(self, __context):
+        self.printer = reprlib.Repr(indent=self.indent, maxlevel=self.maxlevel)
         pass
 
     @validate_call
@@ -99,14 +105,17 @@ class Pipeline(BaseModel):
             timestamp=datetime.datetime.timestamp(now),
             className=type(classInst).__name__,
             uuid=classInst.uuid,
-            classInst=pprint.pformat(classInst, depth=1) if printClassInst else "",
+            classInst=self.stringify(classInst) if printClassInst else "",
             funcName=funcName,
-            args=pprint.saferepr(args),
-            kwargs=pprint.saferepr(kwargs),
-            info=pprint.saferepr(info),
+            args=self.stringify(args),
+            kwargs=self.stringify(kwargs),
+            info=self.stringify(info),
             pipelineId=self.uuid,
         )
         self.data.append(data)
+
+    def stringify(self, obj):
+        return self.printer.repr(obj)
 
     def print(self):
         pprint.pp(self.data)
