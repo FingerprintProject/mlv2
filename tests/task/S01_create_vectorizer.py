@@ -4,8 +4,8 @@ from mlv2.preprocess import LE, FpDict, FpLoader
 from mlv2.utils import Pipeline, PkSaver
 from mlv2.vectorize import W2V, CorpusBuilder
 
-pl = Pipeline(filename="pipeline_embed.xlsx")
-saver = PkSaver(folderName="embed")
+pl = Pipeline(filenamePrefix="pipeline_vectorize")
+saver = PkSaver(folderNamePrefix="embed")
 
 fpLoader = FpLoader(pipeline=pl)
 
@@ -35,11 +35,13 @@ leBssid.fit(data=fpDict.getBSSID(), info=dict(src=fpDict.uuid))
 
 # Corpus
 cb = CorpusBuilder(corpusLineRepeat=10, pipeline=pl)
-cb.fit(data=fpDict.genFP(le=leBssid), info=dict(src=fpDict.uuid))
+cb.fit(
+    data=fpDict.genFP(le=leBssid), id_leBssid=leBssid.uuid, info=dict(src=fpDict.uuid)
+)
 
 # Embed
 w2v = W2V(pipeline=pl)
-w2v.fit(corpus=cb.corpus, info=dict(src=cb.uuid))
+w2v.fit(corpus=cb.corpus, id_leBssid=leBssid.uuid, info=dict(src=cb.uuid))
 
 # Output
 pl.excel()

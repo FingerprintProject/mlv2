@@ -12,6 +12,7 @@ class CorpusBuilder(FpBaseModel):
     corpusBuildMethod: str = Field(pattern=r"^NR_random$", default="NR_random")
     corpusFilePath: str = "./corpus.txt"
     corpusLineRepeat: int = 1
+    id_leBssid: Optional[str] = None
 
     @logPipeline()
     def model_post_init(self, __context) -> None:
@@ -19,10 +20,11 @@ class CorpusBuilder(FpBaseModel):
 
     @logPipeline()
     @validate_call
-    def fit(self, data: List[Dict[str, int]], info={}) -> None:
+    def fit(self, data: List[Dict[str, int]], id_leBssid: str, info={}) -> None:
         self.preventRefit()
         self.generate_corpus(data)
-        self.save_corpus()
+        self.id_leBssid = id_leBssid
+        # self.save_corpus()
         self.isFitted = True
 
     def getWapRepeat(self, level: int):

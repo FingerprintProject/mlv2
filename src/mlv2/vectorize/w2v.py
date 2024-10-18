@@ -16,6 +16,7 @@ class W2V(FpBaseModel):
     sg: int = 0
     embBuildMethod: str = "weighted"
     model: Optional[Word2Vec] = None
+    id_leBssid: Optional[str] = None
 
     @logPipeline()
     def model_post_init(self, __context) -> None:
@@ -23,7 +24,7 @@ class W2V(FpBaseModel):
 
     @logPipeline()
     @validate_call
-    def fit(self, corpus: List[List[str]], info={}):
+    def fit(self, corpus: List[List[str]], id_leBssid: str, info={}):
         self.preventRefit()
         self.model = Word2Vec(
             sg=self.sg,
@@ -33,11 +34,12 @@ class W2V(FpBaseModel):
             min_count=self.minCount,
             workers=self.workers,
         )
+        self.id_leBssid = id_leBssid
         self.isFitted = True
 
     @logPipeline()
     @validate_call
-    def generate_embedding(self, data: List[Dict], info={}):
+    def vectorize(self, data: List[Dict], info={}):
         w2v = self.model
 
         vocab = [v for v in w2v.wv.key_to_index.keys()]

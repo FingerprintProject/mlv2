@@ -10,14 +10,14 @@ from .baseModel import FpBaseModel
 
 class PkSaver(FpBaseModel):
 
-    folderName: str = "run"
+    folderNamePrefix: str = "run"
     folderParentPath: str = "save"
     now: datetime.datetime = Field(default_factory=datetime.datetime.now)
 
     def save(self, classInsArr: List[Any]):
 
         folderNameSuffix = self.now.strftime("%Y-%m-%d_%H-%M-%S")
-        folderName = f"{self.folderName}_{folderNameSuffix}"
+        folderName = f"{self.folderNamePrefix}_{folderNameSuffix}"
         folderPath = os.path.join(self.folderParentPath, folderName)
 
         if not os.path.exists(self.folderParentPath):

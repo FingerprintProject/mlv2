@@ -1,15 +1,19 @@
 import datetime
 import os
 import pprint
+import reprlib
 import time
 from functools import wraps
 from typing import Any, Dict, List, Optional
 from uuid import uuid4
-import reprlib
-from pympler.asizeof import asizeof
 
 import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field, validate_call
+
+# from pympler.asizeof import asizeof
+from .asizeof import (
+    asizeof,
+)  # Need the patched version due to this issue https://github.com/pympler/pympler/issues/151#issuecomment-2302230861
 
 
 def logPipeline():
@@ -74,7 +78,7 @@ class Pipeline(BaseModel):
     data: List[Dict] = []
     model_config = ConfigDict(arbitrary_types_allowed=True)
     uuid: str = Field(default_factory=lambda: uuid4().hex)
-    filename: str = "pipeline.xlsx"
+    filenamePrefix: str = "pipeline"
     outFolder: str = "./logs"
     now: datetime.datetime = Field(default_factory=datetime.datetime.now)
     # This provides a means for producing object representations with limits on the size of the resulting strings.
@@ -135,6 +139,6 @@ class Pipeline(BaseModel):
         if not os.path.exists(self.outFolder):
             os.mkdir(self.logFolder)
         suffix = self.now.strftime("%Y-%m-%d_%H-%M-%S")
-        filename = f"{self.filename.split(".")[0]}_{suffix}.xlsx"
+        filename = f"{self.filenamePrefix}_{suffix}.xlsx"
         filepath = os.path.join(self.outFolder, filename)
         pd.DataFrame(self.data).to_excel(filepath, index=False)

@@ -1,6 +1,5 @@
-import pickle
-from pympler import asizeof
 import json
+import pickle
 from pprint import pp
 
 # Load pickle
@@ -8,8 +7,7 @@ filePath = "save/embed_2024-10-18_08-55-20/W2V_8632d.pickle"
 with open(filePath, "rb") as handle:
     data = pickle.load(handle)
 
-# pp(data)
-pp(asizeof.asizeof(data))
+pp(data)
 
 # with open("data.json", "w") as f:
 #     json.dump(data.pipeline.data[9], f)
