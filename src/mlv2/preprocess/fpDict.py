@@ -1,9 +1,9 @@
-from typing import Annotated, Any, Dict, List, Optional, Union
+from typing import Any, List, Optional, Union
+
 import pandas as pd
-from pydantic import BaseModel, validate_call, Field
-from pydantic.functional_validators import AfterValidator
-from ..utils import logPipeline, FpBaseModel
-from .le import LE
+from pydantic import BaseModel, Field
+
+from ..utils import FpBaseModel, logPipeline
 
 
 class WAPInfo(BaseModel):
@@ -113,17 +113,7 @@ class FpDict(FpBaseModel):
             )
         return self.data["zoneName"]
 
-    def getZoneNamesEncoded(self, le) -> pd.Series:
-        if self.dataType != "SUPERVISED":
-            raise Exception(
-                f"Data is found to be {self.dataType}. getZoneNamesEncoded is only allowed for supervised data"
-            )
-
-        sr = self.data["zoneName"]
-        srEnc = le.transform(sr)
-        return pd.Series(srEnc)
-
-    def getBSSID(self):
+    def getUniqueBSSID(self):
         store = []
 
         def rowFn(fp):
@@ -134,17 +124,5 @@ class FpDict(FpBaseModel):
         srBssid = pd.concat(store).sort_values().reset_index(drop=True)
         return pd.unique(srBssid).tolist()
 
-    @validate_call
-    def genFP(self, le: LE) -> List[Dict[str, int]]:
-        """Generate dictionary for corpus builder (key is WX and value is level)"""
-
-        def rowFn(fp):
-            dft = pd.DataFrame.from_dict(fp)
-            dft = dft[["bssid", "level"]]
-            # Change bssid into shorter name
-            dft["bssid"] = le.transform(dft["bssid"])
-            dft = dft.set_index("bssid")
-            return dft.to_dict()["level"]
-
-        res = self.data["fingerprint"].apply(rowFn)
-        return res.values
+    def getFp(self) -> pd.Series:
+        return self.data["fingerprint"]
