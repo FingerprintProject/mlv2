@@ -1,7 +1,3 @@
-import pickle
-from pympler import asizeof
-from mlv2.utils.pipeline import CustomPrint
-import json
 import reprlib
 import numpy as np
 
@@ -45,26 +41,7 @@ obj1 = {
 
 obj2 = np.random.random(size=(100, 100))
 
-
 aRepr = reprlib.Repr(indent=1, maxlevel=3)
 data = aRepr.repr(obj1)
 with open("data.txt", "w") as f:
     f.write(data)
-
-
-# # Load pickle
-# filePath = "C:/Users/nnnpo/Coding/fingerprint/mlv2/save/embed_2024-10-17_17-59-16/LE_d1d8c.pickle"
-# with open(filePath, "rb") as handle:
-#     data = pickle.load(handle)
-
-# print(asizeof.asizeof(data))
-
-# import json
-
-# with open("data.json", "w") as f:
-#     json.dump(data.pipeline.data[9], f)
-
-
-# with open("pk.pickle", "wb") as handle:
-#     pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
-# pass

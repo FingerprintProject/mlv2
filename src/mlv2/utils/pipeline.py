@@ -6,6 +6,7 @@ from functools import wraps
 from typing import Any, Dict, List, Optional
 from uuid import uuid4
 import reprlib
+from pympler.asizeof import asizeof
 
 import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field, validate_call
@@ -55,8 +56,10 @@ def logPipeline():
             end_time = time.perf_counter()
             total_time = end_time - start_time
 
+            # Logging
+            size = asizeof(data) / 1e6
             self.logger.info(
-                f"<{type(self).__name__}>.{func.__name__} took {total_time:.4f} seconds"
+                f"<{type(self).__name__}>.{func.__name__} took {total_time:.4f} seconds. [Size: {size:.2f} MB]"
             )
 
             return result
@@ -100,11 +103,15 @@ class Pipeline(BaseModel):
         printClassInst=False,
     ):
         now = datetime.datetime.now()
+
+        # Take care of class without uuid attribute.
+        uuid = classInst.uuid if hasattr(classInst, "uuid") else ""
+
         data = dict(
             datetime=now.strftime("%Y-%m-%d %H:%M:%S"),
             timestamp=datetime.datetime.timestamp(now),
             className=type(classInst).__name__,
-            uuid=classInst.uuid,
+            uuid=uuid,
             classInst=self.stringify(classInst) if printClassInst else "",
             funcName=funcName,
             args=self.stringify(args),
@@ -115,7 +122,11 @@ class Pipeline(BaseModel):
         self.data.append(data)
 
     def stringify(self, obj):
-        return self.printer.repr(obj)
+        size = asizeof(obj) / 1e6  # Mb
+        if size > 0.5:
+            return self.printer.repr(obj)
+        else:
+            return pprint.pformat(obj)
 
     def print(self):
         pprint.pp(self.data)
