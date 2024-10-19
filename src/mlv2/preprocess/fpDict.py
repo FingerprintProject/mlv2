@@ -124,6 +124,9 @@ class FpDict(FpBaseModel):
 
         res = self.data["fingerprint"].apply(rowFn)
 
+        # Putting fingerprint back
+        self.data["fingerprint"] = res["fingerprint"]
+
         # Combined all removed WAPs and removing duplicates
         dfRemovedWAP = pd.concat(res["removedWAP"].values)
         filtDup = dfRemovedWAP.duplicated()
