@@ -1,7 +1,9 @@
 from typing import Any, List, Optional, Union
+
 import numpy as np
 import pandas as pd
 from pydantic import BaseModel, Field
+from typing_extensions import Annotated
 
 from ..utils import FpBaseModel, logPipeline
 from .le import LE
@@ -30,7 +32,7 @@ def checkDF(df: Any) -> Any:
 
 class FpDict(FpBaseModel):
     data: Optional[pd.DataFrame] = None
-    ignoredBSSID: List[str] = []
+    ignoredBssid: List[str] = []
     dataType: str = Field(pattern=r"^SUPERVISED$|^UNSUPERVISED$|^MIXED$", default="")
     id_leBssid: Optional[str] = None
     id_leZone: Optional[str] = None
@@ -40,14 +42,15 @@ class FpDict(FpBaseModel):
         pass
 
     @logPipeline()
-    def fit(self, data: pd.DataFrame, info={}) -> None:
+    def fit(self, data: pd.DataFrame, ignoredBssid=[], info={}) -> None:
         checkDF(data)
         self.preventRefit()
         self.data = data
         self.determineDataType()
-        self.formatBSSID()
+        self.formatBssid()
         self.formatZoneName()
-        self.removeIgnoredBSSID()
+        self.ignoredBssid = ignoredBssid
+        self.removeIgnoredBssid()
         self.removeDuplicatedEntries()
         self.isFitted = True
 
@@ -63,7 +66,7 @@ class FpDict(FpBaseModel):
         else:
             self.dataType = "MIXED"
 
-    def formatBSSID(self) -> None:
+    def formatBssid(self) -> None:
         def rowFN(fp):
             dft = pd.DataFrame.from_dict(fp)
             dft["bssid"] = dft["bssid"].str.lower().str.strip()
@@ -78,14 +81,12 @@ class FpDict(FpBaseModel):
             lambda name: name.strip()
         )
 
-    def removeIgnoredBSSID(self):
-        def rowFN(fp):
-            dft = pd.DataFrame.from_dict(fp)
-            matchIgnored = dft["bssid"].isin(self.ignoredBSSID)
-            dft = dft[~matchIgnored]
-            return dft.to_dict(orient="records")
-
-        self.data["fingerprint"] = self.data["fingerprint"].apply(rowFN)
+    def removeIgnoredBssid(self):
+        self.remove_bssid_from_fp(
+            mode="EXCLUDE_FROM_IGNORED_LIST",
+            bssidList=self.ignoredBssid,
+            operation="removeIgnoredBSSID",
+        )
 
     def removeDuplicatedEntries(self):
         def rowFN(fp):
@@ -130,6 +131,7 @@ class FpDict(FpBaseModel):
     def getFp(self) -> pd.Series:
         return self.data["fingerprint"]
 
+    @logPipeline()
     def conform_to_le(self, le: LE):
         """
         1) Make remove bssid not found in "bssid" label encoder
@@ -138,7 +140,11 @@ class FpDict(FpBaseModel):
         if le.encoderType == "BSSID":
             if self.id_leBssid:
                 raise Exception(f"Already conform to leBSSID {self.id_leBssid}")
-            res = self.conform_to_le_bssid(le)
+            res = self.remove_bssid_from_fp(
+                mode="INCLUDE_FROM_KNOWN_LIST",
+                bssidList=le.entryList,
+                operation="conform_to_leBssid",
+            )
             self.id_leBssid = le.uuid
         elif le.encoderType == "ZONE":
             if self.id_leZone:
@@ -147,60 +153,80 @@ class FpDict(FpBaseModel):
             self.id_leZone = le.uuid
         return res
 
-    def conform_to_le_bssid(self, le: LE):
+    def remove_bssid_from_fp(
+        self,
+        mode: Annotated[
+            str, Field(pattern=r"^INCLUDE_FROM_KNOWN_LIST$|^EXCLUDE_FROM_IGNORED_LIST$")
+        ],
+        bssidList: List[str],
+        operation,
+    ):
         def rowFn(fp):
             dft = pd.DataFrame.from_dict(fp)
             bssid = dft["bssid"]
 
-            # Filter unseen bssid
-            filt = bssid.apply(lambda el: el not in le.entryList)
-            dftFiltered = dft[~filt]
+            # Filter
+            if mode == "INCLUDE_FROM_KNOWN_LIST":
+                filtRemoved = ~bssid.isin(bssidList)
+            elif mode == "EXCLUDE_FROM_IGNORED_LIST":
+                filtRemoved = bssid.isin(bssidList)
+            else:
+                raise Exception("Unknown mode")
+
+            removedWAP = dft[filtRemoved][["bssid", "ssid"]]
+
+            dftNew = dft[~filtRemoved]
 
             # Check if we need to disregard this fingerprint or not
-            isEmpty = True if dftFiltered.shape[0] == 0 else False
-
-            # Keep the unknown WAP for future processing
-            unknownWAP = dft.loc[filt.index, ["bssid", "ssid"]]
+            isEmpty = True if dftNew.shape[0] == 0 else False
 
             out = dict(
-                fingerprint=dftFiltered.to_dict(orient="records"),
+                fingerprint=dftNew.to_dict(orient="records"),
                 isEmpty=isEmpty,
-                unknownWAP=unknownWAP,
+                removedWAP=removedWAP,
             )
             return pd.Series(out)
 
         res = self.data["fingerprint"].apply(rowFn)
 
-        # Combined all unknown WAPs and removing duplicates
-        dfUnknownWAP = pd.concat(res["unknownWAP"].values)
-        filtDup = dfUnknownWAP.duplicated()
-        dfUnknownWAP = dfUnknownWAP[~filtDup]
-
-        # Remove fingerprints with zero entries
-        self.data = self.data[~res.isEmpty]
+        # Combined all removed WAPs and removing duplicates
+        dfRemovedWAP = pd.concat(res["removedWAP"].values)
+        filtDup = dfRemovedWAP.duplicated()
+        dfRemovedWAP = dfRemovedWAP[~filtDup]
 
         # Logging
-        if dfUnknownWAP.shape[0] > 0:
+        if dfRemovedWAP.shape[0] > 0:
             self.logger.info(
-                f"Found {dfUnknownWAP.shape[0]} unknown WAPs in fingerprints. Ex: {dfUnknownWAP["ssid"].values[:10]}"
+                f"{operation}: Removed {dfRemovedWAP.shape[0]} WAPs from fingerprints. Ex: {dfRemovedWAP["ssid"].values[:10]}"
             )
-        rowTotal = res.isEmpty.shape[0]
-        rowRemoved = res.isEmpty[res.isEmpty].shape[0]
-        self.logger.info(
-            f"Remove {rowRemoved} out of {rowTotal} rows. Remaining rows: {rowTotal-rowRemoved}"
-        )
 
-        return dfUnknownWAP
+        # Remove fingerprints with zero entries
+        self.filter(filterRemove=res.isEmpty, operation=operation)
+
+        return dfRemovedWAP
+
+    @logPipeline()
+    def filter(self, filterRemove: pd.Series, operation: str):
+        """Filter should be boolean where the True signify removing the corresponding row."""
+        # Remove fingerprints with zero entries
+        self.data = self.data[~filterRemove]
+
+        nTot = filterRemove.shape[0]
+        nRemoved = filterRemove.sum()
+        nRemained = (~filterRemove).sum()
+        # Logging
+        self.logger.info(
+            f"{operation}: Remove {nRemoved} out of {nTot} rows. Remaining rows: {nRemained}"
+        )
 
     def conform_to_le_zone(self, le: LE):
         srZoneName = self.data["zoneName"]
 
         # Filter fingerprint with known zonenames
-        filtKeep = srZoneName.isin(le.entryList)
-        self.data = self.data[filtKeep]
+        filtRemove = ~srZoneName.isin(le.entryList)
 
-        # Keep track of unkwonw zone names
-        srUnknownZoneName = srZoneName[~filtKeep]
+        # Keep track of unknown zone names
+        srUnknownZoneName = srZoneName[filtRemove]
         srUnknownZoneName = pd.Series(pd.unique(srUnknownZoneName))
 
         # Logging
@@ -208,10 +234,8 @@ class FpDict(FpBaseModel):
             self.logger.warning(
                 f"Remove {srUnknownZoneName.shape[0]} unknown zones entries. Ex: {srUnknownZoneName.values[:10]}"
             )
-        rowTotal = filtKeep.shape[0]
-        rowRemoved = filtKeep[~filtKeep].shape[0]
-        if rowRemoved > 0:
-            self.logger.info(
-                f"Remove {rowRemoved} out of {rowTotal} rows. Remaining rows: {rowTotal-rowRemoved}"
-            )
+
+        # Filtering fingerprint
+        self.filter(filterRemove=filtRemove, operation="conform_to_leZone")
+
         return srUnknownZoneName

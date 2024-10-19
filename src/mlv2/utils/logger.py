@@ -5,7 +5,7 @@ from typing import Dict, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
-STACKLEVEL = 3
+STACKLEVEL = 2
 
 
 class Logger(BaseModel):

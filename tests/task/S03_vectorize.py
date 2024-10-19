@@ -31,7 +31,9 @@ loader.fit(fileData=fileData, info=dict(src=fileData))
 
 # Preprocess
 fpDict = FpDict(pipeline=pl)
-fpDict.fit(data=loader.data, info=dict(src=loader.uuid))
+fpDict.fit(
+    data=loader.data, ignoredBssid=["12:82:3d:4a:aa:13"], info=dict(src=loader.uuid)
+)
 
 # Conformation
 res1 = fpDict.conform_to_le(leBssid)
