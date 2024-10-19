@@ -8,14 +8,14 @@ pl = Pipeline(filenamePrefix="pipeline_S03")
 
 # Load vectorizer
 pkLoader = PkLoader()
-folderPath = "./save/S01_2024-10-19_06-40-34"
+folderPath = "./save/S01_2024-10-19_11-49-48"
 pkLoader.fit(folderPath=folderPath)
 leBssid = pkLoader.get(["LE"])
 w2v = pkLoader.get(["W2V"])
 
 # Load leZone
 pkLoader = PkLoader()
-folderPath = "./save/S02_2024-10-19_06-40-38"
+folderPath = "./save/S02_2024-10-19_11-50-05"
 pkLoader.fit(folderPath=folderPath)
 leZone = pkLoader.get(["LE"])
 
@@ -34,9 +34,8 @@ fpDict = FpDict(pipeline=pl)
 fpDict.fit(data=loader.data, info=dict(src=loader.uuid))
 
 # Conformation
-fpDict.conform_to_le(leBssid)
-res = fpDict.conform_to_le(leZone)
-pp(res)
+res1 = fpDict.conform_to_le(leBssid)
+res2 = fpDict.conform_to_le(leZone)
 # # Vectorize
 # fpEncode = leBssid.encode(fpDict.getFp())
 # X = w2v.vectorize(data=fpEncode)

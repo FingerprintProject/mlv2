@@ -131,6 +131,10 @@ class FpDict(FpBaseModel):
         return self.data["fingerprint"]
 
     def conform_to_le(self, le: LE):
+        """
+        1) Make remove bssid not found in "bssid" label encoder
+        2) Remove fingerprints with zone not found in "zone" label encoder.
+        """
         if le.encoderType == "BSSID":
             if self.id_leBssid:
                 raise Exception(f"Already conform to leBSSID {self.id_leBssid}")
@@ -172,13 +176,19 @@ class FpDict(FpBaseModel):
         filtDup = dfUnknownWAP.duplicated()
         dfUnknownWAP = dfUnknownWAP[~filtDup]
 
-        if dfUnknownWAP.shape[0] > 0:
-            self.logger.info(
-                f"Remove {dfUnknownWAP.shape[0]} unknown WAPs from fingerprints. Ex: {dfUnknownWAP["ssid"].values[:10]}"
-            )
-
         # Remove fingerprints with zero entries
         self.data = self.data[~res.isEmpty]
+
+        # Logging
+        if dfUnknownWAP.shape[0] > 0:
+            self.logger.info(
+                f"Found {dfUnknownWAP.shape[0]} unknown WAPs in fingerprints. Ex: {dfUnknownWAP["ssid"].values[:10]}"
+            )
+        rowTotal = res.isEmpty.shape[0]
+        rowRemoved = res.isEmpty[res.isEmpty].shape[0]
+        self.logger.info(
+            f"Remove {rowRemoved} out of {rowTotal} rows. Remaining rows: {rowTotal-rowRemoved}"
+        )
 
         return dfUnknownWAP
 
@@ -186,15 +196,22 @@ class FpDict(FpBaseModel):
         srZoneName = self.data["zoneName"]
 
         # Filter fingerprint with known zonenames
-        filtFound = srZoneName.isin(le.entryList)
-        self.data = self.data[filtFound]
+        filtKeep = srZoneName.isin(le.entryList)
+        self.data = self.data[filtKeep]
 
         # Keep track of unkwonw zone names
-        srUnknownZoneName = srZoneName[~filtFound]
+        srUnknownZoneName = srZoneName[~filtKeep]
         srUnknownZoneName = pd.Series(pd.unique(srUnknownZoneName))
 
+        # Logging
         if srUnknownZoneName.shape[0] > 0:
             self.logger.warning(
                 f"Remove {srUnknownZoneName.shape[0]} unknown zones entries. Ex: {srUnknownZoneName.values[:10]}"
+            )
+        rowTotal = filtKeep.shape[0]
+        rowRemoved = filtKeep[~filtKeep].shape[0]
+        if rowRemoved > 0:
+            self.logger.info(
+                f"Remove {rowRemoved} out of {rowTotal} rows. Remaining rows: {rowTotal-rowRemoved}"
             )
         return srUnknownZoneName
