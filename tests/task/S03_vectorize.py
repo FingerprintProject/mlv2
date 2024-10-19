@@ -8,14 +8,14 @@ pl = Pipeline(filenamePrefix="pipeline_S03")
 
 # Load vectorizer
 pkLoader = PkLoader()
-folderPath = "./save/S01_2024-10-19_11-49-48"
+folderPath = "./save/S01_2024-10-19_18-56-01"
 pkLoader.fit(folderPath=folderPath)
 leBssid = pkLoader.get(["LE"])
 w2v = pkLoader.get(["W2V"])
 
 # Load leZone
 pkLoader = PkLoader()
-folderPath = "./save/S02_2024-10-19_11-50-05"
+folderPath = "./save/S02_2024-10-19_18-56-10"
 pkLoader.fit(folderPath=folderPath)
 leZone = pkLoader.get(["LE"])
 
