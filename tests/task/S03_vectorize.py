@@ -38,19 +38,20 @@ fpDict.fit(
 # Conformation
 res1 = fpDict.conform_to_le(leBssid)
 res2 = fpDict.conform_to_le(leZone)
-# # Vectorize
-# fpEncode = leBssid.encode(fpDict.getFp())
-# X = w2v.vectorize(data=fpEncode)
-# y = leZone.encode(fpDict.getZoneNames())
 
-# fpVect = FpVect(pipeline=pl)
-# fpVect.fit(
-#     X=X,
-#     y=y,
-#     id_vectorizer=w2v.uuid,
-#     id_leBssid=leBssid.uuid,
-#     id_leZone=leZone.uuid,
-#     info=dict(fpDict=fpDict.uuid),
-# )
-# pp(fpVect.data)
-# # pl.excel()
+# Vectorize
+fpEncode = leBssid.encode(fpDict.getFp())
+X = w2v.vectorize(data=fpEncode)
+y = leZone.encode(fpDict.getZoneNames())
+
+fpVect = FpVect(pipeline=pl)
+fpVect.fit(
+    X=X,
+    y=y,
+    id_vectorizer=w2v.uuid,
+    id_leBssid=leBssid.uuid,
+    id_leZone=leZone.uuid,
+    info=dict(fpDict=fpDict.uuid),
+)
+pp(fpVect.data)
+# pl.excel()
