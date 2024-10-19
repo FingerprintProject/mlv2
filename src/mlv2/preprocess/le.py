@@ -5,7 +5,13 @@ from pydantic import BaseModel, Field, validate_call
 from sklearn.preprocessing import LabelEncoder
 
 from ..utils import FpBaseModel, logPipeline
-from .fpDict import WAPInfo
+
+
+class WAPInfo(BaseModel):
+    ssid: str
+    bssid: str
+    level: int
+    frequency: int
 
 
 class SeriesValidator(BaseModel):
@@ -21,7 +27,7 @@ class LE(FpBaseModel):
     encoderType: str = Field(pattern=r"^BSSID$|^ZONE$", default="ZONE")
     model: LabelEncoder = Field(default_factory=LabelEncoder)
     bssidPrefix: str = "W"
-    nameList: Optional[List[str]] = None
+    entryList: Optional[List[str]] = None
 
     @logPipeline()
     def model_post_init(self, __context) -> None:
@@ -33,10 +39,10 @@ class LE(FpBaseModel):
         self.preventRefit()
         # Create unique list
         sr = pd.Series(data).sort_values()
-        self.nameList = pd.unique(sr).tolist()
+        self.entryList = pd.unique(sr).tolist()
         # Fit
-        self.model.fit(self.nameList)
-        self.logger.info(f"Total Item: {len(self.nameList)}")
+        self.model.fit(self.entryList)
+        self.logger.info(f"Total Item: {len(self.entryList)}")
         self.isFitted = True
 
     @logPipeline()
@@ -67,16 +73,20 @@ class LE(FpBaseModel):
         def rowFn(fp):
             dft = pd.DataFrame.from_dict(fp)
             dft = dft[["bssid", "level"]]
+
             # Filter unseen bssid
-            filt = dft["bssid"].apply(lambda el: el not in self.nameList)
+            filt = dft["bssid"].apply(lambda el: el not in self.entryList)
             num = filt[filt].shape[0]
             filtBssids = dft["bssid"][filt].values.tolist()
             filtBssidsStr = ", ".join(filtBssids)
             if num > 0:
                 self.logger.warning(f"Detect unknown BSSID: {filtBssidsStr}")
             dft = dft[~filt]
+
+            # Check if the dataframe is empty after filtering
             if dft.shape[0] == 0:
-                raise Exception("Cannot proceed")
+                raise Exception("Empty dataframe after filtering")
+
             # Change bssid into shorter name
             res = self.model.transform(dft["bssid"])
             sr = pd.Series(res).apply(lambda el: f"{self.bssidPrefix}{el}")

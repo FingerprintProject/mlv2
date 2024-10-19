@@ -1,9 +1,10 @@
 from typing import Any, List, Optional, Union
-
+import numpy as np
 import pandas as pd
 from pydantic import BaseModel, Field
 
 from ..utils import FpBaseModel, logPipeline
+from .le import LE
 
 
 class WAPInfo(BaseModel):
@@ -31,6 +32,8 @@ class FpDict(FpBaseModel):
     data: Optional[pd.DataFrame] = None
     ignoredBSSID: List[str] = []
     dataType: str = Field(pattern=r"^SUPERVISED$|^UNSUPERVISED$|^MIXED$", default="")
+    id_leBssid: Optional[str] = None
+    id_leZone: Optional[str] = None
 
     @logPipeline()
     def model_post_init(self, __context) -> None:
@@ -126,3 +129,72 @@ class FpDict(FpBaseModel):
 
     def getFp(self) -> pd.Series:
         return self.data["fingerprint"]
+
+    def conform_to_le(self, le: LE):
+        if le.encoderType == "BSSID":
+            if self.id_leBssid:
+                raise Exception(f"Already conform to leBSSID {self.id_leBssid}")
+            res = self.conform_to_le_bssid(le)
+            self.id_leBssid = le.uuid
+        elif le.encoderType == "ZONE":
+            if self.id_leZone:
+                raise Exception(f"Already conform to leZone {self.id_leZone}")
+            res = self.conform_to_le_zone(le)
+            self.id_leZone = le.uuid
+        return res
+
+    def conform_to_le_bssid(self, le: LE):
+        def rowFn(fp):
+            dft = pd.DataFrame.from_dict(fp)
+            bssid = dft["bssid"]
+
+            # Filter unseen bssid
+            filt = bssid.apply(lambda el: el not in le.entryList)
+            dftFiltered = dft[~filt]
+
+            # Check if we need to disregard this fingerprint or not
+            isEmpty = True if dftFiltered.shape[0] == 0 else False
+
+            # Keep the unknown WAP for future processing
+            unknownWAP = dft.loc[filt.index, ["bssid", "ssid"]]
+
+            out = dict(
+                fingerprint=dftFiltered.to_dict(orient="records"),
+                isEmpty=isEmpty,
+                unknownWAP=unknownWAP,
+            )
+            return pd.Series(out)
+
+        res = self.data["fingerprint"].apply(rowFn)
+
+        # Combined all unknown WAPs and removing duplicates
+        dfUnknownWAP = pd.concat(res["unknownWAP"].values)
+        filtDup = dfUnknownWAP.duplicated()
+        dfUnknownWAP = dfUnknownWAP[~filtDup]
+
+        if dfUnknownWAP.shape[0] > 0:
+            self.logger.info(
+                f"Remove {dfUnknownWAP.shape[0]} unknown WAPs from fingerprints. Ex: {dfUnknownWAP["ssid"].values[:10]}"
+            )
+
+        # Remove fingerprints with zero entries
+        self.data = self.data[~res.isEmpty]
+
+        return dfUnknownWAP
+
+    def conform_to_le_zone(self, le: LE):
+        srZoneName = self.data["zoneName"]
+
+        # Filter fingerprint with known zonenames
+        filtFound = srZoneName.isin(le.entryList)
+        self.data = self.data[filtFound]
+
+        # Keep track of unkwonw zone names
+        srUnknownZoneName = srZoneName[~filtFound]
+        srUnknownZoneName = pd.Series(pd.unique(srUnknownZoneName))
+
+        if srUnknownZoneName.shape[0] > 0:
+            self.logger.warning(
+                f"Remove {srUnknownZoneName.shape[0]} unknown zones entries. Ex: {srUnknownZoneName.values[:10]}"
+            )
+        return srUnknownZoneName
