@@ -81,10 +81,11 @@ class LE(FpBaseModel):
         if self.encoderType == "ZONE":
             checkSeriesZone(data)
             res = self.model.transform(data)
+            res = pd.Series(res, index=data.index)  # Return series to maintain index
             return res
         elif self.encoderType == "BSSID":
             checkSeriesFp(data)
-            res = self._encodeFp(data)
+            res = self._encodeFp(data)  # Return dataframe
             return res
 
     def _encodeFp(self, data: pd.DataFrame):
