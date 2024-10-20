@@ -23,6 +23,7 @@ distribution = true
 [tool.pdm.dev-dependencies]
 dev = [
     "jupyterlab>=4.2.5",
+    "pytest>=8.3.3",
 ]
 [build-system]
 requires = ["pdm-backend"]
