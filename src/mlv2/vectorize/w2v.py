@@ -6,6 +6,7 @@ from gensim.models import Word2Vec
 from pydantic import validate_call
 
 from ..utils import logPipeline, FpBaseModel
+from ..preprocess import FpDict
 
 
 class W2V(FpBaseModel):
@@ -39,7 +40,24 @@ class W2V(FpBaseModel):
 
     @logPipeline()
     @validate_call
-    def vectorize(self, data: List[Dict], info={}):
+    def vectorize(
+        self,
+        data: List[Dict],
+        fpDict: Optional[FpDict] = None,
+        ignoreCheck: bool = False,
+        info={},
+    ):
+
+        # Make sure that both FpDect and W2V instances use the same leBssid encoder
+        if not ignoreCheck:
+            if type(fpDict).__name__ != "FpDict":
+                raise Exception("Please use FpDict class instant")
+
+            if self.id_leBssid != fpDict.id_leBssid:
+                raise Exception(
+                    f"Unmatched id_leBssid: fpDict={fpDict.id_leBssid}, vectorizer={self.id_leBssid}"
+                )
+
         w2v = self.model
 
         vocab = [v for v in w2v.wv.key_to_index.keys()]

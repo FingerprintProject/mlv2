@@ -1,10 +1,19 @@
 import csv
-from typing import Dict, List, Optional
+from typing import Any, List, Optional
 
 import numpy as np
-from pydantic import Field, validate_call
+import pandas as pd
+from pydantic import BaseModel, Field, validate_call
 
 from mlv2.utils import FpBaseModel, logPipeline
+
+
+def checkSeries(sr: Any) -> Any:
+    class Val(BaseModel):
+        data: dict[str, int]
+
+    sr.apply(lambda arr: Val.model_validate({"data": arr}))
+    return sr
 
 
 class CorpusBuilder(FpBaseModel):
@@ -19,9 +28,10 @@ class CorpusBuilder(FpBaseModel):
         pass
 
     @logPipeline()
-    @validate_call
-    def fit(self, data: List[Dict[str, int]], id_leBssid: str, info={}) -> None:
+    @validate_call(config=dict(arbitrary_types_allowed=True))
+    def fit(self, data: pd.Series, id_leBssid: str, info={}) -> None:
         self.preventRefit()
+        checkSeries(data)
         self.generate_corpus(data)
         self.id_leBssid = id_leBssid
         # self.save_corpus()

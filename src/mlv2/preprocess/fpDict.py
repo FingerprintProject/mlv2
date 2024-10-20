@@ -177,6 +177,7 @@ class FpDict(FpBaseModel):
                 f"Data is found to be {self.dataType}. getUniqueZoneNames is only allowed for supervised data"
             )
         sr = self.data["zoneName"].sort_values()
+        # Since I don't need to maintain index, returning list is better in terms of compatibility.
         return pd.unique(sr).tolist()
 
     def getZoneNames(self) -> pd.Series:
@@ -184,9 +185,10 @@ class FpDict(FpBaseModel):
             raise Exception(
                 f"Data is found to be {self.dataType}. getZoneNames is only allowed for supervised data"
             )
+        # I returned series becuase I want to maintain index.
         return self.data["zoneName"]
 
-    def getUniqueBSSID(self):
+    def getUniqueBSSID(self) -> List[str]:
         store = []
 
         def rowFn(fp):
@@ -195,9 +197,11 @@ class FpDict(FpBaseModel):
 
         _ = self.data["fingerprint"].apply(rowFn)
         srBssid = pd.concat(store).sort_values().reset_index(drop=True)
+        # Since I don't need to maintain index, returning list is better in terms of compatibility.
         return pd.unique(srBssid).tolist()
 
     def getFp(self) -> pd.Series:
+        # I returned series becuase I want to maintain index.
         return self.data["fingerprint"]
 
     @logPipeline()

@@ -7,19 +7,26 @@ from sklearn.preprocessing import LabelEncoder
 from ..utils import FpBaseModel, logPipeline
 
 
-class WAPInfo(BaseModel):
-    ssid: str
-    bssid: str
-    level: int
-    frequency: int
+def checkSeriesFp(sr: Any) -> Any:
+    class WAPInfo(BaseModel):
+        ssid: str
+        bssid: str
+        level: int
+        frequency: int
+
+    class Val(BaseModel):
+        data: List[WAPInfo]
+
+    sr.apply(lambda arr: Val.model_validate({"data": arr}))
+    return sr
 
 
-class SeriesValidator(BaseModel):
-    fingerprint: List[WAPInfo]
+# There should be an easier way.
+def checkSeriesZone(sr: Any) -> Any:
+    class Val(BaseModel):
+        data: str
 
-
-def checkSeries(sr: Any) -> Any:
-    sr.apply(lambda arr: SeriesValidator.model_validate({"fingerprint": arr}))
+    sr.apply(lambda arr: Val.model_validate({"data": arr}))
     return sr
 
 
@@ -47,45 +54,44 @@ class LE(FpBaseModel):
 
     @logPipeline()
     @validate_call(config=dict(arbitrary_types_allowed=True))
-    def encode(self, data: Union[List[str], pd.Series]):
+    def encode(
+        self,
+        data: pd.Series,
+        fpDict: Any = None,
+        ignoreCheck: bool = False,
+    ):
 
         # Validate
-        if isinstance(data, str) and self.encoderType != "ZONE":
-            raise Exception("Data input should be dataFrame")
-        elif isinstance(data, pd.Series) and self.encoderType != "BSSID":
-            raise Exception("Data input should be list of string")
+        if not ignoreCheck:
+            if type(fpDict).__name__ != "FpDict":
+                raise Exception("Please use FpDict class instant")
 
-        # Make sure pandas series is of the right shape
-        if isinstance(data, pd.Series):
-            checkSeries(data)
+            if self.encoderType == "ZONE":
+                checkId = fpDict.id_leZone
+                leType = "leZone"
+            elif self.encoderType == "BSSID":
+                checkId = fpDict.id_leBssid
+                leType = "leBssid"
+
+            if checkId != self.uuid:
+                raise Exception(
+                    f"Please conform FpDict with {leType}-{self.uuid} first to prevent out-of-bag error."
+                )
 
         if self.encoderType == "ZONE":
-            return self.encodeZone(data)
+            checkSeriesZone(data)
+            res = self.model.transform(data)
+            return res
         elif self.encoderType == "BSSID":
-            return self.encodeFp(data)
+            checkSeriesFp(data)
+            res = self._encodeFp(data)
+            return res
 
-    def encodeZone(self, data: str):
-        sr = pd.Series(data)
-        srEnc = self.transform(sr)
-        return srEnc
+    def _encodeFp(self, data: pd.DataFrame):
 
-    def encodeFp(self, data: pd.DataFrame):
         def rowFn(fp):
             dft = pd.DataFrame.from_dict(fp)
             dft = dft[["bssid", "level"]]
-
-            # Filter unseen bssid
-            filt = dft["bssid"].apply(lambda el: el not in self.entryList)
-            num = filt[filt].shape[0]
-            filtBssids = dft["bssid"][filt].values.tolist()
-            filtBssidsStr = ", ".join(filtBssids)
-            if num > 0:
-                self.logger.warning(f"Detect unknown BSSID: {filtBssidsStr}")
-            dft = dft[~filt]
-
-            # Check if the dataframe is empty after filtering
-            if dft.shape[0] == 0:
-                raise Exception("Empty dataframe after filtering")
 
             # Change bssid into shorter name
             res = self.model.transform(dft["bssid"])
@@ -95,4 +101,4 @@ class LE(FpBaseModel):
             return dft.to_dict()["level"]
 
         res = data.apply(rowFn)
-        return res.values
+        return res

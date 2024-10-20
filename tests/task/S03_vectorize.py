@@ -8,14 +8,14 @@ pl = Pipeline(filenamePrefix="pipeline_S03")
 
 # Load vectorizer
 pkLoader = PkLoader()
-folderPath = "./save/S01_2024-10-19_21-18-24"
+folderPath = "./save/S01_2024-10-20_07-11-09"
 pkLoader.fit(folderPath=folderPath)
 leBssid = pkLoader.get(["LE"])
 w2v = pkLoader.get(["W2V"])
 
 # Load leZone
 pkLoader = PkLoader()
-folderPath = "./save/S02_2024-10-19_21-18-35"
+folderPath = "./save/S02_2024-10-20_07-16-17"
 pkLoader.fit(folderPath=folderPath)
 leZone = pkLoader.get(["LE"])
 
@@ -31,18 +31,17 @@ loader.fit(fileData=fileData, info=dict(src=fileData))
 
 # Preprocess
 fpDict = FpDict(pipeline=pl)
-fpDict.fit(
-    data=loader.data, ignoredBssid=["12:82:3d:4a:aa:13"], info=dict(src=loader.uuid)
-)
+fpDict.fit(data=loader.data, info=dict(src=loader.uuid))
 
 # Conformation
 res1 = fpDict.conform_to_le(leBssid)
 res2 = fpDict.conform_to_le(leZone)
 
 # Vectorize
-fpEncode = leBssid.encode(fpDict.getFp())
-X = w2v.vectorize(data=fpEncode)
-y = leZone.encode(fpDict.getZoneNames())
+fpEncode = leBssid.encode(fpDict.getFp(), fpDict=fpDict)
+
+X = w2v.vectorize(data=fpEncode, fpDict=fpDict)
+y = leZone.encode(fpDict.getZoneNames(), fpDict=fpDict)
 
 fpVect = FpVect(pipeline=pl)
 fpVect.fit(
@@ -54,4 +53,4 @@ fpVect.fit(
     info=dict(fpDict=fpDict.uuid),
 )
 pp(fpVect.data)
-# pl.excel()
+pl.excel()

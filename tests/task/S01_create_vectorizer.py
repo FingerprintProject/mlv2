@@ -10,13 +10,13 @@ saver = PkSaver(folderNamePrefix="S01")
 fpLoader = FpLoader(pipeline=pl)
 
 folder1 = "data/supervised_survey"
-filename1 = f"{folder1}/admin_json_hospital_id_15_small.json"
-# filename1 = f"{folder1}/admin_json_hospital_id_15.json"
+# filename1 = f"{folder1}/admin_json_hospital_id_15_small.json"
+filename1 = f"{folder1}/admin_json_hospital_id_15.json"
 # filename1 = f"{folder1}/admin_json_hospital_id_15_error.json"
 
 folder2 = "data/unsupervised_survey"
-filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590_small.json"
-# filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590.json"
+# filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590_small.json"
+filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590.json"
 
 fileData1 = dict(filename=filename1, fileType="SUPV2")
 fileData2 = dict(filename=filename2, fileType="UNSUPV1")
@@ -33,9 +33,11 @@ fpDict.fit(data=fpLoader.data, info=dict(src=fpLoader.uuid))
 leBssid = LE(encoderType="BSSID", pipeline=pl)
 leBssid.fit(data=fpDict.getUniqueBSSID(), info=dict(src=fpDict.uuid))
 
+# Conform
+fpDict.conform_to_le(leBssid)
 
 # Corpus
-fpEncoded = leBssid.encode(data=fpDict.getFp())
+fpEncoded = leBssid.encode(data=fpDict.getFp(), fpDict=fpDict)
 cb = CorpusBuilder(corpusLineRepeat=10, pipeline=pl)
 cb.fit(data=fpEncoded, id_leBssid=leBssid.uuid, info=dict(src=fpDict.uuid))
 
