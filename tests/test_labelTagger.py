@@ -5,12 +5,17 @@ import random
 
 
 def test_labelTagger():
-    ncol = 10
+    ncol = 20
+    nrows = 10
+    nZones = 3
+
     cols = [f"W{i+1}" for i in range(ncol)]
-    X = pd.DataFrame(np.random.random(size=(100, ncol)), columns=cols)
-    y = [random.randint(0, 9) for i in range(X.shape[0])]
+    X = pd.DataFrame(np.random.random(size=(nrows, ncol)), columns=cols)
+    y = [random.randint(0, nZones - 1) for i in range(nrows)]
     y = pd.Series(y)
-    ltag = LabelTagger()
-    ltag.fit(X=X, y=y)
-    ltag.calc_obs()
+
+    labelTagger = LabelTagger()
+    labelTagger.fit(X=X, y=y)
+    labelTagger.calcDmCentroid()
+    labelTagger.cal_min_dist_neighbors()
     assert True
