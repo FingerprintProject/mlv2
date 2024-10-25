@@ -80,9 +80,8 @@ class FpLoader(FpBaseModel):
         self.data = pd.concat(dfArr).reset_index(drop=True)
 
         # Generate unique index
-        self.data.index = (
-            self.uuid[:4] + "_" + pd.Series(self.data.index.values).astype(str)
-        )
+        self.data.index = self.getUniqueIdx(idxList=self.data.index.values.tolist())
+
         self.isFitted = True
 
     def checkDf(self, df: pd.DataFrame, Val: Any):

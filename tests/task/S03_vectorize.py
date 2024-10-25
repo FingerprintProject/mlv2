@@ -2,7 +2,7 @@ from pprint import pp
 
 from mlv2.preprocess import FpLoader, FpDict
 from mlv2.utils import PkLoader, Pipeline
-from mlv2.vectorize import FpVect
+from mlv2.vectorize import FpVectSupervised
 
 pl = Pipeline(filenamePrefix="pipeline_S03")
 
@@ -45,8 +45,8 @@ def vectorize():
     X = w2v.vectorize(data=fpEncode, fpDict=fpDict)
     y = leZone.encode(fpDict.getZoneNames(), fpDict=fpDict)
 
-    fpVect = FpVect(pipeline=pl)
-    fpVect.fit(
+    fpVectSup = FpVectSupervised(pipeline=pl)
+    fpVectSup.fit(
         X=X,
         y=y,
         id_vectorizer=w2v.uuid,
@@ -54,5 +54,6 @@ def vectorize():
         id_leZone=leZone.uuid,
         info=dict(fpDict=fpDict.uuid),
     )
-    pp(fpVect.data)
-    pl.excel()
+    fpVectSup.calcCentroid()
+    # pl.excel()
+    pass

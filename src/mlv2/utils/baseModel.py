@@ -1,9 +1,10 @@
-from typing import Dict, Any
+from typing import Dict, Any, List
 from uuid import uuid4
 from pydantic import BaseModel, ConfigDict, Field
 from .logger import Logger
 from .pipeline import Pipeline
 import pprint
+import pandas as pd
 
 
 class FpBaseModel(BaseModel):
@@ -31,3 +32,6 @@ class FpBaseModel(BaseModel):
     def preventRefit(self):
         if self.isFitted:
             raise Exception(f"Refitting is not allowed for {type(self).__name__}")
+
+    def getUniqueIdx(self, idxList: List[Any]) -> pd.Series:
+        return self.uuid[:4] + "_" + pd.Series(idxList).astype(str)
