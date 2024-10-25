@@ -78,6 +78,11 @@ class FpLoader(FpBaseModel):
                     raise Exception("Unknown filetype")
             dfArr.append(df)
         self.data = pd.concat(dfArr).reset_index(drop=True)
+
+        # Generate unique index
+        self.data.index = (
+            self.uuid[:4] + "_" + pd.Series(self.data.index.values).astype(str)
+        )
         self.isFitted = True
 
     def checkDf(self, df: pd.DataFrame, Val: Any):

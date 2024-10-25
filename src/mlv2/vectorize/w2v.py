@@ -39,10 +39,10 @@ class W2V(FpBaseModel):
         self.isFitted = True
 
     @logPipeline()
-    @validate_call
+    @validate_call(config=dict(arbitrary_types_allowed=True))
     def vectorize(
         self,
-        data: List[Dict],
+        data: pd.Series,
         fpDict: Optional[FpDict] = None,
         ignoreCheck: bool = False,
         info={},
@@ -91,5 +91,5 @@ class W2V(FpBaseModel):
         else:
             rpEmbed = np.concatenate(tempArray1, axis=0)
         cols = [f"E{i+1}" for i in range(self.vectorSize)]
-        dft = pd.DataFrame(data=rpEmbed, columns=cols)
+        dft = pd.DataFrame(data=rpEmbed, columns=cols, index=data.index)
         return dft

@@ -6,51 +6,53 @@ from mlv2.vectorize import FpVect
 
 pl = Pipeline(filenamePrefix="pipeline_S03")
 
-# Load vectorizer
-pkLoader = PkLoader()
-folderPath = "./save/S01_2024-10-20_07-11-09"
-pkLoader.fit(folderPath=folderPath)
-leBssid = pkLoader.get(["LE"])
-w2v = pkLoader.get(["W2V"])
 
-# Load leZone
-pkLoader = PkLoader()
-folderPath = "./save/S02_2024-10-20_07-16-17"
-pkLoader.fit(folderPath=folderPath)
-leZone = pkLoader.get(["LE"])
+def vectorize():
+    # Load vectorizer
+    pkLoader = PkLoader()
+    folderPath = "./save/S01_2024-10-25_08-47-00"
+    pkLoader.fit(folderPath=folderPath)
+    leBssid = pkLoader.get(["LE"])
+    w2v = pkLoader.get(["W2V"])
 
-# Supervised data
-folder1 = "data/supervised_survey"
-# filename1 = f"{folder1}/admin_json_hospital_id_15_small.json"
-filename1 = f"{folder1}/admin_json_hospital_id_15.json"
-fileData = [dict(filename=filename1, fileType="SUPV2")]
+    # Load leZone
+    pkLoader = PkLoader()
+    folderPath = "./save/S02_2024-10-25_08-52-01"
+    pkLoader.fit(folderPath=folderPath)
+    leZone = pkLoader.get(["LE"])
 
-# Load data
-loader = FpLoader(pipeline=pl)
-loader.fit(fileData=fileData, info=dict(src=fileData))
+    # Supervised data
+    folder1 = "data/supervised_survey"
+    # filename1 = f"{folder1}/admin_json_hospital_id_15_small.json"
+    filename1 = f"{folder1}/admin_json_hospital_id_15.json"
+    fileData = [dict(filename=filename1, fileType="SUPV2")]
 
-# Preprocess
-fpDict = FpDict(pipeline=pl)
-fpDict.fit(data=loader.data, info=dict(src=loader.uuid))
+    # Load data
+    loader = FpLoader(pipeline=pl)
+    loader.fit(fileData=fileData, info=dict(src=fileData))
 
-# Conformation
-res1 = fpDict.conform_to_le(leBssid)
-res2 = fpDict.conform_to_le(leZone)
+    # Preprocess
+    fpDict = FpDict(pipeline=pl)
+    fpDict.fit(data=loader.data, info=dict(src=loader.uuid))
 
-# Vectorize
-fpEncode = leBssid.encode(fpDict.getFp(), fpDict=fpDict)
+    # Conformation
+    res1 = fpDict.conform_to_le(leBssid)
+    res2 = fpDict.conform_to_le(leZone)
 
-X = w2v.vectorize(data=fpEncode, fpDict=fpDict)
-y = leZone.encode(fpDict.getZoneNames(), fpDict=fpDict)
+    # Vectorize
+    fpEncode = leBssid.encode(fpDict.getFp(), fpDict=fpDict)
 
-fpVect = FpVect(pipeline=pl)
-fpVect.fit(
-    X=X,
-    y=y,
-    id_vectorizer=w2v.uuid,
-    id_leBssid=leBssid.uuid,
-    id_leZone=leZone.uuid,
-    info=dict(fpDict=fpDict.uuid),
-)
-pp(fpVect.data)
-pl.excel()
+    X = w2v.vectorize(data=fpEncode, fpDict=fpDict)
+    y = leZone.encode(fpDict.getZoneNames(), fpDict=fpDict)
+
+    fpVect = FpVect(pipeline=pl)
+    fpVect.fit(
+        X=X,
+        y=y,
+        id_vectorizer=w2v.uuid,
+        id_leBssid=leBssid.uuid,
+        id_leZone=leZone.uuid,
+        info=dict(fpDict=fpDict.uuid),
+    )
+    pp(fpVect.data)
+    pl.excel()
