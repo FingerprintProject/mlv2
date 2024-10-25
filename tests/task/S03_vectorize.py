@@ -55,5 +55,6 @@ def vectorize():
         info=dict(fpDict=fpDict.uuid),
     )
     fpVectSup.calcCentroid()
+    fpVectSup.calcZoneCentroidSelfNearestNeighbors()
     # pl.excel()
     pass
