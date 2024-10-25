@@ -133,3 +133,22 @@ class FpVectSupervised(FpVectBase):
         )
         nn = dft.apply(lambda row: rowFn(row, refPts, refLabels), axis=1)
         return nn
+
+
+class FpVectUnSupervised(FpVectBase):
+
+    @logPipeline()
+    @validate_call(config=dict(arbitrary_types_allowed=True))
+    def fit(
+        self,
+        X: pd.DataFrame,
+        id_vectorizer: str,
+        id_leBssid: str,
+        info={},
+    ):
+        self.preventRefit()
+        self.colsX = X.columns.tolist()
+        self.data = X
+        self.id_leBssid = id_leBssid
+        self.id_vectorizer = id_vectorizer
+        self.isFitted = True
