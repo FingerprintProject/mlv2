@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -23,6 +23,11 @@ class FpVectBase(FpBaseModel):
         if not self.colsX:
             raise Exception("No cols X yet")
         return self.colsX
+
+    def getX(self):
+        if self.data is None:
+            raise Exception("No X")
+        return self.data[self.getColsX()]
 
 
 class FpVectSupervised(FpVectBase):
@@ -153,8 +158,18 @@ class FpVectSupervised(FpVectBase):
         nn = dft.apply(lambda row: rowFn(row, refPts, refLabels), axis=1)
         return nn
 
-    def getNnDistance(self):
-        return self.zcSelfNn["nnCyDist"].apply(lambda d: d[0])
+    def getZoneCentroidInfo(self) -> Tuple[pd.DataFrame, pd.Series, pd.Series]:
+        if self.zc is None:
+            raise Exception("Zone centroid has not been calculated")
+        if self.zcSelfNn is None:
+            raise Exception("Zone centroid distance has not been calculated")
+
+        cX = self.zc[self.getColsX()]
+        cy = self.zc["cy"]
+        cDistNn = self.zcSelfNn["nnCyDist"].apply(
+            lambda d: d[0]
+        )  # Distance to the nearest centriod
+        return (cX, cy, cDistNn)
 
 
 class FpVectUnsupervised(FpVectBase):

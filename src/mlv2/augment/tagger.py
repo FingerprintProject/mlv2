@@ -23,9 +23,9 @@ class TaggerDistanceSimple(FpBaseModel):
     @validate_call(config=dict(arbitrary_types_allowed=True))
     def fit(
         self,
-        zc: pd.DataFrame,
-        zcNnDist: pd.Series,
-        cols: List[str],
+        cX: pd.DataFrame,
+        cDistNn: pd.Series,
+        cy: pd.Series,
         uFp: pd.DataFrame,
         id_fpVectSupervised,
         id_fpVectUnsupervised,
@@ -44,16 +44,18 @@ class TaggerDistanceSimple(FpBaseModel):
         self.id_fpVectSupervised = id_fpVectSupervised
         self.id_fpVectUnsupervised = id_fpVectUnsupervised
 
-        # Make sure that the index is idential (both value and order)
-        if not queryPts.index.equals(queryRadius.index):
-            raise Exception("Index pf queryPts and queryRadius are not identical")
+        # Make sure that the indices of pandas objects are idential (both value and order)
+        if not cX.index.equals(cDistNn.index):
+            raise Exception("Index of cX and cDistNn are not identical")
+        if not cX.index.equals(cy.index):
+            raise Exception("Index of cX and cy are not identical")
 
-        refPts = uFp[cols]
-        queryPts = zc[cols]
-        queryRadius = zcNnDist
-        queryRadius = queryRadius * radiusMultipler
+        refPts = uFp
+        queryPts = cX
+        queryRadius = cDistNn * radiusMultipler
 
-        self._calcNn(refPts, queryPts, queryRadius)
+        res = self._calcNn(refPts, queryPts, queryRadius)
+        pass
 
     def _calcNn(self, refPts, queryPts, queryRadius):
 
@@ -82,6 +84,11 @@ class TaggerDistanceSimple(FpBaseModel):
         refTree = KDTree(refPts)
         queryRadius.name = "radius"
         dft = pd.concat([queryPts, queryRadius], axis=1)
+
+        if dft.isna().any().any():
+            raise Exception(
+                "Found NaN after joining pandas dataframes. Check indices of pandas objects"
+            )
         zcAug = dft.apply(lambda row: rowFn(row, refTree, refPts), axis=1)
 
         return zcAug
