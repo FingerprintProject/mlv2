@@ -31,15 +31,7 @@ class TaggerDistanceSimple(FpBaseModel):
         id_fpVectUnsupervised,
         radiusMultipler: float = 0.5,
     ):
-        """_summary_
 
-        Args:
-            zc (pd.DataFrame): zone centroid
-            zcNnDist (pd.Series): nearest distance to the nearest neighbor of each controid
-            uFp (pd.DataFrame): unsupervised fingerprints
-            colsX: list of X column names
-            radiusMultipler (float, optional): fraction of radius to the nearest centroid to search "uFp" for. Defaults to 0.5.
-        """
         self.radiusMultipler = radiusMultipler
         self.id_fpVectSupervised = id_fpVectSupervised
         self.id_fpVectUnsupervised = id_fpVectUnsupervised
@@ -53,11 +45,12 @@ class TaggerDistanceSimple(FpBaseModel):
         refPts = uFp
         queryPts = cX
         queryRadius = cDistNn * radiusMultipler
+        queryLabels = cy
 
-        res = self._calcNn(refPts, queryPts, queryRadius)
+        dft = self._calcNn(refPts, queryPts, queryRadius, queryLabels)
         pass
 
-    def _calcNn(self, refPts, queryPts, queryRadius):
+    def _calcNn(self, refPts, queryPts, queryRadius, queryLabels):
 
         def rowFn(row, refTree, refPts):
             radius = row["radius"]
@@ -90,5 +83,5 @@ class TaggerDistanceSimple(FpBaseModel):
                 "Found NaN after joining pandas dataframes. Check indices of pandas objects"
             )
         zcAug = dft.apply(lambda row: rowFn(row, refTree, refPts), axis=1)
-
-        return zcAug
+        zcAugLabelled = pd.concat([zcAug, queryLabels], axis=1)
+        return zcAugLabelled
