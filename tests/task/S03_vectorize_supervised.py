@@ -37,8 +37,8 @@ def vectorize_sup():
     fpDict.fit(data=loader.data, info=dict(src=loader.uuid))
 
     # Conformation
-    res1 = fpDict.conform_to_le(leBssid)
-    res2 = fpDict.conform_to_le(leZone)
+    fpDict.conform_to_le(leBssid)
+    fpDict.conform_to_le(leZone)
 
     # Vectorize (supervised)
     fpEncode = leBssid.encode(fpDict.getFp(), fpDict=fpDict)
@@ -48,8 +48,8 @@ def vectorize_sup():
 
     fpVectSup = FpVectSupervised(pipeline=pl)
     fpVectSup.fit(
-        X=X,
-        y=y,
+        XArr=[X],
+        yArr=[y],
         id_vectorizer=w2v.uuid,
         id_leBssid=leBssid.uuid,
         id_leZone=leZone.uuid,

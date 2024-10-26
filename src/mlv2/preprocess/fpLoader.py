@@ -1,9 +1,11 @@
-from typing import Annotated, Any, Dict, Optional, List
-from typing_extensions import TypedDict
+from typing import Any, Dict, List, Optional
+
+import numpy as np
 import pandas as pd
 from pydantic import BaseModel, Field, validate_call
-from pydantic.functional_validators import AfterValidator
-from ..utils import logPipeline, FpBaseModel
+from typing_extensions import TypedDict
+
+from ..utils import FpBaseModel, logPipeline
 
 pattern = r"SUPV1|^SUPV2$|^UNSUPV1$|^UNSUPV2$"
 
@@ -124,7 +126,9 @@ class FpLoader(FpBaseModel):
 
         dft["dataDictAll"] = dft["dataDictAll"].apply(rowFn)
         dft = dft.rename(columns={"point": "zoneName", "dataDictAll": "fingerprint"})
-        dft["zoneName"] = pd.NA
+        dft["zoneName"] = (
+            np.nan
+        )  # If I use pd.NA, I will have problem with validation because np.nan is float, but pd.NA is its own type.
         dft["id"] = dft["id"].astype(str)
         dft = dft[["id", "zoneName", "fingerprint"]]
         return dft

@@ -28,28 +28,44 @@ class FpVectBase(FpBaseModel):
 class FpVectSupervised(FpVectBase):
     id_leZone: Optional[str] = None
     zc: Optional[pd.DataFrame] = None  # Zone centroids
-    zcSelfNN: Optional[pd.DataFrame] = None  # Zone centroids self nearest neighbors
+    zcSelfNn: Optional[pd.DataFrame] = None  # Zone centroids self nearest neighbors
 
     @logPipeline()
     @validate_call(config=dict(arbitrary_types_allowed=True))
     def fit(
         self,
-        X: pd.DataFrame,
-        y: pd.Series,
+        XArr: List[pd.DataFrame],
+        yArr: List[pd.Series],
         id_vectorizer: str,
         id_leBssid: str,
         id_leZone: str,
         info={},
     ):
         self.preventRefit()
+
+        if len(XArr) != len(yArr):
+            raise Exception("Unequal length for XArr and yArr")
+
+        X = pd.concat(XArr, axis=0)
+        y = pd.concat(yArr)
         self.colsX = X.columns.tolist()
         X.insert(0, "y", y)
+
+        if X.isna().any().any():
+            raise Exception(
+                "Error in joining dataframe. Check column names and row indices of dataframe/series"
+            )
+
+        if X.index.duplicated().any():
+            raise Exception("Found duplicated index.")
+
         self.data = X
         self.id_leBssid = id_leBssid
         self.id_vectorizer = id_vectorizer
         self.id_leZone = id_leZone
         self.isFitted = True
 
+    @logPipeline()
     def calcCentroid(self, numSample: Optional[int] = None) -> pd.DataFrame:
         """Average over random "numSample" observations per zone names."""
 
@@ -79,6 +95,7 @@ class FpVectSupervised(FpVectBase):
 
         self.zc = dm
 
+    @logPipeline()
     def calcZoneCentroidSelfNearestNeighbors(self):
         if self.zc is None:
             raise Exception("Please calculate zone centroid first")
@@ -90,7 +107,9 @@ class FpVectSupervised(FpVectBase):
         res = self._calcKNeighbors(
             refPts=refPts, refLabels=refLabels, queryPts=queryPts, k=k
         )
-        self.zcSelfNN = res
+        # Append "cy" for inspection.
+        res["cy"] = self.zc.loc[res.index, "cy"]
+        self.zcSelfNn = res
 
     def _calcKNeighbors(
         self, refPts: pd.DataFrame, refLabels: pd.Series, queryPts: pd.DataFrame, k: int
@@ -134,18 +153,32 @@ class FpVectSupervised(FpVectBase):
         nn = dft.apply(lambda row: rowFn(row, refPts, refLabels), axis=1)
         return nn
 
+    def getNnDistance(self):
+        return self.zcSelfNn["nnCyDist"].apply(lambda d: d[0])
 
-class FpVectUnSupervised(FpVectBase):
+
+class FpVectUnsupervised(FpVectBase):
 
     @logPipeline()
     @validate_call(config=dict(arbitrary_types_allowed=True))
     def fit(
         self,
-        X: pd.DataFrame,
+        XArr: List[pd.DataFrame],
         id_vectorizer: str,
         id_leBssid: str,
         info={},
     ):
+
+        X = pd.concat(XArr, axis=0)
+        self.colsX = X.columns.tolist()
+        if X.isna().any().any():
+            raise Exception(
+                "Error in joining dataframe. Check column names and row indices of dataframe/series"
+            )
+
+        if X.index.duplicated().any():
+            raise Exception("Found duplicated index.")
+
         self.preventRefit()
         self.colsX = X.columns.tolist()
         self.data = X

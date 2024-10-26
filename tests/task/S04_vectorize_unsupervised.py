@@ -2,7 +2,7 @@ from pprint import pp
 
 from mlv2.preprocess import FpLoader, FpDict
 from mlv2.utils import PkLoader, Pipeline, PkSaver
-from mlv2.vectorize import FpVectSupervised, FpVectUnSupervised
+from mlv2.vectorize import FpVectUnsupervised
 
 pl = Pipeline(filenamePrefix="pipeline_S04")
 saver = PkSaver(folderNamePrefix="S04")
@@ -20,6 +20,7 @@ def vectorize_unsup():
     folder2 = "data/unsupervised_survey"
     # filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590_small.json"
     filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590.json"
+    fileData = [dict(filename=filename2, fileType="UNSUPV1")]
 
     # Load data
     loader = FpLoader(pipeline=pl)
@@ -31,24 +32,19 @@ def vectorize_unsup():
 
     # Conformation
     res1 = fpDict.conform_to_le(leBssid)
-    res2 = fpDict.conform_to_le(leZone)
 
     # Vectorize (supervised)
     fpEncode = leBssid.encode(fpDict.getFp(), fpDict=fpDict)
 
     X = w2v.vectorize(data=fpEncode, fpDict=fpDict)
-    y = leZone.encode(fpDict.getZoneNames(), fpDict=fpDict)
 
-    fpVectSup = FpVectSupervised(pipeline=pl)
-    fpVectSup.fit(
-        X=X,
-        y=y,
+    fpVectUnsup = FpVectUnsupervised(pipeline=pl)
+    fpVectUnsup.fit(
+        XArr=[X],
         id_vectorizer=w2v.uuid,
         id_leBssid=leBssid.uuid,
-        id_leZone=leZone.uuid,
         info=dict(fpDict=fpDict.uuid),
     )
-    fpVectSup.calcCentroid()
-    fpVectSup.calcZoneCentroidSelfNearestNeighbors()
     pl.excel()
-    saver.save([fpVectSup])
+    saver.save([fpVectUnsup])
+    pass

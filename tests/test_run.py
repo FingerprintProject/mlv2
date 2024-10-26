@@ -2,6 +2,7 @@ import tests.task.S01_create_vectorizer as S01
 import tests.task.S02_create_le_zone as S02
 import tests.task.S03_vectorize_supervised as S03
 import tests.task.S04_vectorize_unsupervised as S04
+import tests.task.S05_augment as S05
 
 
 def test_S01():
@@ -21,4 +22,9 @@ def test_S03():
 
 def test_S04():
     S04.vectorize_unsup()
+    assert True
+
+
+def test_S05():
+    S05.augment()
     assert True
