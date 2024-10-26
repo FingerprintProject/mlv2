@@ -14,17 +14,17 @@ def augment():
     pkLoader1 = PkLoader()
     folderPath = "./save/S03_2024-10-26_16-21-17"
     pkLoader1.fit(folderPath=folderPath)
-    fpVectSupervised: FpVectSupervised = pkLoader1.get(["FpVectSupervised"])
+    fpVectSup: FpVectSupervised = pkLoader1.get(["FpVectSupervised"])
 
     # Load fpUnsupervised
     pkLoader1 = PkLoader()
     folderPath = "./save/S04_2024-10-26_16-21-40"
     pkLoader1.fit(folderPath=folderPath)
-    fpVectUnsupervised: FpVectUnsupervised = pkLoader1.get(["FpVectUnsupervised"])
+    fpVectUnsup: FpVectUnsupervised = pkLoader1.get(["FpVectUnsupervised"])
 
     # Augment
-    cX, cy, cDistNn = fpVectSupervised.getZoneCentroidInfo()
-    uFp = fpVectUnsupervised.getX()
+    cX, cy, cDistNn = fpVectSup.getZoneCentroidInfo()
+    uFp = fpVectUnsup.getX()
 
     tagger = TaggerDistanceSimple(pl=pl)
     tagger.fit(
@@ -32,8 +32,8 @@ def augment():
         cDistNn=cDistNn,
         cy=cy,
         uFp=uFp,
-        id_fpVectSupervised=fpVectSupervised.uuid,
-        id_fpVectUnsupervised=fpVectUnsupervised,
+        id_fpVectSupervised=fpVectSup.uuid,
+        id_fpVectUnsupervised=fpVectUnsup,
     )
 
     # pl.excel()
