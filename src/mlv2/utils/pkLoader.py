@@ -53,6 +53,9 @@ class PkLoader(FpBaseModel):
         self.data = data
         self.isFitted = True
 
+    def chooseFolder(self, keyword):
+        pass
+
     @validate_call
     def get(self, searches: List[str]):
 

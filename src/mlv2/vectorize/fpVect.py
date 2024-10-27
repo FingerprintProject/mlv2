@@ -29,6 +29,11 @@ class FpVectBase(FpBaseModel):
             raise Exception("No X")
         return self.data[self.getColsX()]
 
+    def getIds(self):
+        if (self.id_leBssid is None) or (self.id_vectorizer is None):
+            raise Exception("No id")
+        return dict(id_vectorizer=self.id_vectorizer, id_leBssid=self.id_leBssid)
+
 
 class FpVectSupervised(FpVectBase):
     id_leZone: Optional[str] = None
@@ -182,6 +187,12 @@ class FpVectSupervised(FpVectBase):
         stats = self.data["y"].value_counts().describe().to_dict()
         self.logger.info(f"Stats for y label in {self.uuid}: {stats}")
         return stats
+
+    def getIds(self):
+        ids = super().getIds()
+        if self.id_leZone is None:
+            raise Exception("No id from LeZone")
+        return {**ids, **dict(id_leZone=self.id_leZone)}
 
 
 class FpVectUnsupervised(FpVectBase):
