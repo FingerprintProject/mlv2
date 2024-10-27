@@ -22,7 +22,7 @@ class PkLoader(FpBaseModel):
 
     @validate_call
     def fit(self, folderPath: str):
-
+        """TODO: I should be able to use keyword to search for latest folder"""
         self.preventRefit()
 
         if not os.path.exists(folderPath):
@@ -54,6 +54,7 @@ class PkLoader(FpBaseModel):
         self.isFitted = True
 
     def chooseFolder(self, keyword):
+        """TODO: Search for latest folder using keyword"""
         pass
 
     @validate_call

@@ -5,10 +5,14 @@ from pydantic import validate_call, Field
 from typing_extensions import Annotated
 from ..utils import FpBaseModel, logPipeline
 
+modePattern = r"^ALL$|^TRAIN$|^TEST$"
+queryModePatterm = r"^ALL_DATA$|^TRAIN_DATA$|^TEST_DATA$"
 
-class FpTrain(FpBaseModel):
+
+class FpVectTrain(FpBaseModel):
 
     data: Optional[pd.DataFrame] = None
+    mode: Optional[str] = Field(pattern=modePattern, default=None)
     idxTrain: Optional[str] = None
     idxTest: Optional[str] = None
     testSize: Optional[float] = None
@@ -27,12 +31,14 @@ class FpTrain(FpBaseModel):
         self,
         XArr: List[pd.DataFrame],
         yArr: List[pd.Series],
+        mode: Annotated[str, Field(pattern=r"^ALL$|^TRAIN$|^TEST$")],
         id_vectorizer: str,
         id_leBssid: str,
         id_leZone: str,
         info={},
     ):
         self.preventRefit()
+        self.mode = mode
 
         if len(XArr) != len(yArr):
             raise Exception("Unequal length for XArr and yArr")
@@ -57,8 +63,11 @@ class FpTrain(FpBaseModel):
         self.isFitted = True
 
     def trainTestSplit(self, testSize=0.3, random_state=42):
-        X = self.getX(mode="ALL")
-        y = self.getLabels(mode="ALL")
+        if self.mode != "ALL":
+            raise Exception("Mode is not ALL")
+
+        X = self.getX(queryMode="ALL")
+        y = self.getLabels(queryMode="ALL")
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=testSize, random_state=random_state, stratify=y
         )
@@ -72,35 +81,45 @@ class FpTrain(FpBaseModel):
             raise Exception("No cols X yet")
         return self.colsX
 
-    def getX(self, mode="ALL"):
+    def getX(self, queryMode="ALL"):
         if self.data is None:
             raise Exception("No X")
-        data = self.filterTestTrain(mode)
+        data = self.filterTestTrain(queryMode)
         return data[self.getColsX()]
 
-    def getLabels(self, mode="ALL"):
+    def getLabels(self, queryMode="ALL"):
         if self.data is None:
             raise Exception("No data")
-        data = self.filterTestTrain(mode)
+        data = self.filterTestTrain(queryMode)
         return data["y"]
 
-    def getLabelStats(self, mode="ALL"):
+    def getLabelStats(self, queryMode="ALL"):
         if self.data is None:
             raise Exception("No data")
-        data = self.filterTestTrain(mode)
+        data = self.filterTestTrain(queryMode)
 
         stats = data["y"].value_counts().describe().to_dict()
-        self.logger.info(f"Stats for y label in {self.uuid} ({mode}): {stats}")
+        self.logger.info(f"Stats for y label in {self.uuid} ({queryMode}): {stats}")
         return stats
 
-    def filterTestTrain(
-        self, mode: Annotated[str, Field(pattern=r"^ALL$|^TRAIN$|^TEST$")]
-    ):
-        if mode == "ALL":
+    def filterTestTrain(self, queryMode: Annotated[str, Field(pattern=modePattern)]):
+        # If the mode of the instance is not ALL, return all data.
+        if self.mode != "ALL":
+            if queryMode != "ALL_DATA":
+                self.logger.info("Returning ALL data due to self.mode != ALL_DATA")
             return self.data
-        elif mode == "TRAIN":
+
+        if queryMode == "ALL_DATA":
+            return self.data
+        elif queryMode == "TRAIN_DATA":
             return self.data.loc[self.idxTrain, :]
-        elif mode == "TEST":
+        elif queryMode == "TEST_DATA":
             return self.data.loc[self.idxTest, :]
         else:
             raise Exception("Invalid mode")
+
+    def SMOTE(self):
+        """TODO add smote"""
+        if self.mode != "TRAIN":
+            raise Exception("Can only perform SMOTE on the train data")
+        pass

@@ -1,0 +1,1 @@
+from .fpVectTrain import FpVectTrain

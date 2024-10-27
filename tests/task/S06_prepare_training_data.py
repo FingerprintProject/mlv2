@@ -1,16 +1,14 @@
 from pprint import pp
 
-from mlv2.preprocess import FpLoader, FpDict
 from mlv2.utils import PkLoader, Pipeline, PkSaver
-from mlv2.vectorize import FpVectUnsupervised, FpVectSupervised
-from mlv2.augment import TaggerDistanceSimple
-from mlv2.predict import FpTrain
+from mlv2.vectorize import FpVectSupervised
+from mlv2.learn import FpVectTrain
 
 pl = Pipeline(filenamePrefix="pipeline_S06")
 saver = PkSaver(folderNamePrefix="S06")
 
 
-def train():
+def prepare_training_data():
     # Load fpSupervised
     pkLoader1 = PkLoader()
     folderPath = "./save/S05_2024-10-27_13-19-50"
@@ -18,24 +16,22 @@ def train():
     fpVectSup: FpVectSupervised = pkLoader1.get(["FpVectSupervised"])
 
     # Trainer
-    fpTrain = FpTrain()
+    fpTrain = FpVectTrain()
     X = fpVectSup.getX()
     y = fpVectSup.getLabels()
 
     fpTrain.fit(
         XArr=[X],
         yArr=[y],
-        id_vectorizer=fpVectSup.id_vectorizer,
-        id_leBssid=fpVectSup.id_leBssid,
-        id_leZone=fpVectSup.id_leZone,
+        **fpVectSup.getIds(),
         info=dict(src=fpVectSup.uuid),
     )
 
     fpTrain.trainTestSplit()
-    fpTrain.getLabelStats(mode="ALL")
-    fpTrain.getLabelStats(mode="TRAIN")
-    fpTrain.getLabelStats(mode="TEST")
+    fpTrain.getLabelStats(queryMode="ALL")
+    fpTrain.getLabelStats(queryMode="TRAIN")
+    fpTrain.getLabelStats(queryMode="TEST")
 
     # pl.excel()
-    # saver.save([fpVectSupComb])
+    # saver.save([fpTrain])
     pass

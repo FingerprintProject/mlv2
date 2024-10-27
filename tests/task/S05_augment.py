@@ -1,6 +1,5 @@
 from pprint import pp
 
-from mlv2.preprocess import FpLoader, FpDict
 from mlv2.utils import PkLoader, Pipeline, PkSaver
 from mlv2.vectorize import FpVectUnsupervised, FpVectSupervised
 from mlv2.augment import TaggerDistanceSimple
@@ -43,14 +42,7 @@ def augment():
     y2 = tagger.getLabels()
 
     fpVectSupComb = FpVectSupervised(pipeline=pl)
-    fpVectSupComb.fit(
-        XArr=[X1, X2],
-        yArr=[y1, y2],
-        id_vectorizer=fpVectSup.id_vectorizer,
-        id_leBssid=fpVectSup.id_leBssid,
-        id_leZone=fpVectSup.id_leZone,
-        info=dict(src=[fpVectSup.uuid, tagger.uuid]),
-    )
+    fpVectSupComb.fit(XArr=[X1, X2], yArr=[y1, y2], **fpVectSup.getIds())
     fpVectSupComb.getLabelStats()
 
     pl.excel()
