@@ -120,3 +120,13 @@ class TaggerDistanceSimple(FpBaseModel):
         if self.colsX is None:
             raise Exception("No colsX")
         return self.colsX
+
+    def getX(self):
+        if self.data is None:
+            raise Exception("No data")
+        return self.data[self.getColsX()]
+
+    def getLabels(self):
+        if self.data is None:
+            raise Exception("No data")
+        return self.data["cy"]

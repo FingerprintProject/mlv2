@@ -3,7 +3,7 @@ from typing import List, Optional, Tuple
 import numpy as np
 import pandas as pd
 from pydantic import validate_call
-from scipy.spatial import KDTree, distance
+from scipy.spatial import KDTree
 
 from ..utils import FpBaseModel, logPipeline
 
@@ -170,6 +170,18 @@ class FpVectSupervised(FpVectBase):
             lambda d: d[0]
         )  # Distance to the nearest centriod
         return (cX, cy, cDistNn)
+
+    def getLabels(self):
+        if self.data is None:
+            raise Exception("No data")
+        return self.data["y"]
+
+    def getLabelStats(self):
+        if self.data is None:
+            raise Exception("No data")
+        stats = self.data["y"].value_counts().describe().to_dict()
+        self.logger.info(f"Stats for y label in {self.uuid}: {stats}")
+        return stats
 
 
 class FpVectUnsupervised(FpVectBase):

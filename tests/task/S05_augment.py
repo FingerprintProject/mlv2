@@ -26,7 +26,7 @@ def augment():
     cX, cy, cDistNn = fpVectSup.getZoneCentroidInfo()
     uFp = fpVectUnsup.getX()
 
-    tagger = TaggerDistanceSimple(pl=pl)
+    tagger = TaggerDistanceSimple(pipeline=pl)
     tagger.fit(
         cX=cX,
         cDistNn=cDistNn,
@@ -36,6 +36,22 @@ def augment():
         id_fpVectUnsupervised=fpVectUnsup,
     )
 
-    # pl.excel()
-    # saver.save([fpVectUnsup])
-    pass
+    # Combined
+    X1 = fpVectSup.getX()
+    y1 = fpVectSup.getLabels()
+    X2 = tagger.getX()
+    y2 = tagger.getLabels()
+
+    fpVectSupComb = FpVectSupervised(pipeline=pl)
+    fpVectSupComb.fit(
+        XArr=[X1, X2],
+        yArr=[y1, y2],
+        id_vectorizer=fpVectSup.id_vectorizer,
+        id_leBssid=fpVectSup.id_leBssid,
+        id_leZone=fpVectSup.id_leZone,
+        info=dict(src=[fpVectSup.uuid, tagger.uuid]),
+    )
+    fpVectSupComb.getLabelStats()
+
+    pl.excel()
+    saver.save([fpVectSupComb])
