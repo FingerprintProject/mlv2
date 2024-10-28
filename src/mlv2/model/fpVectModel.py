@@ -126,7 +126,6 @@ class FpVectModel(FpBaseModel):
             raise Exception(f"Invalid mode. Receive {queryMode}")
 
     def SMOTE(self):
-        """TODO add smote"""
         if self.mode != "TRAIN":
             raise Exception("Can only perform SMOTE on the train data")
 
