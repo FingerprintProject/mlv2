@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:3c5eff1015374e102ca26dfae53fdb84a423c96aac06601a0dc220db18f62072"
+content_hash = "sha256:8b63e56d8f7610eb1923bf667255796e0a5fce8dd9988a0f49d01bba9af0de8d"
 
 [[metadata.targets]]
 requires_python = ">=3.12"
@@ -544,6 +544,23 @@ groups = ["dev"]
 files = [
     {file = "idna-3.10-py3-none-any.whl", hash = "sha256:946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3"},
     {file = "idna-3.10.tar.gz", hash = "sha256:12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9"},
+]
+
+[[package]]
+name = "imbalanced-learn"
+version = "0.12.4"
+summary = "Toolbox for imbalanced dataset in machine learning."
+groups = ["default"]
+dependencies = [
+    "joblib>=1.1.1",
+    "numpy>=1.17.3",
+    "scikit-learn>=1.0.2",
+    "scipy>=1.5.0",
+    "threadpoolctl>=2.0.0",
+]
+files = [
+    {file = "imbalanced-learn-0.12.4.tar.gz", hash = "sha256:8153ba385d296b07d97e0901a2624a86c06b48c94c2f92da3a5354827697b7a3"},
+    {file = "imbalanced_learn-0.12.4-py3-none-any.whl", hash = "sha256:d47fc599160d3ea882e712a3a6b02bdd353c1a6436d8d68d41b1922e6ee4a703"},
 ]
 
 [[package]]
