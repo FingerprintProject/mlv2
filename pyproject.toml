@@ -13,6 +13,7 @@ dependencies = [
     "gensim>=4.3.3",
     "Pympler>=1.1",
     "imbalanced-learn>=0.12.4",
+    "fastapi[standard]>=0.115.4",
 ]
 requires-python = ">=3.12"
 readme = "README.md"
