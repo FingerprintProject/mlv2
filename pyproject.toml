@@ -2,9 +2,7 @@
 name = "mlv2"
 version = "0.1.0"
 description = "Default template for PDM package"
-authors = [
-    { name = "Nirand Pisutha-Arnond", email = "nnnpooh@gmail.com" },
-]
+authors = [{ name = "Nirand Pisutha-Arnond", email = "nnnpooh@gmail.com" }]
 dependencies = [
     "pandas>=2.2.3",
     "pydantic>=2.9.2",
@@ -14,6 +12,10 @@ dependencies = [
     "Pympler>=1.1",
     "imbalanced-learn>=0.12.4",
     "fastapi[standard]>=0.115.4",
+    "google-cloud-storage>=2.18.2",
+    "cloud-sql-python-connector[pg8000]>=1.13.0",
+    "google-auth>=2.35.0",
+    "python-dotenv>=1.0.1",
 ]
 requires-python = ">=3.12"
 readme = "README.md"
@@ -32,3 +34,6 @@ dev = [
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
+
+[tool.pdm.scripts]
+dev = "fastapi dev src/server/main.py --reload"

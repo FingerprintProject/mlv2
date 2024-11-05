@@ -1,0 +1,47 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - "-t"
+      - "$_GCR_HOSTNAME/$_PROJECT_ID/$_ARTIFACT_REGISTRY/$_SERVICE_NAME:latest"
+      - .
+      - "-f"
+      - Dockerfile
+    id: Build
+
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - "$_GCR_HOSTNAME/$_PROJECT_ID/$_ARTIFACT_REGISTRY/$_SERVICE_NAME:latest"
+    id: Push
+
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - run
+      - deploy
+      - $_SERVICE_NAME
+      - --image=$_GCR_HOSTNAME/$_PROJECT_ID/$_ARTIFACT_REGISTRY/$_SERVICE_NAME:latest
+      - --region=$_DEPLOY_REGION
+      - --platform=managed
+      - --allow-unauthenticated
+      - --set-secrets
+      - "ALL_KEYS=projects/$PROJECT_NUMBER/secrets/all-daywork-fast-api-dev"
+      - --set-secrets
+      - "bigquery_connection=projects/$PROJECT_NUMBER/secrets/bigquery-connection"
+      - --set-env-vars
+      - "PROJECT_NAME=daywork-215507"
+      - --set-env-vars
+      - "CONNECTION=PROD"
+      - --set-env-vars
+      - "PREDEFINED_TOKEN_HASH=ee5050a452bc4b251450ed777ab72d4ebed254a5956d4399eedc1d8d311ab00a"
+    id: Deploy
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _DEPLOY_REGION: asia-southeast1
+  _GCR_HOSTNAME: asia-southeast1-docker.pkg.dev
+  _ARTIFACT_REGISTRY: daywork-service
+  _PROJECT_ID: daywork-215507
+  _SERVICE_NAME: daywork-python-wifi-test
