@@ -16,6 +16,8 @@ dependencies = [
     "cloud-sql-python-connector[pg8000]>=1.13.0",
     "google-auth>=2.35.0",
     "python-dotenv>=1.0.1",
+    "google-cloud-secret-manager>=2.21.0",
+    "SQLAlchemy>=2.0.36",
 ]
 requires-python = ">=3.12"
 readme = "README.md"
