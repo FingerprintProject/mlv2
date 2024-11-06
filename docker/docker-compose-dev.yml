@@ -1,0 +1,22 @@
+name: mlv2-project
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: db
+    ports:
+      - 5432:${PSQL_PORT}
+    volumes:
+      - mlv2-data:/var/lib/postgresql/data
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD=${PSQL_PASSWORD}
+      - POSTGRES_USER=${PSQL_USERNAME}
+      - POSTGRES_DB=${PSQL_DATABASE}
+    networks:
+      - mlv2-net
+volumes:
+  mlv2-data:
+    external: false
+networks:
+  mlv2-net:
+    external: false
