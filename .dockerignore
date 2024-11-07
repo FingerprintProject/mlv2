@@ -2,6 +2,8 @@
 .pytest_cache/
 .venv/
 logs/
+tmp/
+tests/
 .pdm-python
 prototype/
 save/

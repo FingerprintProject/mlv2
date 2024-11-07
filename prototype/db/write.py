@@ -33,10 +33,14 @@ urlString = (
 print(urlString)
 
 engine = sa.create_engine(urlString)
-
-
 session = Session(engine)
-# stmt = sa.select(FpModel).where(FpModel.name.like("%CRH%"))
+
+newModel = FpModel(name="BBBB", hospital_id=16, path="CCCC", model_type="V2")
+
+session.add_all([newModel])
+session.commit()
+
+
 stmt = sa.select(FpModel)
 print(stmt)
 reses = session.scalars(stmt)
