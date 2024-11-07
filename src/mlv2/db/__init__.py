@@ -1,1 +1,1 @@
-from .dbModels import FpModel
+from .models import FpModel
