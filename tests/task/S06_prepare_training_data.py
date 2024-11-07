@@ -1,11 +1,11 @@
 from pprint import pp
 
-from mlv2.utils import PkLoader, Pipeline, PkSaver
+from mlv2.utils import PkLoader, Pipeline, PkSaverFS
 from mlv2.vectorize import FpVectSupervised
 from mlv2.model import FpVectModel, FpVectModelTrain, FpVectModelTest
 
 pl = Pipeline(filenamePrefix="pipeline_S06")
-saver = PkSaver(folderNamePrefix="S06")
+saver = PkSaverFS(folderNamePrefix="S06")
 
 
 def prepare_training_data():

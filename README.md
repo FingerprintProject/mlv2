@@ -3,7 +3,7 @@
 ## Dev
 
 - `pdm install`
-- `docker compose -f ./docker/docker-compose-dev.yml --env-file ./.env.dev up -d`
+- `docker compose -f ./docker/docker-compose-dev.yml --env-file ./.env.dev up -d --force-recreate`
 
 ## Test
 

@@ -1,3 +1,4 @@
+import datetime
 import logging
 import os
 from logging import handlers
@@ -5,22 +6,21 @@ from typing import Dict, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
-STACKLEVEL = 2
+STACKLEVEL = 1
 
 
 class Logger(BaseModel):
 
     logger: Optional[logging.Logger] = None
     name: str = __name__
-    filename: str = "logs.txt"
-    logFolder: str = "./logs"
+    filename: Optional[str] = None
+    filenamePrefix: str = "logs"
+    outFolder: str = "./tmp"
     level: str = Field(pattern=r"debug|info|warning|error|critical", default="debug")
     when: str = "D"
     backCount: int = 3
-    fmtFile: str = (
-        "%(asctime)s - %(filename)s - [%(filename)s:%(lineno)d] : %(message)s"
-    )
-    fmtConsole: str = "%(name)s - %(levelname)s - %(message)s"
+    fmtFile: str = "%(asctime)s - %(levelname)s : %(message)s"
+    fmtConsole: str = "%(asctime)s - %(levelname)s : %(message)s"
     levelRelations: Dict = {
         "debug": logging.DEBUG,
         "info": logging.INFO,
@@ -29,6 +29,8 @@ class Logger(BaseModel):
         "critical": logging.CRITICAL,
     }
     model_config = ConfigDict(arbitrary_types_allowed=True)
+    now: datetime.datetime = Field(default_factory=datetime.datetime.now)
+    includeDateTimeInFilename: bool = True
 
     def __repr__(self):
         return "Logger"
@@ -37,10 +39,17 @@ class Logger(BaseModel):
         return self.__repr__()
 
     def model_post_init(self, __context):
-        if not os.path.exists(self.logFolder):
-            os.mkdir(self.logFolder)
+        if not os.path.exists(self.outFolder):
+            os.mkdir(self.outFolder)
 
-        filepath = os.path.join(self.logFolder, self.filename)
+        # Handle filename
+        if self.includeDateTimeInFilename:
+            suffix = self.now.strftime("%Y-%m-%d_%H-%M-%S")
+            filename = f"{self.filenamePrefix}_{suffix}.txt"
+        else:
+            filename = f"{self.filenamePrefix}.txt"
+        self.filename = filename
+        filepath = os.path.join(self.outFolder, filename)
 
         # Create logger
         self.logger = logging.getLogger(self.name)
@@ -50,7 +59,9 @@ class Logger(BaseModel):
         self.logger.handlers.clear()  # Prevent adding duplicated handler when multiple class instances initialize logger with the same name.
 
         # Console output
-        fmtStrConsole = logging.Formatter(self.fmtConsole)  # Setting the log format
+        fmtStrConsole = logging.Formatter(
+            self.fmtConsole, "%Y-%m-%d %H:%M:%S"
+        )  # Setting the log format
         csh = logging.StreamHandler()  # on-screen output
         csh.setFormatter(fmtStrConsole)  # Setting the format
         self.logger.addHandler(csh)
@@ -62,7 +73,9 @@ class Logger(BaseModel):
             backupCount=self.backCount,
             encoding="utf-8",
         )  # automatically generates the file at specified intervals
-        fmtStrFile = logging.Formatter(self.fmtFile)  # Setting the log format
+        fmtStrFile = logging.Formatter(
+            self.fmtFile, "%Y-%m-%d %H:%M:%S"
+        )  # Setting the log format
         trfh.setFormatter(fmtStrFile)  # Setting the format
         self.logger.addHandler(trfh)  # Add the object to the logger
 

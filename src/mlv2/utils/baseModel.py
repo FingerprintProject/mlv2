@@ -6,11 +6,15 @@ from .pipeline import Pipeline
 import pprint
 import pandas as pd
 
+UUID_TRUNCATE = 8
+
 
 class FpBaseModel(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
-    uuid: str = Field(default_factory=lambda: uuid4().hex)
-    logger: Logger = Field(default_factory=lambda: Logger(name=__name__))
+    uuid: str = Field(default_factory=lambda: uuid4().hex[:UUID_TRUNCATE])
+    logger: Logger = Field(
+        default_factory=lambda: Logger(name=__name__, includeDateTimeInFilename=False)
+    )
     pipeline: Pipeline = Field(default_factory=Pipeline)
     info: Dict = {}
     isFitted: bool = False

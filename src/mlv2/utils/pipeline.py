@@ -15,6 +15,8 @@ from .asizeof import (
     asizeof,
 )  # Need the patched version due to this issue https://github.com/pympler/pympler/issues/151#issuecomment-2302230861
 
+UUID_TRUNCATE = 8
+
 
 def logPipeline():
     """Log details in self.pipline and measure time"""
@@ -77,9 +79,10 @@ class Pipeline(BaseModel):
 
     data: List[Dict] = []
     model_config = ConfigDict(arbitrary_types_allowed=True)
-    uuid: str = Field(default_factory=lambda: uuid4().hex)
+    uuid: str = Field(default_factory=lambda: uuid4().hex[:UUID_TRUNCATE])
+    filename: Optional[str] = None
     filenamePrefix: str = "pipeline"
-    outFolder: str = "./logs"
+    outFolder: str = "./tmp"
     now: datetime.datetime = Field(default_factory=datetime.datetime.now)
     # This provides a means for producing object representations with limits on the size of the resulting strings.
     printer: Optional[reprlib.Repr] = None
@@ -137,8 +140,9 @@ class Pipeline(BaseModel):
 
     def excel(self):
         if not os.path.exists(self.outFolder):
-            os.mkdir(self.logFolder)
+            os.mkdir(self.outFolder)
         suffix = self.now.strftime("%Y-%m-%d_%H-%M-%S")
         filename = f"{self.filenamePrefix}_{suffix}.xlsx"
+        self.filename = filename
         filepath = os.path.join(self.outFolder, filename)
         pd.DataFrame(self.data).to_excel(filepath, index=False)

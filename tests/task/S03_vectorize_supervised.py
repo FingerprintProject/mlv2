@@ -1,11 +1,11 @@
 from pprint import pp
 
 from mlv2.preprocess import FpLoader, FpDict
-from mlv2.utils import PkLoader, Pipeline, PkSaver
+from mlv2.utils import PkLoader, Pipeline, PkSaverFS
 from mlv2.vectorize import FpVectSupervised
 
 pl = Pipeline(filenamePrefix="pipeline_S03")
-saver = PkSaver(folderNamePrefix="S03")
+saver = PkSaverFS(folderNamePrefix="S03")
 
 
 def vectorize_sup():

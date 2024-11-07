@@ -1,12 +1,12 @@
 from pprint import pp
 
 from mlv2.preprocess import LE, FpDict, FpLoader
-from mlv2.utils import Pipeline, PkSaver
+from mlv2.utils import Pipeline, PkSaverFS
 from mlv2.vectorize import W2V, CorpusBuilder
 
 
 pl = Pipeline(filenamePrefix="pipeline_S01")
-saver = PkSaver(folderNamePrefix="S01")
+saver = PkSaverFS(folderNamePrefix="S01")
 
 
 def createVectorizer():
