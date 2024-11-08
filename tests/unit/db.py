@@ -12,6 +12,9 @@ Session = getLocalSessionFactory(**getLocalDbCredential(dotEnvPath))
 
 repo = FpModelRepository()
 
-reses = repo.get(Session=Session)
+reses = repo.findAll(Session=Session)
 for res in reses:
     print(res.name)
+
+dataArr = [dict(name="T", path="/", hospital_id=15, model_type="V2")]
+repo.insert(Session=Session, dataArr=dataArr)
