@@ -1,13 +1,23 @@
 from pprint import pp
 
 from mlv2.preprocess import LE, FpDict, FpLoader
-from mlv2.utils import Pipeline, SaverFS, Logger
+from mlv2.utils import Pipeline, SaverFS, SaverGCP, Logger
 from mlv2.vectorize import W2V, CorpusBuilder
+from google.auth import default
+from mlv2.db import FpModelRepository, getLocalDbCredential, getLocalSessionFactory
 
-
-pl = Pipeline(filenamePrefix="pipeline_S01")
+pl = Pipeline(filenamePrefix="pipeline")
 lg = Logger(filenamePrefix="logs", now=pl.now)
-saver = SaverFS(folderNamePrefix="S01", now=pl.now)
+
+hid = 99
+fnp = "S01"
+fpp = f"HID{hid}"
+saver = SaverFS(folderNamePrefix=fnp, folderParentPath=fpp, now=pl.now)
+
+cdt, _ = default()
+saver = SaverGCP(
+    folderNamePrefix=fnp, folderParentPath=fpp, credentials=cdt, now=pl.now, logger=lg
+)
 
 
 def createVectorizer():
@@ -15,13 +25,13 @@ def createVectorizer():
     fpLoader = FpLoader(pipeline=pl)
 
     folder1 = "data/supervised_survey"
-    # filename1 = f"{folder1}/admin_json_hospital_id_15_small.json"
-    filename1 = f"{folder1}/admin_json_hospital_id_15.json"
+    filename1 = f"{folder1}/admin_json_hospital_id_15_small.json"
+    # filename1 = f"{folder1}/admin_json_hospital_id_15.json"
     # filename1 = f"{folder1}/admin_json_hospital_id_15_error.json"
 
     folder2 = "data/unsupervised_survey"
-    # filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590_small.json"
-    filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590.json"
+    filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590_small.json"
+    # filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590.json"
 
     fileData1 = dict(filename=filename1, fileType="SUPV2")
     fileData2 = dict(filename=filename2, fileType="UNSUPV1")
@@ -50,6 +60,8 @@ def createVectorizer():
     w2v = W2V(pipeline=pl)
     w2v.fit(corpus=cb.corpus, id_leBssid=leBssid.uuid, info=dict(src=cb.uuid))
 
-    # Output
+    # Save class instances
+    saver.savePickle([leBssid, w2v])
+
+    # Save output
     pl.excel()
-    saver.save([leBssid, w2v])
