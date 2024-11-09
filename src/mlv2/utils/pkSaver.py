@@ -85,7 +85,12 @@ class SaverGCP(SaverBase):
                 f"Save {className} to project={self.projectName}, bucket={self.bucketName}, path={gcpPath} successfully"
             )
 
-            return dict(path=gcpPath, uuid=fileNameSuffix, className=className)
+            return dict(
+                path=gcpPath,
+                name=fileName,
+                instanceId=fileNameSuffix,
+                className=className,
+            )
 
     def saveFile(self, filenameArr: List[str], tempFolderPathLocal="tmp"):
         for filename in filenameArr:

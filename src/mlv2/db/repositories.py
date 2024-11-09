@@ -17,15 +17,7 @@ class FpModelRepository(BaseModel):
         rows = []
 
         for data in dataArr:
-            name = data["name"]
-            hospital_id = data["hospital_id"]
-            path = data["path"]
-            model_type = data["model_type"]
-            rows.append(
-                FpModel(
-                    name=name, hospital_id=hospital_id, path=path, model_type=model_type
-                )
-            )
+            rows.append(FpModel(**data))
 
         with Session() as session, session.begin():
             session.add_all(rows)
