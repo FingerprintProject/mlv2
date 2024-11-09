@@ -1,9 +1,9 @@
 import pandas as pd
 from mlv2.preprocess import LE
-from mlv2.utils import Pipeline, PkSaverFS
+from mlv2.utils import Pipeline, SaverFS
 
 pl = Pipeline(filenamePrefix="pipeline_S02")
-saver = PkSaverFS(folderNamePrefix="S02")
+saver = SaverFS(folderNamePrefix="S02")
 
 
 def createLeZone():

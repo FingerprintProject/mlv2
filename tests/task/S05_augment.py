@@ -1,11 +1,11 @@
 from pprint import pp
 
-from mlv2.utils import PkLoader, Pipeline, PkSaverFS
+from mlv2.utils import PkLoader, Pipeline, SaverFS
 from mlv2.vectorize import FpVectUnsupervised, FpVectSupervised
 from mlv2.augment import TaggerDistanceSimple
 
 pl = Pipeline(filenamePrefix="pipeline_S05")
-saver = PkSaverFS(folderNamePrefix="S05")
+saver = SaverFS(folderNamePrefix="S05")
 
 
 def augment():

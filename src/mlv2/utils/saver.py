@@ -2,11 +2,12 @@ import datetime
 import os
 import pickle
 from typing import Any, List
-from pydantic import Field
 from uuid import uuid4
-from google.cloud import storage
 
-from .baseModel import FpBaseModel, UUID_TRUNCATE
+from google.cloud import storage
+from pydantic import Field
+
+from .baseModel import UUID_TRUNCATE, FpBaseModel
 
 
 class SaverBase(FpBaseModel):
@@ -15,7 +16,7 @@ class SaverBase(FpBaseModel):
     folderParentPath: str = "save"
 
 
-class PkSaverFS(SaverBase):
+class SaverFS(SaverBase):
 
     def save(self, classInsArr: List[Any]):
 

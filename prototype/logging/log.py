@@ -1,7 +1,7 @@
 from pprint import pp
 
 from mlv2.preprocess import LE
-from mlv2.utils import Pipeline, PkSaverFS, SaverGCP
+from mlv2.utils import Pipeline, SaverFS, SaverGCP
 from mlv2.utils import Logger
 from mlv2.vectorize import W2V, CorpusBuilder
 
