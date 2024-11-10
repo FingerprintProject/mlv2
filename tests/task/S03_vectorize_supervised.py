@@ -1,7 +1,7 @@
 from pprint import pp
 
 from mlv2.preprocess import FpLoader, FpDict
-from mlv2.utils import PkLoader, Pipeline, SaverFS
+from mlv2.utils import LoaderFS, Pipeline, SaverFS
 from mlv2.vectorize import FpVectSupervised
 
 pl = Pipeline(filenamePrefix="pipeline_S03")
@@ -10,14 +10,14 @@ saver = SaverFS(folderNamePrefix="S03")
 
 def vectorize_sup():
     # Load vectorizer
-    pkLoader = PkLoader()
+    pkLoader = LoaderFS()
     folderPath = "./save/S01_2024-10-25_08-47-00"
     pkLoader.fit(folderPath=folderPath)
     leBssid = pkLoader.get(["LE"])
     w2v = pkLoader.get(["W2V"])
 
     # Load leZone
-    pkLoader = PkLoader()
+    pkLoader = LoaderFS()
     folderPath = "./save/S02_2024-10-25_08-52-01"
     pkLoader.fit(folderPath=folderPath)
     leZone = pkLoader.get(["LE"])

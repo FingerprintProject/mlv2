@@ -18,9 +18,15 @@ class FpModelRepository(BaseModel):
 
     def findAll(self, Session: Session):
         stmt = sa.select(FpModel)
-        with Session() as session, session.begin():
-            reses = session.scalars(stmt).fetchall()
-        return reses
+        with Session() as session:
+            results = session.scalars(stmt).fetchall()
+        return results
+
+    def findByInstanceId(self, Session, instanceId):
+        stmt = sa.select(FpModel).where(FpModel.className == "LE")
+        with Session() as session:
+            results = session.scalars(stmt).fetchall()
+        return results
 
     @validate_call(config=dict(arbitrary_types_allowed=True))
     def insert(

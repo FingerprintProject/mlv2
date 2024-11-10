@@ -1,13 +1,15 @@
 import datetime
 import os
 import pickle
-from typing import Any, List
+from typing import Any, List, Union
 from uuid import uuid4
 
 from google.cloud import storage
 from pydantic import Field
 
 from .baseModel import UUID_TRUNCATE, FpBaseModel
+from mlv2.db import FpModelRepository
+from sqlalchemy.orm import Session, sessionmaker
 
 
 class SaverBase(FpBaseModel):
@@ -47,17 +49,23 @@ class SaverFS(SaverBase):
 
 
 class SaverGCP(SaverBase):
+    hospitalId: int
     credentials: Any
     projectName: str = "daywork-215507"
     storageClient: Any = None
     bucketName: str = "wifi-localization-model-dev"
     bucket: Any = None
+    fpModelRepository: FpModelRepository
+    Session: Union[Session, sessionmaker]
 
     def model_post_init(self, __context):
         self.storageClient = storage.Client(
             project=self.projectName, credentials=self.credentials
         )
         self.bucket = self.storageClient.bucket(self.bucketName)
+
+        # Change the "main" path in GCS according to hospitalId
+        self.folderParentPath = f"V2_HID_{self.hospitalId}"
 
     def getFolderName(self):
         folderNameSuffix = self.now.strftime("%Y-%m-%d_%H-%M-%S")
@@ -66,6 +74,7 @@ class SaverGCP(SaverBase):
 
     def savePickle(self, classInsArr: List[Any]):
 
+        dataArr = []
         for classIns in classInsArr:
             className = type(classIns).__name__
             if hasattr(classIns, "uuid"):
@@ -85,13 +94,16 @@ class SaverGCP(SaverBase):
             self.logger.info(
                 f"Save {className} to project={self.projectName}, bucket={self.bucketName}, path={gcpPath} successfully"
             )
-
-            return dict(
+            row = dict(
                 path=gcpPath,
                 name=fileName,
                 instanceId=fileNameSuffix,
                 className=className,
+                hospitalId=self.hospitalId,
             )
+            dataArr.append(row)
+
+        self.fpModelRepository.insert(Session=self.Session, dataArr=dataArr)
 
     def saveFile(self, filenameArr: List[str], tempFolderPathLocal="tmp"):
         for filename in filenameArr:

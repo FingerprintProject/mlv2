@@ -1,6 +1,6 @@
 from pprint import pp
 
-from mlv2.utils import PkLoader, Pipeline, SaverFS
+from mlv2.utils import LoaderFS, Pipeline, SaverFS
 from mlv2.vectorize import FpVectUnsupervised, FpVectSupervised
 from mlv2.augment import TaggerDistanceSimple
 
@@ -10,13 +10,13 @@ saver = SaverFS(folderNamePrefix="S05")
 
 def augment():
     # Load fpSupervised
-    pkLoader1 = PkLoader()
+    pkLoader1 = LoaderFS()
     folderPath = "./save/S03_2024-10-26_16-21-17"
     pkLoader1.fit(folderPath=folderPath)
     fpVectSup: FpVectSupervised = pkLoader1.get(["FpVectSupervised"])
 
     # Load fpUnsupervised
-    pkLoader1 = PkLoader()
+    pkLoader1 = LoaderFS()
     folderPath = "./save/S04_2024-10-26_16-21-40"
     pkLoader1.fit(folderPath=folderPath)
     fpVectUnsup: FpVectUnsupervised = pkLoader1.get(["FpVectUnsupervised"])

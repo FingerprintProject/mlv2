@@ -5,7 +5,7 @@ from typing import Any, List
 from pydantic import Field, BaseModel, validate_call
 from uuid import uuid4
 import pandas as pd
-
+from mlv2.db import FpModelRepository
 from .baseModel import FpBaseModel
 
 
@@ -16,7 +16,7 @@ class PkLoaderData(BaseModel):
     uuid: str
 
 
-class PkLoader(FpBaseModel):
+class LoaderFS(FpBaseModel):
 
     data: List[PkLoaderData] = []
 
@@ -77,3 +77,11 @@ class PkLoader(FpBaseModel):
             raise Exception("Found more than one result. Narrow your search")
         else:
             return matches[0].classIns
+
+
+class LoaderGCP:
+    fpModelRepository: FpModelRepository
+
+    def load(self, searches: list[str]):
+
+        pass

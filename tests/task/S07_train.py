@@ -1,6 +1,6 @@
 from pprint import pp
 
-from mlv2.utils import PkLoader, Pipeline, SaverFS
+from mlv2.utils import LoaderFS, Pipeline, SaverFS
 from mlv2.model import FpVectModel, FpVectModelTrain, FpVectModelTest, ModelLr
 
 pl = Pipeline(filenamePrefix="pipeline_S07")
@@ -9,7 +9,7 @@ saver = SaverFS(folderNamePrefix="S07")
 
 def training():
     # Load data
-    pkLoader1 = PkLoader()
+    pkLoader1 = LoaderFS()
     folderPath = "./save/S06_2024-10-28_16-02-19"
     pkLoader1.fit(folderPath=folderPath)
     fpVectModel: FpVectModel = pkLoader1.get(["FpVectModel_"])
