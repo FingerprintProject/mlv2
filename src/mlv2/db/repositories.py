@@ -3,15 +3,21 @@ from pydantic import BaseModel, validate_call
 from sqlalchemy.orm import Session, sessionmaker
 from .models import FpModel
 from typing_extensions import TypedDict
-from typing import List, Union
+from typing import List, Union, List, Dict
+
+
+class FpModelJsonSchema(TypedDict):
+    className: str
+    path: str
+    instanceId: str
+    filename: str
 
 
 class FpModelRepositoryInsert(TypedDict):
     name: str
     path: str
-    instanceId: str
-    className: str
     hospitalId: int
+    contents: List[FpModelJsonSchema]
 
 
 class FpModelRepository(BaseModel):

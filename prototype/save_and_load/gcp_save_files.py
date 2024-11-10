@@ -29,8 +29,8 @@ saver = SaverGCP(
 
 leBssid1 = LE(encoderType="BSSID", pipeline=pl, logger=lg)
 leBssid2 = LE(encoderType="BSSID", pipeline=pl, logger=lg)
+saver.savePickle([leBssid1, leBssid2])
 
 pl.excel()
 saver.saveFile(filenameArr=[pl.filename], tempFolderPathLocal=pl.outFolder)
 saver.saveFile(filenameArr=[lg.filename], tempFolderPathLocal=lg.outFolder)
-saver.savePickle([leBssid1, leBssid2])

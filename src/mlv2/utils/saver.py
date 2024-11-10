@@ -74,7 +74,7 @@ class SaverGCP(SaverBase):
 
     def savePickle(self, classInsArr: List[Any]):
 
-        dataArr = []
+        contents = []
         for classIns in classInsArr:
             className = type(classIns).__name__
             if hasattr(classIns, "uuid"):
@@ -96,14 +96,19 @@ class SaverGCP(SaverBase):
             )
             row = dict(
                 path=gcpPath,
-                name=fileName,
+                filename=fileName,
                 instanceId=fileNameSuffix,
                 className=className,
-                hospitalId=self.hospitalId,
             )
-            dataArr.append(row)
+            contents.append(row)
 
-        self.fpModelRepository.insert(Session=self.Session, dataArr=dataArr)
+        row = dict(
+            path="/".join([self.folderParentPath, self.getFolderName()]),
+            hospitalId=self.hospitalId,
+            name=self.folderNamePrefix,
+            contents=contents,
+        )
+        self.fpModelRepository.insert(Session=self.Session, dataArr=[row])
 
     def saveFile(self, filenameArr: List[str], tempFolderPathLocal="tmp"):
         for filename in filenameArr:

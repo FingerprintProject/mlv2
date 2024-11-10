@@ -1,5 +1,5 @@
 import sqlalchemy as sa
-from getSessionFactory import GcpSession
+from getGcpSessionFactory import GcpSession
 from sqlalchemy.orm import DeclarativeBase
 
 
