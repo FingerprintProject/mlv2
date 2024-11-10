@@ -28,6 +28,12 @@ class FpModelRepository(BaseModel):
             results = session.scalars(stmt).fetchall()
         return results
 
+    def findByInstanceId(self, Session, instanceId):
+        stmt = sa.select(FpModel).where(FpModel.className == "LE")
+        with Session() as session:
+            results = session.scalars(stmt).fetchall()
+        return results
+
     @validate_call(config=dict(arbitrary_types_allowed=True))
     def insert(
         self,
