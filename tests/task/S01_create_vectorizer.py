@@ -4,7 +4,7 @@ from mlv2.preprocess import LE, FpDict, FpLoader
 from mlv2.utils import Pipeline, SaverFS, SaverGCP, Logger
 from mlv2.vectorize import W2V, CorpusBuilder
 from google.auth import default
-from mlv2.db import FpModelRepository, getLocalDbCredential, getLocalSessionFactory
+from mlv2.record import FpModelRepository, getLocalDbCredential, getLocalSessionFactory
 
 pl = Pipeline(filenamePrefix="pipeline")
 lg = Logger(filenamePrefix="logs", now=pl.now)

@@ -2,11 +2,14 @@ import datetime
 import os
 import pickle
 from typing import Any, List
-from pydantic import Field, BaseModel, validate_call
 from uuid import uuid4
+
 import pandas as pd
-from mlv2.db import FpModelRepository
-from .baseModel import FpBaseModel
+from pydantic import BaseModel, Field, validate_call
+
+from mlv2.utils import FpBaseModel
+
+from .dbRepositories import FpModelRepository
 
 
 class PkLoaderData(BaseModel):

@@ -1,6 +1,6 @@
 import os
 import pathlib
-from mlv2.db import FpModelRepository, getLocalDbCredential, getLocalSessionFactory
+from mlv2.record import FpModelRepository, getLocalDbCredential, getLocalSessionFactory
 
 curPath = os.getcwd()
 parPath = pathlib.Path(curPath)

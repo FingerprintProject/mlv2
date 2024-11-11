@@ -5,7 +5,7 @@ import pathlib
 from mlv2.preprocess import LE, FpDict, FpLoader
 from mlv2.utils import Pipeline, SaverFS, SaverGCP, Logger
 from google.auth import default
-from mlv2.db import FpModelRepository, getLocalDbCredential, getLocalSessionFactory
+from mlv2.record import FpModelRepository, getLocalDbCredential, getLocalSessionFactory
 
 # Saver
 curPath = os.getcwd()

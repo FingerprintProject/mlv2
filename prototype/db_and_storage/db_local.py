@@ -1,6 +1,6 @@
 import sqlalchemy as sa
 from getLocalSessionFactory import LocalSession
-from mlv2.db import FpModel
+from mlv2.record import FpModel
 
 # Read
 # stmt = sa.select(FpModel).where(FpModel.name.like("%CRH%"))

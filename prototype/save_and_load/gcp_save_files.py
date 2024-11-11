@@ -1,28 +1,36 @@
 import os
 import pathlib
 
-from google.auth import default
-
-from mlv2.db import FpModelRepository, getLocalDbCredential, getLocalSessionFactory
+from mlv2.record import (
+    FpModelRepository,
+    getLocalDbCredential,
+    getLocalSessionFactory,
+    GcpRepository,
+    SaverGCP,
+)
 from mlv2.preprocess import LE
-from mlv2.utils import Logger, Pipeline, SaverGCP
+from mlv2.utils import Logger, Pipeline
 
 pl = Pipeline(filenamePrefix="pipeline")
 lg = Logger(filenamePrefix="logs", now=pl.now)
-credentials, _ = default()
-# Saver
+
+# Storage
+gcpRepo = GcpRepository()
+
+# Db
 curPath = os.getcwd()
 parPath = pathlib.Path(curPath)
 dotEnvPath = os.path.join(parPath, ".env.dev")
 Session = getLocalSessionFactory(**getLocalDbCredential(dotEnvPath))
-repo = FpModelRepository()
+dbRepo = FpModelRepository(Session=Session)
+
+# Saver
 hospitalId = 30
 saver = SaverGCP(
     hospitalId=hospitalId,
     folderNamePrefix="S00",
-    credentials=credentials,
-    Session=Session,
-    fpModelRepository=repo,
+    fpModelRepository=dbRepo,
+    storageRepository=gcpRepo,
     now=pl.now,
     logger=lg,
 )

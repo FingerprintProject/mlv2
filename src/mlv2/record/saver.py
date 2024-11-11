@@ -1,15 +1,14 @@
 import datetime
 import os
 import pickle
-from typing import Any, List, Union
+from typing import Any, List
 from uuid import uuid4
 
-from google.cloud import storage
 from pydantic import Field
 
-from .baseModel import UUID_TRUNCATE, FpBaseModel
-from mlv2.db import FpModelRepository
-from sqlalchemy.orm import Session, sessionmaker
+from mlv2.utils import UUID_TRUNCATE, FpBaseModel
+from .dbRepositories import FpModelRepository
+from .storageRepository import GcpRepository
 
 
 class SaverBase(FpBaseModel):
@@ -50,20 +49,10 @@ class SaverFS(SaverBase):
 
 class SaverGCP(SaverBase):
     hospitalId: int
-    credentials: Any
-    projectName: str = "daywork-215507"
-    storageClient: Any = None
-    bucketName: str = "wifi-localization-model-dev"
-    bucket: Any = None
+    storageRepository: GcpRepository
     fpModelRepository: FpModelRepository
-    Session: Union[Session, sessionmaker]
 
     def model_post_init(self, __context):
-        self.storageClient = storage.Client(
-            project=self.projectName, credentials=self.credentials
-        )
-        self.bucket = self.storageClient.bucket(self.bucketName)
-
         # Change the "main" path in GCS according to hospitalId
         self.folderParentPath = f"V2_HID_{self.hospitalId}"
 
@@ -88,12 +77,10 @@ class SaverGCP(SaverBase):
 
             gcpPath = "/".join([self.folderParentPath, self.getFolderName(), fileName])
 
-            blob = self.bucket.blob(gcpPath)
-            with blob.open(mode="wb") as handle:
-                pickle.dump(classIns, handle, protocol=pickle.HIGHEST_PROTOCOL)
-            self.logger.info(
-                f"Save {className} to project={self.projectName}, bucket={self.bucketName}, path={gcpPath} successfully"
-            )
+            # Upload
+            self.storageRepository.uploadPickle(classIns=classIns, gcpPath=gcpPath)
+            self.logger.info(f"Save {className} path={gcpPath} successfully")
+
             row = dict(
                 path=gcpPath,
                 filename=fileName,
@@ -108,22 +95,22 @@ class SaverGCP(SaverBase):
             name=self.folderNamePrefix,
             contents=contents,
         )
-        self.fpModelRepository.insert(Session=self.Session, dataArr=[row])
+
+        # Write to DB
+        self.fpModelRepository.insert(dataArr=[row])
 
     def saveFile(self, filenameArr: List[str], tempFolderPathLocal="tmp"):
         for filename in filenameArr:
-            filepathLocal = os.path.join(tempFolderPathLocal, filename)
-            if not os.path.exists(filepathLocal):
-                raise Exception(f"Cannot find file: {filepathLocal}")
+            filePathLocal = os.path.join(tempFolderPathLocal, filename)
+            if not os.path.exists(filePathLocal):
+                raise Exception(f"Cannot find file: {filePathLocal}")
 
         for filename in filenameArr:
-            filepathLocal = os.path.join(tempFolderPathLocal, filename)
+            filePathLocal = os.path.join(tempFolderPathLocal, filename)
             gcpPath = "/".join([self.folderParentPath, self.getFolderName(), filename])
 
             # I need to log here because I want to keep as much logging info as possible before upload the log file.
-            self.logger.info(
-                f"Saving {filename} to project={self.projectName}, bucket={self.bucketName}, path={gcpPath}"
+            self.logger.info(f"Saving {filename} path={gcpPath}")
+            self.storageRepository.uploadLocalFile(
+                gcpPath=gcpPath, filePathLocal=filePathLocal
             )
-
-            blob = self.bucket.blob(gcpPath)
-            blob.upload_from_filename(filepathLocal)

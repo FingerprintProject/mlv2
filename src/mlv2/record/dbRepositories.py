@@ -1,9 +1,13 @@
+from typing import List, Union
+
 import sqlalchemy as sa
-from pydantic import BaseModel, validate_call
+from pydantic import validate_call
 from sqlalchemy.orm import Session, sessionmaker
-from .models import FpModel
 from typing_extensions import TypedDict
-from typing import List, Union, List, Dict
+
+from mlv2.utils import FpBaseModel
+
+from .dbModels import FpModel
 
 
 class FpModelJsonSchema(TypedDict):
@@ -20,35 +24,35 @@ class FpModelRepositoryInsert(TypedDict):
     contents: List[FpModelJsonSchema]
 
 
-class FpModelRepository(BaseModel):
+class FpModelRepository(FpBaseModel):
+    Session: Union[Session, sessionmaker]
 
-    def findAll(self, Session: Session):
+    def findAll(self):
         stmt = sa.select(FpModel)
-        with Session() as session:
+        with self.Session() as session:
             results = session.scalars(stmt).fetchall()
         return results
 
     def findByInstanceId(self, Session, instanceId):
         stmt = sa.select(FpModel).where(FpModel.className == "LE")
-        with Session() as session:
+        with self.Session() as session:
             results = session.scalars(stmt).fetchall()
         return results
 
     def findByInstanceId(self, Session, instanceId):
         stmt = sa.select(FpModel).where(FpModel.className == "LE")
-        with Session() as session:
+        with self.Session() as session:
             results = session.scalars(stmt).fetchall()
         return results
 
     @validate_call(config=dict(arbitrary_types_allowed=True))
     def insert(
         self,
-        Session: Union[Session, sessionmaker],
         dataArr: List[FpModelRepositoryInsert],
     ):
         rows = []
         for data in dataArr:
             rows.append(FpModel(**data))
 
-        with Session() as session, session.begin():
+        with self.Session() as session, session.begin():
             session.add_all(rows)
