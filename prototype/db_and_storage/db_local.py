@@ -5,20 +5,49 @@ from mlv2.record import FpModel
 # Read
 # stmt = sa.select(FpModel).where(FpModel.name.like("%CRH%"))
 # print(stmt)
-# with LocalSession() as session, session.begin():
+# with LocalSession() as session:
 #     reses = session.scalars(stmt).fetchall()
 #     for res in reses:
 #         print(res.__dict__)
-pass
+
+
+# hospitalId = 30
+# path = "V2_HID_30/S00_2024-11-12_05-18-15"
+# stmt = sa.select(FpModel).where(
+#     (FpModel.hospitalId == hospitalId) & (FpModel.path == path)
+# )
+# print(stmt)
+# print("----------")
+# with LocalSession() as session:
+#     reses = session.scalars(stmt).fetchall()
+#     for res in reses:
+#         print(res.__dict__)
+#         print("----------")
+# pass
 
 
 # Write
-newModel = FpModel(name="TEST", hospitalId=16, path="NEW_PATH", contents=[dict(a=10)])
+# newModel = FpModel(name="TEST", hospitalId=16, path="NEW_PATH", contents=[dict(a=10)])
 
+# with LocalSession() as session, session.begin():
+#     session.add_all([newModel])
+#     stmt = sa.select(FpModel)
+#     reses = session.scalars(stmt).fetchall()
+#     for res in reses:
+#         print(res.__dict__)
+#     # print(reses[-1].contents[0])
+
+# Update
+
+
+hospitalId = 30
+path = "V2_HID_30/S00_2024-11-12_05-18-15"
+stmt = sa.select(FpModel).where(
+    (FpModel.hospitalId == hospitalId) & (FpModel.path == path)
+)
+print(stmt)
+print("----------")
 with LocalSession() as session, session.begin():
-    session.add_all([newModel])
-    stmt = sa.select(FpModel)
     reses = session.scalars(stmt).fetchall()
-    for res in reses:
-        print(res.__dict__)
-    # print(reses[-1].contents[0])
+    reses[0].contents = dict(a=10)
+pass

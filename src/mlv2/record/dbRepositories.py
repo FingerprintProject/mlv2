@@ -6,22 +6,21 @@ from sqlalchemy.orm import Session, sessionmaker
 from typing_extensions import TypedDict
 
 from mlv2.utils import FpBaseModel
-
 from .dbModels import FpModel
 
 
-class FpModelJsonSchema(TypedDict):
+class JsonSchemaInsert(TypedDict):
     className: str
     path: str
     instanceId: str
-    filename: str
+    fileName: str
 
 
-class FpModelRepositoryInsert(TypedDict):
+class DtoInsert(TypedDict):
     name: str
     path: str
     hospitalId: int
-    contents: List[FpModelJsonSchema]
+    contents: List[JsonSchemaInsert]
 
 
 class FpModelRepository(FpBaseModel):
@@ -39,20 +38,29 @@ class FpModelRepository(FpBaseModel):
             results = session.scalars(stmt).fetchall()
         return results
 
-    def findByInstanceId(self, Session, instanceId):
-        stmt = sa.select(FpModel).where(FpModel.className == "LE")
-        with self.Session() as session:
-            results = session.scalars(stmt).fetchall()
-        return results
-
     @validate_call(config=dict(arbitrary_types_allowed=True))
-    def insert(
+    def insertModelRecord(
         self,
-        dataArr: List[FpModelRepositoryInsert],
+        data: DtoInsert,
     ):
-        rows = []
-        for data in dataArr:
-            rows.append(FpModel(**data))
-
+        hospitalId = data["hospitalId"]
+        path = data["path"]
+        contents = data["contents"]
+        stmt = sa.select(FpModel).where(
+            (FpModel.hospitalId == hospitalId) & (FpModel.path == path)
+        )
         with self.Session() as session, session.begin():
-            session.add_all(rows)
+            # Check to see if the record exists
+            reses: List[FpModel] = session.scalars(stmt).fetchall()
+            if len(reses) == 0:
+                # Add new record
+                session.add_all([FpModel(**data)])
+            elif len(reses) == 1:
+                # Update record
+                oldContents = reses[0].contents
+                newContents = [*oldContents, *contents]
+                reses[0].contents = newContents
+            else:
+                self.logger.warning(
+                    "Found duplicated rows with the same path and hospitalId. No update occurs."
+                )

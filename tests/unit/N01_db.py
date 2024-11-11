@@ -26,7 +26,7 @@ def test_db_write():
             instanceId="ID",
         )
     ]
-    repo.insert(Session=Session, dataArr=dataArr)
+    repo.insertModelRecord(Session=Session, dataArr=dataArr)
 
 
 def test_db_write_incorrect():
@@ -40,4 +40,4 @@ def test_db_write_incorrect():
             # instanceId="ID",
         )
     ]
-    repo.insert(Session=Session, dataArr=dataArr)
+    repo.insertModelRecord(Session=Session, dataArr=dataArr)

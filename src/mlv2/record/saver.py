@@ -75,21 +75,22 @@ class SaverGCP(SaverBase):
             fileNameSuffix = uuid
             fileName = f"{className}_{fileNameSuffix}.pickle"
 
-            gcpPath = "/".join([self.folderParentPath, self.getFolderName(), fileName])
+            pathArr = [self.folderParentPath, self.getFolderName(), fileName]
 
             # Upload
-            self.storageRepository.uploadPickle(classIns=classIns, gcpPath=gcpPath)
-            self.logger.info(f"Save {className} path={gcpPath} successfully")
+            path = self.storageRepository.storePickle(
+                classIns=classIns, pathArr=pathArr
+            )
 
-            row = dict(
-                path=gcpPath,
-                filename=fileName,
+            cRow = dict(
+                path=path,
+                fileName=fileName,
                 instanceId=fileNameSuffix,
                 className=className,
             )
-            contents.append(row)
+            contents.append(cRow)
 
-        row = dict(
+        data = dict(
             path="/".join([self.folderParentPath, self.getFolderName()]),
             hospitalId=self.hospitalId,
             name=self.folderNamePrefix,
@@ -97,20 +98,37 @@ class SaverGCP(SaverBase):
         )
 
         # Write to DB
-        self.fpModelRepository.insert(dataArr=[row])
+        self.fpModelRepository.insertModelRecord(data=data)
 
-    def saveFile(self, filenameArr: List[str], tempFolderPathLocal="tmp"):
-        for filename in filenameArr:
-            filePathLocal = os.path.join(tempFolderPathLocal, filename)
+    def saveFile(self, fileNameArr: List[str], tempFolderPathLocal="tmp"):
+        for fileName in fileNameArr:
+            filePathLocal = os.path.join(tempFolderPathLocal, fileName)
             if not os.path.exists(filePathLocal):
                 raise Exception(f"Cannot find file: {filePathLocal}")
 
-        for filename in filenameArr:
-            filePathLocal = os.path.join(tempFolderPathLocal, filename)
-            gcpPath = "/".join([self.folderParentPath, self.getFolderName(), filename])
+        contents = []
+        for fileName in fileNameArr:
+            filePathLocal = os.path.join(tempFolderPathLocal, fileName)
 
-            # I need to log here because I want to keep as much logging info as possible before upload the log file.
-            self.logger.info(f"Saving {filename} path={gcpPath}")
-            self.storageRepository.uploadLocalFile(
-                gcpPath=gcpPath, filePathLocal=filePathLocal
+            pathArr = [self.folderParentPath, self.getFolderName(), fileName]
+
+            path = self.storageRepository.storeFile(
+                pathArr=pathArr, filePathLocal=filePathLocal
             )
+
+            cRow = dict(
+                path=path,
+                fileName=fileName,
+                instanceId="",
+                className="",
+            )
+            contents.append(cRow)
+
+            data = dict(
+                path="/".join([self.folderParentPath, self.getFolderName()]),
+                hospitalId=self.hospitalId,
+                name=self.folderNamePrefix,
+                contents=contents,
+            )
+        # Write to DB
+        self.fpModelRepository.insertModelRecord(data=data)
