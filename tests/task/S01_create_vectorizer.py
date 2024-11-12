@@ -1,28 +1,15 @@
 from pprint import pp
 
 from mlv2.preprocess import LE, FpDict, FpLoader
-from mlv2.utils import Pipeline, SaverFS, SaverGCP, Logger
 from mlv2.vectorize import W2V, CorpusBuilder
-from google.auth import default
-from mlv2.record import FpModelRepository, getLocalDbCredential, getLocalSessionFactory
 
-pl = Pipeline(filenamePrefix="pipeline")
-lg = Logger(filenamePrefix="logs", now=pl.now)
-
-hid = 99
-fnp = "S01"
-fpp = f"HID{hid}"
-saver = SaverFS(folderNamePrefix=fnp, folderParentPath=fpp, now=pl.now)
-
-cdt, _ = default()
-saver = SaverGCP(
-    folderNamePrefix=fnp, folderParentPath=fpp, credentials=cdt, now=pl.now, logger=lg
-)
+from .S00_common import setupTask
 
 
 def createVectorizer():
+    pl, lg, saver, _ = setupTask(hospitalId=30, modelName="S01")
 
-    fpLoader = FpLoader(pipeline=pl)
+    fpLoader = FpLoader(pipeline=pl, logger=lg)
 
     folder1 = "data/supervised_survey"
     filename1 = f"{folder1}/admin_json_hospital_id_15_small.json"
@@ -41,11 +28,11 @@ def createVectorizer():
     fpLoader.fit(fileData=fileData, info=dict(src=fileData))
 
     # Dict data
-    fpDict = FpDict(pipeline=pl)
+    fpDict = FpDict(pipeline=pl, logger=lg)
     fpDict.fit(data=fpLoader.data, info=dict(src=fpLoader.uuid))
 
     # Encode BSSID
-    leBssid = LE(encoderType="BSSID", pipeline=pl)
+    leBssid = LE(encoderType="BSSID", pipeline=pl, logger=lg)
     leBssid.fit(data=fpDict.getUniqueBSSID(), info=dict(src=fpDict.uuid))
 
     # Conform
@@ -57,11 +44,12 @@ def createVectorizer():
     cb.fit(data=fpEncoded, id_leBssid=leBssid.uuid, info=dict(src=fpDict.uuid))
 
     # Embed
-    w2v = W2V(pipeline=pl)
+    w2v = W2V(pipeline=pl, logger=lg)
     w2v.fit(corpus=cb.corpus, id_leBssid=leBssid.uuid, info=dict(src=cb.uuid))
 
-    # Save class instances
-    saver.savePickle([leBssid, w2v])
-
-    # Save output
+    # Save class instances and output
+    saver.savePickle([leBssid, w2v], makeActive=True)
     pl.excel()
+    saver.saveFile(
+        fileNameArr=[pl.filename, lg.filename], tempFolderPathSource=pl.outFolder
+    )

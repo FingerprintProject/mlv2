@@ -3,7 +3,7 @@ from typing import Any, Optional
 import os
 from google.auth import default
 from google.cloud import storage
-
+import pandas as pd
 from mlv2.utils import FpBaseModel
 import shutil
 
@@ -51,6 +51,24 @@ class FsRepository(FpBaseModel):
             classIns = pickle.load(handle)
         return classIns
 
+    def getModelFilePath(self, path):
+
+        pathArr = path.split("/")
+        folderPath = os.path.join(*pathArr)
+
+        if not os.path.exists(folderPath):
+            raise Exception("Folder not found.")
+
+        # Filer only pickle files
+        sr = pd.Series(os.listdir(path))
+        filt = sr.apply(lambda fn: ".pickle" in fn)
+        sr = sr[filt]
+
+        # Reconstruct file path with forward slash
+        filePathList = sr.apply(lambda el: "/".join([*pathArr, el])).values
+
+        return filePathList
+
 
 class GcsRepository(FpBaseModel):
     projectName: str = "daywork-215507"
@@ -91,3 +109,7 @@ class GcsRepository(FpBaseModel):
         with blob.open(mode="rb") as f:
             classIns = pickle.load(f)
         return classIns
+
+    def getModelFilePath(self):
+        # return filePathList
+        raise Exception("Get file list from GCS is not yet implemented")

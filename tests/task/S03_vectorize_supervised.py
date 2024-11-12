@@ -1,26 +1,20 @@
 from pprint import pp
 
 from mlv2.preprocess import FpLoader, FpDict
-from mlv2.utils import LoaderFS, Pipeline, SaverFS
 from mlv2.vectorize import FpVectSupervised
-
-pl = Pipeline(filenamePrefix="pipeline_S03")
-saver = SaverFS(folderNamePrefix="S03")
+from .S00_common import setupTask
 
 
 def vectorize_sup():
+    pl, lg, saver, loader = setupTask(hospitalId=30, modelName="S03")
     # Load vectorizer
-    pkLoader = LoaderFS()
-    folderPath = "./save/S01_2024-10-25_08-47-00"
-    pkLoader.fit(folderPath=folderPath)
-    leBssid = pkLoader.get(["LE"])
-    w2v = pkLoader.get(["W2V"])
+    loader.fitFromModelName(name="S01")
+    leBssid = loader.pick(["LE"])
+    w2v = loader.pick(["W2V"])
 
     # Load leZone
-    pkLoader = LoaderFS()
-    folderPath = "./save/S02_2024-10-25_08-52-01"
-    pkLoader.fit(folderPath=folderPath)
-    leZone = pkLoader.get(["LE"])
+    loader.fitFromModelName(name="S02")
+    leZone = loader.pick(["LE"])
 
     # Supervised data
     folder1 = "data/supervised_survey"
@@ -29,11 +23,11 @@ def vectorize_sup():
     fileData = [dict(filename=filename1, fileType="SUPV2")]
 
     # Load data
-    loader = FpLoader(pipeline=pl)
+    loader = FpLoader(pipeline=pl, logger=lg)
     loader.fit(fileData=fileData, info=dict(src=fileData))
 
     # Preprocess
-    fpDict = FpDict(pipeline=pl)
+    fpDict = FpDict(pipeline=pl, logger=lg)
     fpDict.fit(data=loader.data, info=dict(src=loader.uuid))
 
     # Conformation
@@ -46,7 +40,7 @@ def vectorize_sup():
     X = w2v.vectorize(data=fpEncode, fpDict=fpDict)
     y = leZone.encode(fpDict.getZoneNames(), fpDict=fpDict)
 
-    fpVectSup = FpVectSupervised(pipeline=pl)
+    fpVectSup = FpVectSupervised(pipeline=pl, logger=lg)
     fpVectSup.fit(
         XArr=[X],
         yArr=[y],
@@ -57,5 +51,8 @@ def vectorize_sup():
     )
     fpVectSup.calcCentroid()
     fpVectSup.calcZoneCentroidSelfNearestNeighbors()
+    saver.savePickle([fpVectSup], makeActive=True)
     pl.excel()
-    saver.save([fpVectSup])
+    saver.saveFile(
+        fileNameArr=[pl.filename, lg.filename], tempFolderPathSource=pl.outFolder
+    )

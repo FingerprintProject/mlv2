@@ -1,5 +1,4 @@
 from typing import Any, List, Union
-
 import pandas as pd
 from pydantic import BaseModel, validate_call
 
@@ -26,6 +25,7 @@ class Loader(FpBaseModel):
         pickleContents = self.fpModelRepository.getModelRecord(
             data=dict(name=name, hospitalId=self.hospitalId)
         )
+        data = []
         for pc in pickleContents:
             path = pc["path"]
             classIns = self.storageRepository.loadPickle(path=path)
@@ -35,18 +35,33 @@ class Loader(FpBaseModel):
                 className=pc["className"],
                 instanceId=pc["instanceId"],
             )
-            self.data.append(DataSchema(**tmp))
-
-        self.isFitted = True
+            data.append(DataSchema(**tmp))
+        self.data = data
 
     def fitFromPath(self, path):
-        pass
+        """Make sure that path contains forward slash or double backslash, not single backslash"""
+
+        # Conform with forward convention for filepath
+        pathFixed = path.replace("\\", "/")
+
+        # Read data
+        filePathList = self.storageRepository.getModelFilePath(path=pathFixed)
+        data = []
+        for filePath in filePathList:
+            classIns = self.storageRepository.loadPickle(path=filePath)
+            className = type(classIns).__name__
+            uuid = classIns.uuid if hasattr(classIns, "uuid") else ""
+            tmp = dict(
+                classIns=classIns,
+                fileName=filePath.split("/")[-1],
+                className=className,
+                instanceId=uuid,
+            )
+            self.data.append(DataSchema(**tmp))
+        self.data = data
 
     @validate_call
     def pick(self, searches: List[str]):
-
-        if not self.isFitted:
-            raise Exception("Not loaded")
 
         matches = []
         for d in self.data:
