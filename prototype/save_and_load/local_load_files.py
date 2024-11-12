@@ -1,17 +1,36 @@
-import json
-import pickle
-from pprint import pp
+import os
+import pathlib
 
-# Load pickle
-filePath = "save/embed_2024-10-18_08-55-20/W2V_8632d.pickle"
-with open(filePath, "rb") as handle:
-    data = pickle.load(handle)
+from mlv2.record import (
+    FpModelRepository,
+    getLocalDbCredential,
+    getLocalSessionFactory,
+    FsRepository,
+    Loader,
+)
 
-pp(data)
 
-# with open("data.json", "w") as f:
-#     json.dump(data.pipeline.data[9], f)
+# Storage
+storageRepo = FsRepository()
 
-# with open("pk.pickle", "wb") as handle:
-#     pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
-# pass
+# Db
+curPath = os.getcwd()
+parPath = pathlib.Path(curPath)
+dotEnvPath = os.path.join(parPath, ".env.dev")
+Session = getLocalSessionFactory(**getLocalDbCredential(dotEnvPath))
+dbRepo = FpModelRepository(Session=Session)
+
+
+# Loader
+hospitalId = 30
+loader = Loader(
+    hospitalId=hospitalId,
+    modelName="S00",
+    fpModelRepository=dbRepo,
+    storageRepository=storageRepo,
+)
+
+loader.fitFromModelName(name="S00")
+LE = loader.pick(searches=["e749b814"])
+
+pass

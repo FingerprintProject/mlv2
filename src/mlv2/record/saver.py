@@ -1,65 +1,28 @@
 import datetime
 import os
-import pickle
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 from uuid import uuid4
 
 from pydantic import Field
 
 from mlv2.utils import UUID_TRUNCATE, FpBaseModel
+
 from .dbRepositories import FpModelRepository
-from .storageRepository import GcsRepository
-
-MODEL_NAME_PREFIX = "V2_HID"
-
-
-class SaverBase(FpBaseModel):
-    modelName: str
-    now: datetime.datetime = Field(default_factory=datetime.datetime.now)
-    folderParentPath: Optional[str] = None
-
-
-# class SaverFs(SaverBase):
-
-#     def save(self, classInsArr: List[Any]):
-
-#         folderNameSuffix = self.now.strftime("%Y-%m-%d_%H-%M-%S")
-#         folderName = f"{self.modelName}_{folderNameSuffix}"
-#         folderPath = os.path.join(self.folderParentPath, folderName)
-
-#         if not os.path.exists(self.folderParentPath):
-#             os.mkdir(self.folderParentPath)
-
-#         if not os.path.exists(folderPath):
-#             os.mkdir(folderPath)
-
-#         for classIns in classInsArr:
-#             className = type(classIns).__name__
-#             if hasattr(classIns, "uuid"):
-#                 uuid = classIns.uuid
-#             else:
-#                 self.logger.warning(f"No uuid found in class {className}")
-#                 uuid = uuid4().hex[:UUID_TRUNCATE]
-#             fileNameSuffix = uuid
-
-#             fileName = f"{className}_{fileNameSuffix}.pickle"
-#             filePath = os.path.join(folderPath, fileName)
-#             with open(filePath, "wb") as handle:
-#                 pickle.dump(classIns, handle, protocol=pickle.HIGHEST_PROTOCOL)
-#             self.logger.info(f"Save {className} to {fileName} successfully")
+from .storageRepository import FsRepository, GcsRepository
 
 
 class Saver(FpBaseModel):
     modelName: str
     now: datetime.datetime = Field(default_factory=datetime.datetime.now)
-    folderParentPath: Optional[str] = None
     hospitalId: int
-    storageRepository: GcsRepository
+    storageRepository: Union[GcsRepository, FsRepository]
     fpModelRepository: FpModelRepository
+    folderParentL1: str = "save_V2"
+    folderParentL2: Optional[str] = None
 
     def model_post_init(self, __context):
-        # Change the "main" path corresponding to hospitalId
-        self.folderParentPath = f"{MODEL_NAME_PREFIX}_{self.hospitalId}"
+        # Change the level-2 path corresponding to hospitalId
+        self.folderParentL2 = f"{self.hospitalId}"
 
     def getFolderName(self):
         folderNameSuffix = self.now.strftime("%Y-%m-%d_%H-%M-%S")
@@ -80,7 +43,12 @@ class Saver(FpBaseModel):
             fileNameSuffix = uuid
             fileName = f"{className}_{fileNameSuffix}.pickle"
 
-            pathArr = [self.folderParentPath, self.getFolderName(), fileName]
+            pathArr = [
+                self.folderParentL1,
+                self.folderParentL2,
+                self.getFolderName(),
+                fileName,
+            ]
 
             # Upload
             path = self.storageRepository.storePickle(
@@ -96,7 +64,9 @@ class Saver(FpBaseModel):
             contents.append(cRow)
 
         data = dict(
-            path="/".join([self.folderParentPath, self.getFolderName()]),
+            path="/".join(
+                [self.folderParentL1, self.folderParentL2, self.getFolderName()]
+            ),
             hospitalId=self.hospitalId,
             name=self.modelName,
             contents=contents,
@@ -116,7 +86,12 @@ class Saver(FpBaseModel):
         for fileName in fileNameArr:
             filePathSource = os.path.join(tempFolderPathSource, fileName)
 
-            pathArr = [self.folderParentPath, self.getFolderName(), fileName]
+            pathArr = [
+                self.folderParentL1,
+                self.folderParentL2,
+                self.getFolderName(),
+                fileName,
+            ]
 
             path = self.storageRepository.storeFile(
                 pathArr=pathArr, filePathSource=filePathSource
@@ -131,7 +106,9 @@ class Saver(FpBaseModel):
             contents.append(cRow)
 
             data = dict(
-                path="/".join([self.folderParentPath, self.getFolderName()]),
+                path="/".join(
+                    [self.folderParentL1, self.folderParentL2, self.getFolderName()]
+                ),
                 hospitalId=self.hospitalId,
                 name=self.modelName,
                 contents=contents,

@@ -5,7 +5,7 @@ from mlv2.record import (
     FpModelRepository,
     getLocalDbCredential,
     getLocalSessionFactory,
-    GcsRepository,
+    FsRepository,
     Saver,
 )
 from mlv2.preprocess import LE
@@ -15,7 +15,7 @@ pl = Pipeline(filenamePrefix="pipeline")
 lg = Logger(filenamePrefix="logs", now=pl.now)
 
 # Storage
-gcpRepo = GcsRepository()
+stroageRepo = FsRepository()
 
 # Db
 curPath = os.getcwd()
@@ -30,7 +30,7 @@ saver = Saver(
     hospitalId=hospitalId,
     modelName="S00",
     fpModelRepository=dbRepo,
-    storageRepository=gcpRepo,
+    storageRepository=stroageRepo,
     now=pl.now,
     logger=lg,
 )

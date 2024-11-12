@@ -6,14 +6,12 @@ from mlv2.record import (
     getLocalDbCredential,
     getLocalSessionFactory,
     GcsRepository,
-    LoaderGcp,
+    Loader,
 )
-from mlv2.preprocess import LE
-from mlv2.utils import Logger, Pipeline
 
 
 # Storage
-gcpRepo = GcsRepository()
+storageRepo = GcsRepository()
 
 # Db
 curPath = os.getcwd()
@@ -25,12 +23,14 @@ dbRepo = FpModelRepository(Session=Session)
 
 # Loader
 hospitalId = 30
-loader = LoaderGcp(
+loader = Loader(
     hospitalId=hospitalId,
     modelName="S00",
     fpModelRepository=dbRepo,
-    storageRepository=gcpRepo,
+    storageRepository=storageRepo,
 )
 
-loader.fit(name="S00")
-loader.pick(searches=["LE"])
+loader.fitFromModelName(name="S00")
+LE = loader.pick(searches=["056a7e79"])
+
+pass

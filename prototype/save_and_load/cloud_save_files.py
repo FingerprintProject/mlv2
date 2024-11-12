@@ -15,7 +15,7 @@ pl = Pipeline(filenamePrefix="pipeline")
 lg = Logger(filenamePrefix="logs", now=pl.now)
 
 # Storage
-gcpRepo = GcsRepository()
+storageRepo = GcsRepository()
 
 # Db
 curPath = os.getcwd()
@@ -30,7 +30,7 @@ saver = Saver(
     hospitalId=hospitalId,
     modelName="S00",
     fpModelRepository=dbRepo,
-    storageRepository=gcpRepo,
+    storageRepository=storageRepo,
     now=pl.now,
     logger=lg,
 )
