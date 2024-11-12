@@ -6,6 +6,6 @@ from .dbSession import (
     getLocalSessionFactory,
     getGcpSessionFactory,
 )
-from .storageRepository import GcpRepository
-from .saver import SaverGcp
+from .storageRepository import GcsRepository
+from .saver import Saver
 from .loader import LoaderGcp

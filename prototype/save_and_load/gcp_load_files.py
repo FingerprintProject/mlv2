@@ -5,7 +5,7 @@ from mlv2.record import (
     FpModelRepository,
     getLocalDbCredential,
     getLocalSessionFactory,
-    GcpRepository,
+    GcsRepository,
     LoaderGcp,
 )
 from mlv2.preprocess import LE
@@ -13,7 +13,7 @@ from mlv2.utils import Logger, Pipeline
 
 
 # Storage
-gcpRepo = GcpRepository()
+gcpRepo = GcsRepository()
 
 # Db
 curPath = os.getcwd()

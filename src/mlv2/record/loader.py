@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field, validate_call
 from mlv2.utils import FpBaseModel
 
 from .dbRepositories import FpModelRepository
-from .storageRepository import GcpRepository
+from .storageRepository import GcsRepository
 from .saver import MODEL_NAME_PREFIX
 
 
@@ -92,7 +92,7 @@ class LoaderFs(FpBaseModel):
 class LoaderGcp(LoaderBase):
     hospitalId: int
     fpModelRepository: FpModelRepository
-    storageRepository: GcpRepository
+    storageRepository: GcsRepository
 
     def model_post_init(self, __context):
         # Change the "main" path in GCS according to hospitalId
