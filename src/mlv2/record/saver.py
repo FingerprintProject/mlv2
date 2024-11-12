@@ -1,7 +1,7 @@
 import datetime
 import os
 import pickle
-from typing import Any, List
+from typing import Any, List, Optional
 from uuid import uuid4
 
 from pydantic import Field
@@ -10,19 +10,21 @@ from mlv2.utils import UUID_TRUNCATE, FpBaseModel
 from .dbRepositories import FpModelRepository
 from .storageRepository import GcpRepository
 
+MODEL_NAME_PREFIX = "V2_HID"
+
 
 class SaverBase(FpBaseModel):
+    modelName: str
     now: datetime.datetime = Field(default_factory=datetime.datetime.now)
-    folderNamePrefix: str = "run"
-    folderParentPath: str = "save"
+    folderParentPath: Optional[str] = None
 
 
-class SaverFS(SaverBase):
+class SaverFs(SaverBase):
 
     def save(self, classInsArr: List[Any]):
 
         folderNameSuffix = self.now.strftime("%Y-%m-%d_%H-%M-%S")
-        folderName = f"{self.folderNamePrefix}_{folderNameSuffix}"
+        folderName = f"{self.modelName}_{folderNameSuffix}"
         folderPath = os.path.join(self.folderParentPath, folderName)
 
         if not os.path.exists(self.folderParentPath):
@@ -47,21 +49,21 @@ class SaverFS(SaverBase):
             self.logger.info(f"Save {className} to {fileName} successfully")
 
 
-class SaverGCP(SaverBase):
+class SaverGcp(SaverBase):
     hospitalId: int
     storageRepository: GcpRepository
     fpModelRepository: FpModelRepository
 
     def model_post_init(self, __context):
         # Change the "main" path in GCS according to hospitalId
-        self.folderParentPath = f"V2_HID_{self.hospitalId}"
+        self.folderParentPath = f"{MODEL_NAME_PREFIX}_{self.hospitalId}"
 
     def getFolderName(self):
         folderNameSuffix = self.now.strftime("%Y-%m-%d_%H-%M-%S")
-        folderName = f"{self.folderNamePrefix}_{folderNameSuffix}"
+        folderName = f"{self.modelName}_{folderNameSuffix}"
         return folderName
 
-    def savePickle(self, classInsArr: List[Any]):
+    def savePickle(self, classInsArr: List[Any], makeActive=False):
 
         contents = []
         for classIns in classInsArr:
@@ -93,8 +95,9 @@ class SaverGCP(SaverBase):
         data = dict(
             path="/".join([self.folderParentPath, self.getFolderName()]),
             hospitalId=self.hospitalId,
-            name=self.folderNamePrefix,
+            name=self.modelName,
             contents=contents,
+            makeActive=makeActive,
         )
 
         # Write to DB
@@ -127,8 +130,9 @@ class SaverGCP(SaverBase):
             data = dict(
                 path="/".join([self.folderParentPath, self.getFolderName()]),
                 hospitalId=self.hospitalId,
-                name=self.folderNamePrefix,
+                name=self.modelName,
                 contents=contents,
+                makeActive=False,
             )
         # Write to DB
         self.fpModelRepository.insertModelRecord(data=data)

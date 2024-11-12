@@ -40,3 +40,9 @@ class GcpRepository(FpBaseModel):
             f"Save {filePathLocal}, bucketName={self.bucketName}, path={gcpPath} successfully"
         )
         return gcpPath
+
+    def loadPickle(self, path):
+        blob = self.bucket.blob(path)
+        with blob.open(mode="rb") as f:
+            classIns = pickle.load(f)
+        return classIns

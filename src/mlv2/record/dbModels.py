@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, Boolean
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.sql import func
@@ -16,3 +16,4 @@ class FpModel(SaBase):
     hospitalId = Column("hospital_id", Integer)
     createdAt = Column("created_at", DateTime(timezone=True), server_default=func.now())
     contents = Column("contents", JSONB)
+    isActive = Column("is_active", Boolean)

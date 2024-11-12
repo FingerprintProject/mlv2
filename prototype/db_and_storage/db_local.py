@@ -40,14 +40,39 @@ from mlv2.record import FpModel
 # Update
 
 
+# hospitalId = 30
+# path = "V2_HID_30/S00_2024-11-12_05-18-15"
+# stmt = sa.select(FpModel).where(
+#     (FpModel.hospitalId == hospitalId) & (FpModel.path == path)
+# )
+# print(stmt)
+# print("----------")
+# with LocalSession() as session, session.begin():
+#     reses = session.scalars(stmt).fetchall()
+#     reses[0].contents = dict(a=10)
+# pass
+
+
+# Active
 hospitalId = 30
 path = "V2_HID_30/S00_2024-11-12_05-18-15"
-stmt = sa.select(FpModel).where(
-    (FpModel.hospitalId == hospitalId) & (FpModel.path == path)
+name = "S00"
+
+stmt = (
+    sa.select(FpModel)
+    .where(
+        (FpModel.hospitalId == hospitalId)
+        & (FpModel.name == name)
+        & (FpModel.isActive == False)
+    )
+    .order_by(FpModel.createdAt.asc())
 )
+
 print(stmt)
 print("----------")
 with LocalSession() as session, session.begin():
     reses = session.scalars(stmt).fetchall()
-    reses[0].contents = dict(a=10)
+    for res in reses:
+        print(res.createdAt)
+        res.isActive = True
 pass

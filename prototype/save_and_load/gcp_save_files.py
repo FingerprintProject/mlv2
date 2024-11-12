@@ -6,7 +6,7 @@ from mlv2.record import (
     getLocalDbCredential,
     getLocalSessionFactory,
     GcpRepository,
-    SaverGCP,
+    SaverGcp,
 )
 from mlv2.preprocess import LE
 from mlv2.utils import Logger, Pipeline
@@ -26,9 +26,9 @@ dbRepo = FpModelRepository(Session=Session)
 
 # Saver
 hospitalId = 30
-saver = SaverGCP(
+saver = SaverGcp(
     hospitalId=hospitalId,
-    folderNamePrefix="S00",
+    modelName="S00",
     fpModelRepository=dbRepo,
     storageRepository=gcpRepo,
     now=pl.now,
@@ -37,7 +37,10 @@ saver = SaverGCP(
 
 leBssid1 = LE(encoderType="BSSID", pipeline=pl, logger=lg)
 leBssid2 = LE(encoderType="BSSID", pipeline=pl, logger=lg)
-saver.savePickle([leBssid1, leBssid2])
+saver.savePickle([leBssid1, leBssid2], makeActive=True)
 
 pl.excel()
 saver.saveFile(fileNameArr=[pl.filename, lg.filename], tempFolderPathLocal=pl.outFolder)
+
+leBssid3 = LE(encoderType="BSSID", pipeline=pl, logger=lg)
+saver.savePickle([leBssid3], makeActive=False)

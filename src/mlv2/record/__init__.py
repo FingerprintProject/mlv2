@@ -7,4 +7,5 @@ from .dbSession import (
     getGcpSessionFactory,
 )
 from .storageRepository import GcpRepository
-from .saver import SaverGCP
+from .saver import SaverGcp
+from .loader import LoaderGcp

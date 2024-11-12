@@ -1,7 +1,7 @@
 import datetime
 import os
 import pickle
-from typing import Any, List
+from typing import Any, List, Optional
 from uuid import uuid4
 
 import pandas as pd
@@ -10,18 +10,25 @@ from pydantic import BaseModel, Field, validate_call
 from mlv2.utils import FpBaseModel
 
 from .dbRepositories import FpModelRepository
+from .storageRepository import GcpRepository
+from .saver import MODEL_NAME_PREFIX
 
 
-class PkLoaderData(BaseModel):
+class DataSchema(BaseModel):
     classIns: Any
     fileName: str
     className: str
-    uuid: str
+    instanceId: str
 
 
-class LoaderFS(FpBaseModel):
+class LoaderBase(FpBaseModel):
+    modelName: str
+    now: datetime.datetime = Field(default_factory=datetime.datetime.now)
+    folderParentPath: Optional[str] = None
+    data: List[DataSchema] = []
 
-    data: List[PkLoaderData] = []
+
+class LoaderFs(FpBaseModel):
 
     @validate_call
     def fit(self, folderPath: str):
@@ -51,7 +58,7 @@ class LoaderFS(FpBaseModel):
             tmp = dict(
                 classIns=classIns, fileName=fileName, className=className, uuid=uuid
             )
-            data.append(PkLoaderData(**tmp))
+            data.append(DataSchema(**tmp))
 
         self.data = data
         self.isFitted = True
@@ -61,7 +68,7 @@ class LoaderFS(FpBaseModel):
         pass
 
     @validate_call
-    def get(self, searches: List[str]):
+    def pick(self, searches: List[str]):
 
         if not self.isFitted:
             raise Exception("Not loaded")
@@ -82,9 +89,49 @@ class LoaderFS(FpBaseModel):
             return matches[0].classIns
 
 
-class LoaderGCP:
+class LoaderGcp(LoaderBase):
+    hospitalId: int
     fpModelRepository: FpModelRepository
+    storageRepository: GcpRepository
 
-    def load(self, searches: list[str]):
+    def model_post_init(self, __context):
+        # Change the "main" path in GCS according to hospitalId
+        self.folderParentPath = f"{MODEL_NAME_PREFIX}_{self.hospitalId}"
 
-        pass
+    def fit(self, name):
+        pickleContents = self.fpModelRepository.getModelRecord(
+            data=dict(name=name, hospitalId=self.hospitalId)
+        )
+        for pc in pickleContents:
+            path = pc["path"]
+            classIns = self.storageRepository.loadPickle(path=path)
+            tmp = dict(
+                classIns=classIns,
+                fileName=pc["fileName"],
+                className=pc["className"],
+                instanceId=pc["instanceId"],
+            )
+            self.data.append(DataSchema(**tmp))
+
+        self.isFitted = True
+
+    @validate_call
+    def pick(self, searches: List[str]):
+
+        if not self.isFitted:
+            raise Exception("Not loaded")
+
+        matches = []
+        for d in self.data:
+            searchStr = f"{d.className}{d.instanceId}{d.fileName}"
+            sr = pd.Series(searches)
+            isMatched = sr.apply(lambda s: s in searchStr).any()
+            if isMatched:
+                matches.append(d)
+
+        if len(matches) == 0:
+            raise Exception("Cannot find any match")
+        elif len(matches) != 1:
+            raise Exception("Found more than one result. Narrow your search")
+        else:
+            return matches[0].classIns
