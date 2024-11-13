@@ -1,0 +1,2 @@
+2024-11-13 08:29:38 - INFO : Save LE, path=save_V2\30\S02_2024-11-13_08-29-38\LE_e0dd9a31.pickle successfully
+2024-11-13 08:29:38 - INFO : Save ./tmp\pipeline_2024-11-13_08-29-38.xlsx,  path=save_V2\30\S02_2024-11-13_08-29-38\pipeline_2024-11-13_08-29-38.xlsx successfully

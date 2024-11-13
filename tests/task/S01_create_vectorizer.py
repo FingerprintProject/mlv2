@@ -12,13 +12,13 @@ def createVectorizer():
     fpLoader = FpLoader(pipeline=pl, logger=lg)
 
     folder1 = "data/supervised_survey"
-    filename1 = f"{folder1}/admin_json_hospital_id_15_small.json"
-    # filename1 = f"{folder1}/admin_json_hospital_id_15.json"
+    # filename1 = f"{folder1}/admin_json_hospital_id_15_small.json"
+    filename1 = f"{folder1}/admin_json_hospital_id_15.json"
     # filename1 = f"{folder1}/admin_json_hospital_id_15_error.json"
 
     folder2 = "data/unsupervised_survey"
-    filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590_small.json"
-    # filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590.json"
+    # filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590_small.json"
+    filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590.json"
 
     fileData1 = dict(filename=filename1, fileType="SUPV2")
     fileData2 = dict(filename=filename2, fileType="UNSUPV1")

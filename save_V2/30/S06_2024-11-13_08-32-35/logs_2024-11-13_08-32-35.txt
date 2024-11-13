@@ -1,0 +1,11 @@
+2024-11-13 08:32:36 - INFO : <FpVectModel>.model_post_init took 0.0000 seconds. [Size: 0.10 MB]
+2024-11-13 08:32:36 - INFO : <FpVectModel>.fit took 0.0008 seconds. [Size: 18.89 MB]
+2024-11-13 08:32:36 - INFO : Stats for y label in 260d354c (ALL_DATA): {'count': 66.0, 'mean': 19.666666666666668, 'std': 9.44511812579686, 'min': 9.0, '25%': 12.0, '50%': 17.5, '75%': 24.0, 'max': 55.0}
+2024-11-13 08:32:36 - INFO : Stats for y label in 260d354c (TRAIN_DATA): {'count': 66.0, 'mean': 13.757575757575758, 'std': 6.57281254881537, 'min': 6.0, '25%': 8.0, '50%': 12.5, '75%': 17.0, 'max': 38.0}
+2024-11-13 08:32:36 - INFO : Stats for y label in 260d354c (TEST_DATA): {'count': 66.0, 'mean': 5.909090909090909, 'std': 2.891511570241274, 'min': 3.0, '25%': 4.0, '50%': 5.0, '75%': 7.0, 'max': 17.0}
+2024-11-13 08:32:36 - INFO : <FpVectModelTest>.model_post_init took 0.0000 seconds. [Size: 0.11 MB]
+2024-11-13 08:32:36 - INFO : <FpVectModelTest>.fit took 0.0006 seconds. [Size: 3.91 MB]
+2024-11-13 08:32:40 - INFO : Save FpVectModelTrain, path=save_V2\30\S06_2024-11-13_08-32-35\FpVectModelTrain_7e9b4a86.pickle successfully
+2024-11-13 08:32:40 - INFO : Save FpVectModel, path=save_V2\30\S06_2024-11-13_08-32-35\FpVectModel_260d354c.pickle successfully
+2024-11-13 08:32:40 - INFO : Save FpVectModelTest, path=save_V2\30\S06_2024-11-13_08-32-35\FpVectModelTest_f56408a8.pickle successfully
+2024-11-13 08:32:40 - INFO : Save ./tmp\pipeline_2024-11-13_08-32-35.xlsx,  path=save_V2\30\S06_2024-11-13_08-32-35\pipeline_2024-11-13_08-32-35.xlsx successfully
