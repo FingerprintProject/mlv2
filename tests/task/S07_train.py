@@ -1,10 +1,10 @@
 from pprint import pp
 from mlv2.model import FpVectModel, FpVectModelTest, FpVectModelTrain, ModelLr
-from .S00_common import setupTask
+from .S00_common import setupTask, hospitalId
 
 
 def training():
-    pl, lg, saver, loader = setupTask(hospitalId=30, modelName="S07")
+    pl, lg, saver, loader = setupTask(hospitalId=hospitalId, modelName="S07")
 
     # Load data
     loader.fitFromModelName(name="S06")

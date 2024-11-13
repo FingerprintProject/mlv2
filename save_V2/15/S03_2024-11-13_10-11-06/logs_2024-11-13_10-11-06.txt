@@ -1,0 +1,28 @@
+2024-11-13 10:11:06 - INFO : Save LE, path=save_V2\15\S02_2024-11-13_10-11-06\LE_534de166.pickle successfully
+2024-11-13 10:11:06 - INFO : Save ./tmp\pipeline_2024-11-13_10-11-06.xlsx,  path=save_V2\15\S02_2024-11-13_10-11-06\pipeline_2024-11-13_10-11-06.xlsx successfully
+2024-11-13 10:11:06 - INFO : Save ./tmp\logs_2024-11-13_10-11-06.txt,  path=save_V2\15\S02_2024-11-13_10-11-06\logs_2024-11-13_10-11-06.txt successfully
+2024-11-13 10:11:06 - INFO : <FpLoader>.model_post_init took 0.0000 seconds. [Size: 0.10 MB]
+2024-11-13 10:11:06 - INFO : <FpLoader>.fit took 0.1513 seconds. [Size: 2.17 MB]
+2024-11-13 10:11:06 - INFO : <FpDict>.model_post_init took 0.0000 seconds. [Size: 0.10 MB]
+2024-11-13 10:11:08 - INFO : removeIgnoredBSSID: Remove 0 out of 1320 rows. Remaining rows: 1320
+2024-11-13 10:11:09 - INFO : <FpDict>._filter took 0.0006 seconds. [Size: 4.17 MB]
+2024-11-13 10:11:09 - WARNING : Found 40 duplicated row(s) in data.
+2024-11-13 10:11:09 - INFO : removeDuplicatedEntries: Remove 40 out of 1320 rows. Remaining rows: 1280
+2024-11-13 10:11:09 - INFO : <FpDict>._filter took 0.0004 seconds. [Size: 2.37 MB]
+2024-11-13 10:11:09 - INFO : <FpDict>.fit took 3.2555 seconds. [Size: 4.44 MB]
+2024-11-13 10:11:11 - INFO : conform_to_leBssid: Remove 0 out of 1280 rows. Remaining rows: 1280
+2024-11-13 10:11:11 - INFO : <FpDict>._filter took 0.0005 seconds. [Size: 4.05 MB]
+2024-11-13 10:11:11 - INFO : <FpDict>.conform_to_le took 2.0918 seconds. [Size: 3.02 MB]
+2024-11-13 10:11:11 - WARNING : Remove 7 unknown zones entries. Ex: ['700_radio_1_v2' '703_radio_4_v2' '702_radio_3_v2' '701_radio_2_v2'
+ '999_emer_1_ptu' '281_lady_1_psych' '293_50y_1_gi']
+2024-11-13 10:11:11 - INFO : conform_to_leZone: Remove 159 out of 1280 rows. Remaining rows: 1121
+2024-11-13 10:11:11 - INFO : <FpDict>._filter took 0.0004 seconds. [Size: 2.17 MB]
+2024-11-13 10:11:11 - INFO : <FpDict>.conform_to_le took 0.0084 seconds. [Size: 2.09 MB]
+2024-11-13 10:11:14 - INFO : <LE>.encode took 2.7009 seconds. [Size: 2.82 MB]
+2024-11-13 10:11:15 - INFO : <W2V>.vectorize took 0.5084 seconds. [Size: 6.67 MB]
+2024-11-13 10:11:15 - INFO : <FpVectSupervised>.model_post_init took 0.0000 seconds. [Size: 0.13 MB]
+2024-11-13 10:11:15 - INFO : <FpVectSupervised>.fit took 0.0007 seconds. [Size: 11.60 MB]
+2024-11-13 10:11:15 - INFO : <FpVectSupervised>.calcCentroid took 0.5430 seconds. [Size: 6.28 MB]
+2024-11-13 10:11:16 - INFO : <FpVectSupervised>.calcZoneCentroidSelfNearestNeighbors took 0.0556 seconds. [Size: 6.39 MB]
+2024-11-13 10:11:16 - INFO : Save FpVectSupervised, path=save_V2\15\S03_2024-11-13_10-11-06\FpVectSupervised_75709afe.pickle successfully
+2024-11-13 10:11:16 - INFO : Save ./tmp\pipeline_2024-11-13_10-11-06.xlsx,  path=save_V2\15\S03_2024-11-13_10-11-06\pipeline_2024-11-13_10-11-06.xlsx successfully

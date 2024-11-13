@@ -3,11 +3,11 @@ from pprint import pp
 from mlv2.preprocess import LE, FpDict, FpLoader
 from mlv2.vectorize import W2V, CorpusBuilder
 
-from .S00_common import setupTask
+from .S00_common import setupTask, hospitalId
 
 
 def createVectorizer():
-    pl, lg, saver, _ = setupTask(hospitalId=30, modelName="S01")
+    pl, lg, saver, _ = setupTask(hospitalId=hospitalId, modelName="S01")
 
     fpLoader = FpLoader(pipeline=pl, logger=lg)
 

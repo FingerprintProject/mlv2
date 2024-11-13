@@ -1,10 +1,10 @@
 import pandas as pd
 from mlv2.preprocess import LE
-from .S00_common import setupTask
+from .S00_common import setupTask, hospitalId
 
 
 def createLeZone():
-    pl, lg, saver, _ = setupTask(hospitalId=30, modelName="S02")
+    pl, lg, saver, _ = setupTask(hospitalId=hospitalId, modelName="S02")
     dfML = pd.read_csv("data/other/ml_tags.csv")
     dfML["name"] = dfML["name"].apply(lambda el: el.strip())
     data = dfML["name"].values.tolist()

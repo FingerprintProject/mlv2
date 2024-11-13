@@ -3,11 +3,11 @@ from pprint import pp
 from mlv2.vectorize import FpVectUnsupervised, FpVectSupervised
 from mlv2.augment import TaggerDistanceSimple
 
-from .S00_common import setupTask
+from .S00_common import setupTask, hospitalId
 
 
 def augment():
-    pl, lg, saver, loader = setupTask(hospitalId=30, modelName="S05")
+    pl, lg, saver, loader = setupTask(hospitalId=hospitalId, modelName="S05")
     # Load fpSupervised
     loader.fitFromModelName(name="S03")
     fpVectSup: FpVectSupervised = loader.pick(["FpVectSupervised"])

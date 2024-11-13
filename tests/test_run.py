@@ -7,9 +7,9 @@ import tests.task.S06_prepare_training_data as S06
 import tests.task.S07_train as S07
 
 
-# def test_S01():
-#     S01.createVectorizer()
-#     assert True
+def test_S01():
+    S01.createVectorizer()
+    assert True
 
 
 def test_S02():

@@ -11,6 +11,8 @@ from mlv2.record import (
 )
 from mlv2.utils import Logger, Pipeline
 
+hospitalId = 15
+
 
 def setupTask(hospitalId, modelName):
 

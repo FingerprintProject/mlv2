@@ -2,11 +2,11 @@ from pprint import pp
 
 from mlv2.preprocess import FpLoader, FpDict
 from mlv2.vectorize import FpVectSupervised
-from .S00_common import setupTask
+from .S00_common import setupTask, hospitalId
 
 
 def vectorize_sup():
-    pl, lg, saver, loader = setupTask(hospitalId=30, modelName="S03")
+    pl, lg, saver, loader = setupTask(hospitalId=hospitalId, modelName="S03")
     # Load vectorizer
     loader.fitFromModelName(name="S01")
     leBssid = loader.pick(["LE"])

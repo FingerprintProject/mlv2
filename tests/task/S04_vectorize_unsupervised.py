@@ -2,12 +2,12 @@ from pprint import pp
 
 from mlv2.preprocess import FpLoader, FpDict
 from mlv2.vectorize import FpVectUnsupervised
-from .S00_common import setupTask
+from .S00_common import setupTask, hospitalId
 
 
 def vectorize_unsup():
 
-    pl, lg, saver, loader = setupTask(hospitalId=30, modelName="S04")
+    pl, lg, saver, loader = setupTask(hospitalId=hospitalId, modelName="S04")
 
     # Load vectorizer
     loader.fitFromModelName(name="S01")

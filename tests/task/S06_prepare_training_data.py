@@ -2,11 +2,11 @@ from pprint import pp
 
 from mlv2.vectorize import FpVectSupervised
 from mlv2.model import FpVectModel, FpVectModelTrain, FpVectModelTest
-from .S00_common import setupTask
+from .S00_common import setupTask, hospitalId
 
 
 def prepare_training_data():
-    pl, lg, saver, loader = setupTask(hospitalId=30, modelName="S06")
+    pl, lg, saver, loader = setupTask(hospitalId=hospitalId, modelName="S06")
 
     # Load fpSupervised
     loader.fitFromModelName(name="S05")
