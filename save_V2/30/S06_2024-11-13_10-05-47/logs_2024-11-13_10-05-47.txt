@@ -1,0 +1,20 @@
+2024-11-13 10:05:47 - INFO : <TaggerDistanceSimple>.model_post_init took 0.0000 seconds. [Size: 0.10 MB]
+2024-11-13 10:05:47 - WARNING : Found 36 out of 66 centroid labels with zero neighbors
+2024-11-13 10:05:47 - INFO : <TaggerDistanceSimple>.fit took 0.0745 seconds. [Size: 11.02 MB]
+2024-11-13 10:05:47 - INFO : <FpVectSupervised>.model_post_init took 0.0000 seconds. [Size: 0.11 MB]
+2024-11-13 10:05:47 - INFO : <FpVectSupervised>.fit took 0.0007 seconds. [Size: 19.49 MB]
+2024-11-13 10:05:47 - INFO : Stats for y label in 6355b5f4: {'count': 66.0, 'mean': 19.666666666666668, 'std': 9.44511812579686, 'min': 9.0, '25%': 12.0, '50%': 17.5, '75%': 24.0, 'max': 55.0}
+2024-11-13 10:05:47 - INFO : Save FpVectSupervised, path=save_V2\30\S05_2024-11-13_10-05-47\FpVectSupervised_6355b5f4.pickle successfully
+2024-11-13 10:05:47 - INFO : Save ./tmp\pipeline_2024-11-13_10-05-47.xlsx,  path=save_V2\30\S05_2024-11-13_10-05-47\pipeline_2024-11-13_10-05-47.xlsx successfully
+2024-11-13 10:05:47 - INFO : Save ./tmp\logs_2024-11-13_10-05-47.txt,  path=save_V2\30\S05_2024-11-13_10-05-47\logs_2024-11-13_10-05-47.txt successfully
+2024-11-13 10:05:47 - INFO : <FpVectModel>.model_post_init took 0.0000 seconds. [Size: 0.10 MB]
+2024-11-13 10:05:47 - INFO : <FpVectModel>.fit took 0.0006 seconds. [Size: 18.89 MB]
+2024-11-13 10:05:47 - INFO : Stats for y label in f3b472be (ALL_DATA): {'count': 66.0, 'mean': 19.666666666666668, 'std': 9.44511812579686, 'min': 9.0, '25%': 12.0, '50%': 17.5, '75%': 24.0, 'max': 55.0}
+2024-11-13 10:05:47 - INFO : Stats for y label in f3b472be (TRAIN_DATA): {'count': 66.0, 'mean': 13.757575757575758, 'std': 6.57281254881537, 'min': 6.0, '25%': 8.0, '50%': 12.5, '75%': 17.0, 'max': 38.0}
+2024-11-13 10:05:47 - INFO : Stats for y label in f3b472be (TEST_DATA): {'count': 66.0, 'mean': 5.909090909090909, 'std': 2.891511570241274, 'min': 3.0, '25%': 4.0, '50%': 5.0, '75%': 7.0, 'max': 17.0}
+2024-11-13 10:05:47 - INFO : <FpVectModelTest>.model_post_init took 0.0000 seconds. [Size: 0.11 MB]
+2024-11-13 10:05:47 - INFO : <FpVectModelTest>.fit took 0.0006 seconds. [Size: 3.91 MB]
+2024-11-13 10:05:53 - INFO : Save FpVectModelTrain, path=save_V2\30\S06_2024-11-13_10-05-47\FpVectModelTrain_03b2a90a.pickle successfully
+2024-11-13 10:05:53 - INFO : Save FpVectModel, path=save_V2\30\S06_2024-11-13_10-05-47\FpVectModel_f3b472be.pickle successfully
+2024-11-13 10:05:53 - INFO : Save FpVectModelTest, path=save_V2\30\S06_2024-11-13_10-05-47\FpVectModelTest_f88cddb9.pickle successfully
+2024-11-13 10:05:53 - INFO : Save ./tmp\pipeline_2024-11-13_10-05-47.xlsx,  path=save_V2\30\S06_2024-11-13_10-05-47\pipeline_2024-11-13_10-05-47.xlsx successfully

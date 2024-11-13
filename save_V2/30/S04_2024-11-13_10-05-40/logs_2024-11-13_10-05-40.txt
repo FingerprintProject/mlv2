@@ -1,0 +1,18 @@
+2024-11-13 10:05:40 - INFO : <FpLoader>.model_post_init took 0.0000 seconds. [Size: 0.10 MB]
+2024-11-13 10:05:40 - WARNING : Dropping 8 out of 842 rows due to NaN detection
+2024-11-13 10:05:40 - INFO : <FpLoader>.fit took 0.4104 seconds. [Size: 1.20 MB]
+2024-11-13 10:05:40 - INFO : <FpDict>.model_post_init took 0.0000 seconds. [Size: 0.11 MB]
+2024-11-13 10:05:42 - INFO : removeIgnoredBSSID: Remove 0 out of 834 rows. Remaining rows: 834
+2024-11-13 10:05:42 - INFO : <FpDict>._filter took 0.0004 seconds. [Size: 2.50 MB]
+2024-11-13 10:05:42 - INFO : removeDuplicatedEntries: Remove 0 out of 834 rows. Remaining rows: 834
+2024-11-13 10:05:42 - INFO : <FpDict>._filter took 0.0016 seconds. [Size: 1.51 MB]
+2024-11-13 10:05:42 - INFO : <FpDict>.fit took 2.1436 seconds. [Size: 2.53 MB]
+2024-11-13 10:05:44 - INFO : conform_to_leBssid: Remove 0 out of 834 rows. Remaining rows: 834
+2024-11-13 10:05:44 - INFO : <FpDict>._filter took 0.0004 seconds. [Size: 2.51 MB]
+2024-11-13 10:05:44 - INFO : <FpDict>.conform_to_le took 1.4319 seconds. [Size: 2.12 MB]
+2024-11-13 10:05:46 - INFO : <LE>.encode took 2.0349 seconds. [Size: 2.12 MB]
+2024-11-13 10:05:46 - INFO : <W2V>.vectorize took 0.3859 seconds. [Size: 5.49 MB]
+2024-11-13 10:05:46 - INFO : <FpVectUnsupervised>.model_post_init took 0.0000 seconds. [Size: 0.12 MB]
+2024-11-13 10:05:47 - INFO : <FpVectUnsupervised>.fit took 0.0004 seconds. [Size: 9.41 MB]
+2024-11-13 10:05:47 - INFO : Save FpVectUnsupervised, path=save_V2\30\S04_2024-11-13_10-05-40\FpVectUnsupervised_937c1680.pickle successfully
+2024-11-13 10:05:47 - INFO : Save ./tmp\pipeline_2024-11-13_10-05-40.xlsx,  path=save_V2\30\S04_2024-11-13_10-05-40\pipeline_2024-11-13_10-05-40.xlsx successfully

@@ -1,8 +1,0 @@
-2024-11-13 08:31:15 - INFO : <TaggerDistanceSimple>.model_post_init took 0.0000 seconds. [Size: 0.10 MB]
-2024-11-13 08:31:15 - WARNING : Found 36 out of 66 centroid labels with zero neighbors
-2024-11-13 08:31:15 - INFO : <TaggerDistanceSimple>.fit took 0.1171 seconds. [Size: 11.03 MB]
-2024-11-13 08:31:15 - INFO : <FpVectSupervised>.model_post_init took 0.0000 seconds. [Size: 0.11 MB]
-2024-11-13 08:31:15 - INFO : <FpVectSupervised>.fit took 0.0008 seconds. [Size: 19.49 MB]
-2024-11-13 08:31:15 - INFO : Stats for y label in 405cb940: {'count': 66.0, 'mean': 19.666666666666668, 'std': 9.44511812579686, 'min': 9.0, '25%': 12.0, '50%': 17.5, '75%': 24.0, 'max': 55.0}
-2024-11-13 08:31:15 - INFO : Save FpVectSupervised, path=save_V2\30\S05_2024-11-13_08-31-15\FpVectSupervised_405cb940.pickle successfully
-2024-11-13 08:31:15 - INFO : Save ./tmp\pipeline_2024-11-13_08-31-15.xlsx,  path=save_V2\30\S05_2024-11-13_08-31-15\pipeline_2024-11-13_08-31-15.xlsx successfully

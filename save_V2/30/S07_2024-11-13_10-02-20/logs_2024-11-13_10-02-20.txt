@@ -1,5 +1,0 @@
-2024-11-13 10:02:20 - INFO : <ModelLr>.model_post_init took 0.0000 seconds. [Size: 0.10 MB]
-2024-11-13 10:02:21 - INFO : <ModelLr>.fit took 1.2381 seconds. [Size: 1.25 MB]
-2024-11-13 10:02:21 - INFO : <ModelLr>.calculateMetrices took 0.0056 seconds. [Size: 3.86 MB]
-2024-11-13 10:02:23 - INFO : Save ModelLr, path=save_V2\30\S07_2024-11-13_10-02-20\ModelLr_14518e44.pickle successfully
-2024-11-13 10:02:23 - INFO : Save ./tmp\pipeline_2024-11-13_10-02-20.xlsx,  path=save_V2\30\S07_2024-11-13_10-02-20\pipeline_2024-11-13_10-02-20.xlsx successfully
