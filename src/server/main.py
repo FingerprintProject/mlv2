@@ -11,8 +11,8 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/test")
-def read_test():
+@app.post("/predict")
+def predict():
 
     pl = Pipeline(filenamePrefix="pipeline_S01")
     saver = SaverFS(folderNamePrefix="S01")

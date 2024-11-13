@@ -7,39 +7,40 @@ from typing_extensions import TypedDict
 
 from ..utils import FpBaseModel, logPipeline
 
-pattern = r"SUPV1|^SUPV2$|^UNSUPV1$|^UNSUPV2$"
+patternFile = r"^SUPV1$|^SUPV2$|^UNSUPV1$|^UNSUPV2$|"
+patternApi = r"^PREDICTV1$"
 
 
 class FileData(BaseModel):
     filename: str
-    fileType: str = Field(pattern=pattern)
+    fileType: str = Field(pattern=patternFile)
 
 
-class WAPInfoV2(TypedDict):
+class File_WAPInfoV2(TypedDict):
     ssid: str
     bssid: str
     level: int
     frequency: int
 
 
-class SupV2_Dict(TypedDict):
+class File_SupV2_Dict(TypedDict):
     id: str
     point: str
-    dataDictAll: List[WAPInfoV2]
+    dataDictAll: List[File_WAPInfoV2]
 
 
-class SupV2_Val(BaseModel):
-    admin_json: SupV2_Dict
+class File_SupV2_Val(BaseModel):
+    admin_json: File_SupV2_Dict
 
 
-class WAPInfoV1(TypedDict):
+class File_WAPInfoV1(TypedDict):
     ssid: str
     bssid: str
     level: int
     freq: int
 
 
-class UnsupV1_Val(BaseModel):
+class File_UnsupV1_Val(BaseModel):
     id: int
     scanIdx: int
     point: str
@@ -47,12 +48,19 @@ class UnsupV1_Val(BaseModel):
     device: str
     timestamp: int
     building: str
-    dataDictAll: List[WAPInfoV1]
+    dataDictAll: List[File_WAPInfoV1]
+
+
+class Api_PredictV1(TypedDict):
+    SSID: str
+    BSSID: str
+    frequency: int
+    level: int
 
 
 class FpLoader(FpBaseModel):
     data: Optional[pd.DataFrame] = None
-    fileType: str = Field(pattern=pattern, default="")
+    fileType: str = Field(pattern=patternFile, default="")
 
     @logPipeline()
     def model_post_init(self, __context) -> None:
@@ -60,7 +68,7 @@ class FpLoader(FpBaseModel):
 
     @logPipeline()
     @validate_call
-    def fit(
+    def fitFromFile(
         self,
         fileData: List[FileData],
         info: Dict[str, Any] = {},
@@ -73,9 +81,9 @@ class FpLoader(FpBaseModel):
             fileType = fd.fileType
             match fileType:
                 case "SUPV2":
-                    df = self.loadSupV1(filename)
+                    df = self.loadFileSupV1(filename)
                 case "UNSUPV1":
-                    df = self.loadUnsupV1(filename)
+                    df = self.loadFileUnsupV1(filename)
                 case _:
                     raise Exception("Unknown filetype")
             dfArr.append(df)
@@ -86,13 +94,30 @@ class FpLoader(FpBaseModel):
 
         self.isFitted = True
 
+    @validate_call
+    def fitFromApi(
+        self,
+        data: List[Api_PredictV1],
+        info: Dict[str, Any] = {},
+    ):
+        dft = pd.DataFrame.from_dict(data)
+        dft = dft.rename(columns={"SSID": "ssid", "BSSID": "bssid"})
+
+        dataTmp = dict(
+            id="api", zoneName=np.nan, fingerprint=dft.to_dict(orient="records")
+        )
+        dftOut = pd.DataFrame.from_dict([dataTmp])
+        self.data = dftOut
+        self.data.index = self.getUniqueIdx(idxList=self.data.index.values.tolist())
+        self.isFitted = True
+
     def checkDf(self, df: pd.DataFrame, Val: Any):
         def rowFN(row):
             Val.model_validate(row.to_dict())
 
         df.apply(rowFN, axis=1)
 
-    def loadSupV1(self, filename):
+    def loadFileSupV1(self, filename):
 
         def extractDataFromJSON(row):
             data = row["admin_json"]
@@ -100,13 +125,13 @@ class FpLoader(FpBaseModel):
             return pd.Series(data)
 
         dft = pd.read_json(filename, convert_dates=False)
-        self.checkDf(dft, SupV2_Val)
+        self.checkDf(dft, File_SupV2_Val)
         dft = dft.apply(extractDataFromJSON, axis=1)
         dft = dft.rename(columns={"point": "zoneName", "dataDictAll": "fingerprint"})
         dft = dft[["id", "zoneName", "fingerprint"]]
         return dft
 
-    def loadUnsupV1(self, filename):
+    def loadFileUnsupV1(self, filename):
 
         dft = pd.read_json(filename, convert_dates=False)
         filtNaN = dft.isna().any(axis=1)
@@ -116,7 +141,7 @@ class FpLoader(FpBaseModel):
                 f"Dropping {numNan} out of {dft.shape[0]} rows due to NaN detection"
             )
         dft = dft.dropna()
-        self.checkDf(dft, UnsupV1_Val)
+        self.checkDf(dft, File_UnsupV1_Val)
 
         # Chagne key "freq" to "frequency"
         def rowFn(fp):

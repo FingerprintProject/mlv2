@@ -26,15 +26,27 @@ def training():
     )
 
     # Final model
-    modelLrFinal = ModelLr(pipeline=pl)
+    modelLrFinal = ModelLr(pipeline=pl, logger=lg, **fpVectModel.getIds())
     modelLrFinal.fit(
         X_train=fpVectModel.getX(),
         y_train=fpVectModel.getLabels(),
         info=dict(src=fpVectModel.uuid),
     )
 
+    # Load additional class instance for prediction
+    # path = "save_V2\\15\\S01_2024-11-13_10-09-12"
+    # loader.fitFromPath(path=path)
+    loader.fitFromModelName(name="S01")
+    leBssid = loader.pick(["LE"])
+    w2v = loader.pick(["W2V"])
+
+    # path = "save_V2\\15\\S02_2024-11-13_12-38-37"
+    # loader.fitFromPath(path=path)
+    loader.fitFromModelName(name="S02")
+    leZone = loader.pick(["LE"])
+
     pl.excel()
-    saver.savePickle([modelLrFinal], makeActive=True)
+    saver.savePickle([modelLrFinal, leBssid, leZone, w2v], makeActive=True)
     pl.excel()
     saver.saveFile(
         fileNameArr=[pl.filename, lg.filename], tempFolderPathSource=pl.outFolder

@@ -57,7 +57,7 @@ class Loader(FpBaseModel):
                 className=className,
                 instanceId=uuid,
             )
-            self.data.append(DataSchema(**tmp))
+            data.append(DataSchema(**tmp))
         self.data = data
 
     @validate_call

@@ -25,7 +25,7 @@ def createVectorizer():
     fileData = [fileData1, fileData2]
 
     # Load
-    fpLoader.fit(fileData=fileData, info=dict(src=fileData))
+    fpLoader.fitFromFile(fileData=fileData, info=dict(src=fileData))
 
     # Dict data
     fpDict = FpDict(pipeline=pl, logger=lg)

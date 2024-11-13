@@ -30,11 +30,23 @@ def checkSeriesZone(sr: Any) -> Any:
     return sr
 
 
+def checkExtRef(df: Any) -> Any:
+    class Val(BaseModel):
+        entry: str
+        ref: Any
+
+    def rowFN(row):
+        Val.model_validate(row.to_dict())
+
+    df.apply(rowFN, axis=1)
+
+
 class LE(FpBaseModel):
     encoderType: str = Field(pattern=r"^BSSID$|^ZONE$", default="ZONE")
     model: LabelEncoder = Field(default_factory=LabelEncoder)
     bssidPrefix: str = "W"
     entryList: Optional[List[str]] = None
+    extRef: Optional[pd.DataFrame] = None  # Use for storing external references
 
     @logPipeline()
     def model_post_init(self, __context) -> None:
@@ -42,7 +54,19 @@ class LE(FpBaseModel):
 
     @logPipeline()
     @validate_call
-    def fit(self, data: List[str], info={}):
+    def fit(self, data: List[str], info={}, extRef=None):
+        if extRef is not None:
+            checkExtRef(extRef)
+            filtDup = extRef["entry"].duplicated()
+            dups = extRef[filtDup]["entry"].values
+            nDup = filtDup.sum()
+            if nDup > 0:
+                self.logger.warning(
+                    f"Found {nDup} duplicated entries in ExtRef, i.e. f{dups[:4]}.... Removing duplicates entries."
+                )
+            extRef = extRef[~filtDup]
+            self.extRef = extRef
+
         self.preventRefit()
         # Create unique list
         sr = pd.Series(data).sort_values()
@@ -103,3 +127,6 @@ class LE(FpBaseModel):
 
         res = data.apply(rowFn)
         return res
+
+    def inverse_transform(self, data):
+        return self.model.inverse_transform(data)

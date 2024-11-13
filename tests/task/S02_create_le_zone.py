@@ -6,11 +6,12 @@ from .S00_common import setupTask, hospitalId
 def createLeZone():
     pl, lg, saver, _ = setupTask(hospitalId=hospitalId, modelName="S02")
     dfML = pd.read_csv("data/other/ml_tags.csv")
-    dfML["name"] = dfML["name"].apply(lambda el: el.strip())
-    data = dfML["name"].values.tolist()
+    dfML = dfML.rename(columns={"id": "ref", "name": "entry"})
+    dfML["entry"] = dfML["entry"].apply(lambda el: el.strip())
+    data = dfML["entry"].values.tolist()
 
-    leZone = LE(encoderType="ZONE", pipeline=pl)
-    leZone.fit(data=data, info=dict(src="ml_tags.csv"))
+    leZone = LE(encoderType="ZONE", pipeline=pl, logger=lg)
+    leZone.fit(data=data, info=dict(src="ml_tags.csv"), extRef=dfML)
 
     # Save class instances and output
     saver.savePickle([leZone], makeActive=True)

@@ -24,7 +24,7 @@ def vectorize_sup():
 
     # Load data
     loader = FpLoader(pipeline=pl, logger=lg)
-    loader.fit(fileData=fileData, info=dict(src=fileData))
+    loader.fitFromFile(fileData=fileData, info=dict(src=fileData))
 
     # Preprocess
     fpDict = FpDict(pipeline=pl, logger=lg)
