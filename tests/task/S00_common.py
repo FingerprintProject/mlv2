@@ -8,6 +8,7 @@ from mlv2.record import (
     Loader,
     getLocalDbCredential,
     getLocalSessionFactory,
+    getGcpSessionFactory,
 )
 from mlv2.utils import Logger, Pipeline
 
