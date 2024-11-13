@@ -1,9 +1,9 @@
 from typing import Any, List, Union
+
 import pandas as pd
 from pydantic import BaseModel, validate_call
 
-from mlv2.utils import FpBaseModel
-
+from ..utils import FpBaseModel, logPipeline
 from .dbRepositories import FpModelRepository
 from .storageRepository import FsRepository, GcsRepository
 
@@ -21,6 +21,7 @@ class Loader(FpBaseModel):
     fpModelRepository: FpModelRepository
     storageRepository: Union[GcsRepository, FsRepository]
 
+    @logPipeline()
     def fitFromModelName(self, name):
         pickleContents = self.fpModelRepository.getModelRecord(
             data=dict(name=name, hospitalId=self.hospitalId)
@@ -38,6 +39,7 @@ class Loader(FpBaseModel):
             data.append(DataSchema(**tmp))
         self.data = data
 
+    @logPipeline()
     def fitFromPath(self, path):
         """Make sure that path contains forward slash or double backslash, not single backslash"""
 

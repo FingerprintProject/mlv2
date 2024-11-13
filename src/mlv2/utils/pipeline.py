@@ -63,9 +63,13 @@ def logPipeline():
             total_time = end_time - start_time
 
             # Logging
-            size = asizeof(data) / 1e6
+            # size = asizeof(data) / 1e6
+            # self.logger.info(
+            #     f"<{type(self).__name__}>.{func.__name__} took {total_time:.4f} seconds. [Size: {size:.2f} MB]"
+            # )
+
             self.logger.info(
-                f"<{type(self).__name__}>.{func.__name__} took {total_time:.4f} seconds. [Size: {size:.2f} MB]"
+                f"<{type(self).__name__}>.{func.__name__} took {total_time:.4f} seconds."
             )
 
             return result

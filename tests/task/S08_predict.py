@@ -1,6 +1,6 @@
 from pprint import pp
 
-from mlv2.model import FpVectModel, FpVectModelTest, FpVectModelTrain, ModelLr
+from mlv2.model import ModelLr
 from mlv2.preprocess import FpDict, FpLoader
 from mlv2.vectorize import FpVectUnsupervised
 
@@ -191,11 +191,5 @@ def predict():
         modelId=modelLr.uuid,
     )
     pp(output)
-    # pl.excel()
-    # saver.savePickle([modelLrFinal, leBssid, leZone], makeActive=True)
-    # pl.excel()
-    # saver.saveFile(
-    #     fileNameArr=[pl.filename, lg.filename], tempFolderPathSource=pl.outFolder
-    # )
 
     pass
