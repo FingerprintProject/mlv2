@@ -10,7 +10,7 @@
 
 ## Test
 
-- `docker compose --env-file ./.env.test up -d --force-recreate --build`
+- `docker compose -f ./docker-compose-test.yml --env-file ./.env.test up -d --force-recreate --build`
 
 ## Deploy
 

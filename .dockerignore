@@ -7,3 +7,6 @@ tests/
 .pdm-python
 prototype/
 save/
+save_V2/
+data/
+**/*.pyc

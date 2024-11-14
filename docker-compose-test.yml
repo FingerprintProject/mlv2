@@ -2,7 +2,9 @@ name: mlv2-project
 services:
   backend:
     container_name: mlv2-backend
-    build: .
+    build: 
+      context: .
+      dockerfile: ./docker/Dockerfile.test
     ports:
       - ${FASTAPI_PORT}:8000
     networks:
