@@ -44,4 +44,4 @@ substitutions:
   _GCR_HOSTNAME: asia-southeast1-docker.pkg.dev
   _ARTIFACT_REGISTRY: daywork-service
   _PROJECT_ID: daywork-215507
-  _SERVICE_NAME: daywork-python-wifi-test
+  _SERVICE_NAME: daywork-wifi-python-service

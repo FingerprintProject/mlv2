@@ -37,4 +37,4 @@ COPY --chown=appuser:appuser . .
 
 
 # Command to run the application using PDM
-CMD [ "fastapi", "run", "/app/src/server/main.py", "--port", "8000"]
+CMD [ "fastapi", "run", "/app/src/server/main.py", "--port", "8080"]

@@ -1,8 +1,15 @@
-import hashlib
+import hashlib 
+from dotenv import load_dotenv
+import os
 
+#load_dotenv()
 PREDEFINED_TOKEN_HASH = (
-    "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
+    "ee5050a452bc4b251450ed777ab72d4ebed254a5956d4399eedc1d8d311ab00a"
 )
+
+# PREDEFINED_TOKEN_HASH = (
+#     os.getenv("PREDEFINED_TOKEN_HASH")
+# )
 
 
 def hashString(input_string):
