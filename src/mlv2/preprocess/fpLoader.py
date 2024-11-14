@@ -16,31 +16,27 @@ class FileData(BaseModel):
     fileType: str = Field(pattern=patternFile)
 
 
-class File_WAPInfoV2(TypedDict):
-    ssid: str
-    bssid: str
-    level: int
-    frequency: int
+class File_Sup_Val(BaseModel):
 
+    class WAP(TypedDict):
+        ssid: str
+        bssid: str
+        level: int
+        frequency: int
 
-class File_SupV2_Dict(TypedDict):
     id: str
     point: str
-    dataDictAll: List[File_WAPInfoV2]
+    dataDictAll: List[WAP]
 
 
-class File_SupV2_Val(BaseModel):
-    admin_json: File_SupV2_Dict
+class File_Unsup_Val(BaseModel):
 
+    class WAP(TypedDict):
+        ssid: str
+        bssid: str
+        level: int
+        freq: int
 
-class File_WAPInfoV1(TypedDict):
-    ssid: str
-    bssid: str
-    level: int
-    freq: int
-
-
-class File_UnsupV1_Val(BaseModel):
     id: int
     scanIdx: int
     point: str
@@ -48,10 +44,10 @@ class File_UnsupV1_Val(BaseModel):
     device: str
     timestamp: int
     building: str
-    dataDictAll: List[File_WAPInfoV1]
+    dataDictAll: List[WAP]
 
 
-class Api_PredictV1(TypedDict):
+class API_Predict_V1(TypedDict):
     SSID: str
     BSSID: str
     frequency: int
@@ -97,7 +93,7 @@ class FpLoader(FpBaseModel):
     @validate_call
     def fitFromApi(
         self,
-        data: List[Api_PredictV1],
+        data: List[API_Predict_V1],
         info: Dict[str, Any] = {},
     ):
         dft = pd.DataFrame.from_dict(data)
@@ -125,7 +121,7 @@ class FpLoader(FpBaseModel):
             return pd.Series(data)
 
         dft = pd.read_json(filename, convert_dates=False)
-        self.checkDf(dft, File_SupV2_Val)
+        self.checkDf(dft, File_Sup_Val)
         dft = dft.apply(extractDataFromJSON, axis=1)
         dft = dft.rename(columns={"point": "zoneName", "dataDictAll": "fingerprint"})
         dft = dft[["id", "zoneName", "fingerprint"]]
@@ -141,7 +137,7 @@ class FpLoader(FpBaseModel):
                 f"Dropping {numNan} out of {dft.shape[0]} rows due to NaN detection"
             )
         dft = dft.dropna()
-        self.checkDf(dft, File_UnsupV1_Val)
+        self.checkDf(dft, File_Unsup_Val)
 
         # Chagne key "freq" to "frequency"
         def rowFn(fp):
