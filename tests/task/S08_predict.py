@@ -8,7 +8,8 @@ from .S00_common import hospitalId, setupTask
 from .S00_data import data_normal_1, data_outside
 
 
-data = data_outside
+# data = data_outside
+data = data_normal_1
 
 
 def predict():
