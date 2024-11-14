@@ -29,11 +29,22 @@ steps:
       - --set-secrets
       - "bigquery_connection=projects/$PROJECT_NUMBER/secrets/bigquery-connection"
       - --set-env-vars
-      - "PROJECT_NAME=daywork-215507"
+      - "PROJECT_NAME=$_PROJECT_NAME"
       - --set-env-vars
-      - "CONNECTION=PROD"
+      - "PROJECT_ID=$_PROJECT_ID"
       - --set-env-vars
-      - "PREDEFINED_TOKEN_HASH=ee5050a452bc4b251450ed777ab72d4ebed254a5956d4399eedc1d8d311ab00a"
+      - "PROJECT_NUMBER=$_PROJECT_NUMBER"
+      - --set-env-vars
+      - "ENVIRONMENT=$_ENVIRONMENT"
+      - --set-env-vars
+      - "PREDEFINED_TOKEN_HASH=$_PREDEFINED_TOKEN_HASH"
+      - --set-env-vars
+      - "SECRET_ID=$_SECRET_ID"
+      - --set-env-vars
+      - "BUCKET_NAME=$_BUCKET_NAME"
+      - --set-env-vars
+      - "VERSION_ID=$_VERSION_ID"
+
     id: Deploy
 
 options:
@@ -44,4 +55,11 @@ substitutions:
   _GCR_HOSTNAME: asia-southeast1-docker.pkg.dev
   _ARTIFACT_REGISTRY: daywork-service
   _PROJECT_ID: daywork-215507
+  _PROJECT_NAME: daywork-dev
+  _PROJECT_NUMBER: "811358834395"
+  _SECRET_ID: python-wifi-api
+  _VERSION_ID: "1"
+  _BUCKET_NAME: wifi-localization-model-dev
   _SERVICE_NAME: daywork-wifi-python-service
+  _PREDEFINED_TOKEN_HASH: af949ebd22fee1d84c377e7f10b624b6294e1cde9d8e0031ec687b2d706c5d87
+  _ENVIRONMENT: CLOUD_RUN

@@ -71,7 +71,7 @@ class FsRepository(FpBaseModel):
 
 
 class GcsRepository(FpBaseModel):
-    projectName: str = "daywork-215507"
+    projectId: str = "daywork-215507"
     bucketName: str = "wifi-localization-model-dev"
     storageClient: Any = None
     bucket: Any = None
@@ -81,7 +81,7 @@ class GcsRepository(FpBaseModel):
         credentials, _ = default()
         self.credentials = credentials
         self.storageClient = storage.Client(
-            project=self.projectName, credentials=self.credentials
+            project=self.projectId, credentials=self.credentials
         )
         self.bucket = self.storageClient.bucket(self.bucketName)
 

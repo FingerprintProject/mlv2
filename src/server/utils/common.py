@@ -1,15 +1,19 @@
-import hashlib 
-from dotenv import load_dotenv
+import hashlib
 import os
+import pathlib
 
-#load_dotenv()
-PREDEFINED_TOKEN_HASH = (
-    "ee5050a452bc4b251450ed777ab72d4ebed254a5956d4399eedc1d8d311ab00a"
-)
+from dotenv import load_dotenv
 
-# PREDEFINED_TOKEN_HASH = (
-#     os.getenv("PREDEFINED_TOKEN_HASH")
-# )
+ENVIRONMENT = os.getenv("ENVIRONMENT")
+if ENVIRONMENT != "CLOUD_RUN":
+    curPath = os.getcwd()
+    parPath = pathlib.Path(curPath)
+    dotEnvPath = os.path.join(parPath, ".env.dev")
+    load_dotenv(dotEnvPath, override=True)
+    print("LOCAL")
+
+PREDEFINED_TOKEN_HASH = os.getenv("PREDEFINED_TOKEN_HASH")
+print(dict(PREDEFINED_TOKEN_HASH=PREDEFINED_TOKEN_HASH))
 
 
 def hashString(input_string):

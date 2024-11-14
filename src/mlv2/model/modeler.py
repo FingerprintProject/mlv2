@@ -49,7 +49,7 @@ class Model(FpBaseModel):
         y_prob = self.clf.predict_proba(X)
         dfp = pd.DataFrame({"label": self.clf.classes_, "probability": y_prob[0]})
         dfp = dfp.sort_values(by=["probability"], ascending=False)
-        dfp = dfp.iloc[:10, :]
+        dfp = dfp.iloc[:3, :]
         dfp["probability"] = dfp["probability"].apply(lambda p: round(p * 100, 2))
         dfp["zoneName"] = leZone.inverse_transform(dfp["label"])
 

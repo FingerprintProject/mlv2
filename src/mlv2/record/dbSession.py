@@ -39,9 +39,11 @@ def getLocalSessionFactory(db_username, db_password, db_database, db_host, db_po
     return sessionmaker(engine, expire_on_commit=False)
 
 
-def getGcpDbCredential(project_id, secret_id, version_id):
+def getGcpDbCredential(project_number, secret_id, version_id):
     client = secretmanager.SecretManagerServiceClient()
-    resource_name = f"projects/{project_id}/secrets/{secret_id}/versions/{version_id}"
+    resource_name = (
+        f"projects/{project_number}/secrets/{secret_id}/versions/{version_id}"
+    )
     response = client.access_secret_version(request={"name": resource_name})
     payload = response.payload.data.decode("UTF-8")
     load_dotenv(stream=StringIO(payload), override=True)

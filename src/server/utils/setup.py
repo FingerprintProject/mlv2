@@ -1,16 +1,18 @@
 import os
 import pathlib
 
+from dotenv import load_dotenv
+
 from mlv2.record import (
     FpModelRepository,
-    GcsRepository,
     FsRepository,
-    Saver,
+    GcsRepository,
     Loader,
+    Saver,
+    getGcpDbCredential,
+    getGcpSessionFactory,
     getLocalDbCredential,
     getLocalSessionFactory,
-    getGcpSessionFactory,
-    getGcpDbCredential,
 )
 from mlv2.utils import Logger, Pipeline
 
@@ -18,6 +20,34 @@ hospitalId = 15
 
 # DB_LOCATION = "LOCAL"
 DB_LOCATION = "CLOUD"
+
+
+ENVIRONMENT = os.getenv("ENVIRONMENT")
+
+if ENVIRONMENT != "CLOUD_RUN":
+    curPath = os.getcwd()
+    parPath = pathlib.Path(curPath)
+    dotEnvPath = os.path.join(parPath, ".env.dev")
+    load_dotenv("./env.dev", override=True)
+
+# Env
+PROJECT_ID = os.getenv("PROJECT_ID")
+PROJECT_NAME = os.getenv("PROJECT_NAME")
+PROJECT_NUMBER = os.getenv("PROJECT_NUMBER")
+SECRET_ID = os.getenv("SECRET_ID")
+VERSION_ID = os.getenv("VERSION_ID")
+BUCKET_NAME = os.getenv("BUCKET_NAME")
+
+print(
+    dict(
+        PROJECT_ID=PROJECT_ID,
+        PROJECT_NUMBER=PROJECT_NUMBER,
+        PROJECT_NAME=PROJECT_NAME,
+        SECRET_ID=SECRET_ID,
+        VERSION_ID=VERSION_ID,
+        BUCKET_NAME=BUCKET_NAME,
+    )
+)
 
 
 def setupTask(hospitalId, modelName, dbLocation=DB_LOCATION):
@@ -37,11 +67,13 @@ def setupTask(hospitalId, modelName, dbLocation=DB_LOCATION):
         Session = getLocalSessionFactory(**getLocalDbCredential(dotEnvPath))
     elif dbLocation == "CLOUD":
         # Storage
-        storageRepo = GcsRepository(logger=lg)
+        storageRepo = GcsRepository(
+            logger=lg, projectId=PROJECT_NAME, bucketName=BUCKET_NAME
+        )
 
         # Session
         gcpSecretInfo = dict(
-            project_id="811358834395", secret_id="python-wifi-api", version_id="1"
+            project_number=PROJECT_NUMBER, secret_id=SECRET_ID, version_id=VERSION_ID
         )
         gcpCredential = getGcpDbCredential(**gcpSecretInfo)
         Session = getGcpSessionFactory(**gcpCredential)

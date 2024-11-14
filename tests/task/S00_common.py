@@ -40,7 +40,7 @@ def setupTask(hospitalId, modelName, dbLocation=DB_LOCATION):
 
         # Session
         gcpSecretInfo = dict(
-            project_id="811358834395", secret_id="python-wifi-api", version_id="1"
+            project_number="811358834395", secret_id="python-wifi-api", version_id="1"
         )
         gcpCredential = getGcpDbCredential(**gcpSecretInfo)
         Session = getGcpSessionFactory(**gcpCredential)
