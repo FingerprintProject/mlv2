@@ -31,6 +31,7 @@ class Logger(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
     now: datetime.datetime = Field(default_factory=datetime.datetime.now)
     includeDateTimeInFilename: bool = True
+    disabled: bool = False
 
     def __repr__(self):
         return "Logger"
@@ -58,26 +59,27 @@ class Logger(BaseModel):
         )  # Setting the log level
         self.logger.handlers.clear()  # Prevent adding duplicated handler when multiple class instances initialize logger with the same name.
 
-        # Console output
-        fmtStrConsole = logging.Formatter(
-            self.fmtConsole, "%Y-%m-%d %H:%M:%S"
-        )  # Setting the log format
-        csh = logging.StreamHandler()  # on-screen output
-        csh.setFormatter(fmtStrConsole)  # Setting the format
-        self.logger.addHandler(csh)
+        if not self.disabled:
+            # Console output
+            fmtStrConsole = logging.Formatter(
+                self.fmtConsole, "%Y-%m-%d %H:%M:%S"
+            )  # Setting the log format
+            csh = logging.StreamHandler()  # on-screen output
+            csh.setFormatter(fmtStrConsole)  # Setting the format
+            self.logger.addHandler(csh)
 
-        # File output
-        trfh = handlers.TimedRotatingFileHandler(
-            filename=filepath,
-            when=self.when,
-            backupCount=self.backCount,
-            encoding="utf-8",
-        )  # automatically generates the file at specified intervals
-        fmtStrFile = logging.Formatter(
-            self.fmtFile, "%Y-%m-%d %H:%M:%S"
-        )  # Setting the log format
-        trfh.setFormatter(fmtStrFile)  # Setting the format
-        self.logger.addHandler(trfh)  # Add the object to the logger
+            # File output
+            trfh = handlers.TimedRotatingFileHandler(
+                filename=filepath,
+                when=self.when,
+                backupCount=self.backCount,
+                encoding="utf-8",
+            )  # automatically generates the file at specified intervals
+            fmtStrFile = logging.Formatter(
+                self.fmtFile, "%Y-%m-%d %H:%M:%S"
+            )  # Setting the log format
+            trfh.setFormatter(fmtStrFile)  # Setting the format
+            self.logger.addHandler(trfh)  # Add the object to the logger
 
     def debug(self, msg):
         self.logger.debug(
@@ -95,6 +97,9 @@ class Logger(BaseModel):
 
     def critical(self, msg):
         self.logger.critical(msg, **dict(stacklevel=STACKLEVEL))
+
+    def disable(self):
+        self.logger.handlers.clear()
 
 
 def main():

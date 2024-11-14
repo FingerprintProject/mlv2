@@ -23,7 +23,8 @@ DB_LOCATION = "CLOUD"
 def setupTask(hospitalId, modelName, dbLocation=DB_LOCATION):
 
     pl = Pipeline(filenamePrefix="pipeline")
-    lg = Logger(filenamePrefix="logs", now=pl.now)
+    # Logger that does not log anything
+    lg = Logger(filenamePrefix="logs", now=pl.now, disabled=True)
 
     if dbLocation == "LOCAL":
         # Storage
@@ -66,6 +67,7 @@ def setupTask(hospitalId, modelName, dbLocation=DB_LOCATION):
         modelName=modelName,
         fpModelRepository=dbRepo,
         storageRepository=storageRepo,
+        logger=lg,
     )
 
     return pl, lg, saver, loader

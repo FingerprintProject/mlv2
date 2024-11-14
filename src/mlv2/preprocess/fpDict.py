@@ -155,6 +155,8 @@ class FpDict(FpBaseModel):
         self.logger.info(
             f"{operation}: Remove {nRemoved} out of {nTot} rows. Remaining rows: {nRemained}"
         )
+        if nRemained == 0:
+            raise Exception("No fingerprint remains after filtering")
 
     def removeDuplicatedEntries(self):
         def rowFN(fp):
