@@ -135,7 +135,6 @@ class FpLoaderFile(FpLoaderBase):
             self.logger.warning(
                 f"Dropping {numRemoved} out of {df.shape[0]} rows due to invalid data"
             )
-        dft = df.copy()
         df = df[filt]
         if df.shape[0] == 0:
             raise Exception("No data left after validation")
