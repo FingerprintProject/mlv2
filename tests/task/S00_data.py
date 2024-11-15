@@ -533,3 +533,6 @@ data_41_normal_1 = [
         "frequency": 5180,
     },
 ]
+
+# import json
+# print(json.dumps(data_41_normal_1))
