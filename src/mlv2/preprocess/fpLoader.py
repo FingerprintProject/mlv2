@@ -2,21 +2,30 @@ from typing import Any, Dict, List, Optional
 
 import numpy as np
 import pandas as pd
-from pydantic import BaseModel, Field, validate_call
+from pydantic import BaseModel, Field, validate_call, ConfigDict
 from typing_extensions import TypedDict
 
 from ..utils import FpBaseModel, logPipeline
 
-patternFile = r"^SUPV1$|^SUPV2$|^UNSUPV1$|^UNSUPV2$|"
+patternInputType = r"^FILE_SUPERVISED$|^FILE^API$|"
+patternDataType = r"^SUPERVISED$|^UNSUPERVISED$"
 patternApi = r"^PREDICTV1$"
 
 
-class FileData(BaseModel):
-    filename: str
-    fileType: str = Field(pattern=patternFile)
+class FpLoaderBase(FpBaseModel):
+    data: Optional[pd.DataFrame] = None
+
+    @logPipeline()
+    def model_post_init(self, __context) -> None:
+        pass
 
 
-class File_Sup_Val(BaseModel):
+# -----------------------------------------------------------#
+patternFileType = r"^BIG_QUERY$|^PHP_SERVER$|"
+patternDataType = r"^SUPERVISED$|^UNSUPERVISED$|"
+
+
+class Val_BigQuery(BaseModel):
 
     class WAP(TypedDict):
         ssid: str
@@ -29,7 +38,7 @@ class File_Sup_Val(BaseModel):
     dataDictAll: List[WAP]
 
 
-class File_Unsup_Val(BaseModel):
+class Val_PhpServer(BaseModel):
 
     class WAP(TypedDict):
         ssid: str
@@ -37,34 +46,25 @@ class File_Unsup_Val(BaseModel):
         level: int
         freq: int
 
+    model_config = ConfigDict(
+        extra="allow",
+    )
     id: int
-    scanIdx: int
     point: str
-    site: str
-    device: str
-    timestamp: int
-    building: str
     dataDictAll: List[WAP]
 
 
-class API_Predict_V1(TypedDict):
-    SSID: str
-    BSSID: str
-    frequency: int
-    level: int
+class FileData(BaseModel):
+    fileName: str
+    fileType: str = Field(pattern=patternFileType)
+    dataType: str = Field(pattern=patternDataType)
 
 
-class FpLoader(FpBaseModel):
-    data: Optional[pd.DataFrame] = None
-    fileType: str = Field(pattern=patternFile, default="")
-
-    @logPipeline()
-    def model_post_init(self, __context) -> None:
-        pass
+class FpLoaderFile(FpLoaderBase):
 
     @logPipeline()
     @validate_call
-    def fitFromFile(
+    def fit(
         self,
         fileData: List[FileData],
         info: Dict[str, Any] = {},
@@ -73,15 +73,10 @@ class FpLoader(FpBaseModel):
         self.preventRefit()
         dfArr = []
         for fd in fileData:
-            filename = fd.filename
+            fileName = fd.fileName
             fileType = fd.fileType
-            match fileType:
-                case "SUPV2":
-                    df = self.loadFileSupV1(filename)
-                case "UNSUPV1":
-                    df = self.loadFileUnsupV1(filename)
-                case _:
-                    raise Exception("Unknown filetype")
+            dataType = fd.dataType
+            df = self.loadFile(fileName, fileType, dataType)
             dfArr.append(df)
         self.data = pd.concat(dfArr).reset_index(drop=True)
 
@@ -90,10 +85,75 @@ class FpLoader(FpBaseModel):
 
         self.isFitted = True
 
+    def loadFile(self, fileName, fileType, dataType):
+
+        dft = pd.read_json(fileName, convert_dates=False)
+        filtNaN = dft.isna().any(axis=1)
+        numNan = filtNaN[filtNaN].shape[0]
+        if numNan > 0:
+            self.logger.warning(
+                f"Dropping {numNan} out of {dft.shape[0]} rows due to NaN detection"
+            )
+        dft = dft.dropna()
+
+        if fileType == "BIG_QUERY":
+            Validator = Val_BigQuery
+        elif fileType == "PHP_SERVER":
+            Validator = Val_PhpServer
+        dft = self.checkDf(dft, Validator)
+
+        if fileType == "PHP_SERVER":
+            # Chagne key "freq" to "frequency"
+            def rowFn(fp):
+                dft = pd.DataFrame.from_dict(fp)
+                dft = dft.rename(columns={"freq": "frequency"})
+                return dft.to_dict(orient="records")
+
+            dft["dataDictAll"] = dft["dataDictAll"].apply(rowFn)
+
+        dft = dft.rename(columns={"point": "zoneName", "dataDictAll": "fingerprint"})
+
+        if dataType == "UNSUPERVISED":
+            dft["zoneName"] = (
+                np.nan
+            )  # If I use pd.NA, I will have problem with validation because np.nan is float, but pd.NA is its own type.
+        dft["id"] = dft["id"].astype(str)
+        dft = dft[["id", "zoneName", "fingerprint"]]
+        return dft
+
+    def checkDf(self, df: pd.DataFrame, Validator: Any):
+        def rowFN(row):
+            try:
+                Validator.model_validate(row.to_dict())
+                return True
+            except:
+                return False
+
+        filt = df.apply(rowFN, axis=1)
+        numRemoved = (~filt).sum()
+        if numRemoved > 0:
+            self.logger.warning(
+                f"Dropping {numRemoved} out of {df.shape[0]} rows due to invalid data"
+            )
+        dft = df.copy()
+        df = df[filt]
+        if df.shape[0] == 0:
+            raise Exception("No data left after validation")
+        return df
+
+
+class FpLoaderApi(FpLoaderBase):
+
+    class API_Schema(TypedDict):
+        SSID: str
+        BSSID: str
+        frequency: int
+        level: int
+
     @validate_call
-    def fitFromApi(
+    def fit(
         self,
-        data: List[API_Predict_V1],
+        data: List[API_Schema],
         info: Dict[str, Any] = {},
     ):
         dft = pd.DataFrame.from_dict(data)
@@ -106,50 +166,3 @@ class FpLoader(FpBaseModel):
         self.data = dftOut
         self.data.index = self.getUniqueIdx(idxList=self.data.index.values.tolist())
         self.isFitted = True
-
-    def checkDf(self, df: pd.DataFrame, Val: Any):
-        def rowFN(row):
-            Val.model_validate(row.to_dict())
-
-        df.apply(rowFN, axis=1)
-
-    def loadFileSupV1(self, filename):
-
-        def extractDataFromJSON(row):
-            data = row["admin_json"]
-
-            return pd.Series(data)
-
-        dft = pd.read_json(filename, convert_dates=False)
-        self.checkDf(dft, File_Sup_Val)
-        dft = dft.apply(extractDataFromJSON, axis=1)
-        dft = dft.rename(columns={"point": "zoneName", "dataDictAll": "fingerprint"})
-        dft = dft[["id", "zoneName", "fingerprint"]]
-        return dft
-
-    def loadFileUnsupV1(self, filename):
-
-        dft = pd.read_json(filename, convert_dates=False)
-        filtNaN = dft.isna().any(axis=1)
-        numNan = filtNaN[filtNaN].shape[0]
-        if numNan > 0:
-            self.logger.warning(
-                f"Dropping {numNan} out of {dft.shape[0]} rows due to NaN detection"
-            )
-        dft = dft.dropna()
-        self.checkDf(dft, File_Unsup_Val)
-
-        # Chagne key "freq" to "frequency"
-        def rowFn(fp):
-            dft = pd.DataFrame.from_dict(fp)
-            dft = dft.rename(columns={"freq": "frequency"})
-            return dft.to_dict(orient="records")
-
-        dft["dataDictAll"] = dft["dataDictAll"].apply(rowFn)
-        dft = dft.rename(columns={"point": "zoneName", "dataDictAll": "fingerprint"})
-        dft["zoneName"] = (
-            np.nan
-        )  # If I use pd.NA, I will have problem with validation because np.nan is float, but pd.NA is its own type.
-        dft["id"] = dft["id"].astype(str)
-        dft = dft[["id", "zoneName", "fingerprint"]]
-        return dft

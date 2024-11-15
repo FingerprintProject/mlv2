@@ -14,10 +14,11 @@ from mlv2.record import (
 )
 from mlv2.utils import Logger, Pipeline
 
+# hospitalId = 15
 hospitalId = 41
 
-DB_LOCATION = "LOCAL"
-# DB_LOCATION = "CLOUD"
+# DB_LOCATION = "LOCAL"
+DB_LOCATION = "CLOUD"
 
 
 def setupTask(hospitalId, modelName, dbLocation=DB_LOCATION):

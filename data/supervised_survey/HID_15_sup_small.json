@@ -1,0 +1,4796 @@
+[
+    {
+        "id": "dfeeacf4-1748-467b-a797-a44ce1bc6326",
+        "point": "486_emer_3_V2",
+        "dataDictAll": [
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "12:82:3d:4a:aa:12",
+                "level": -62,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "12:82:3d:4a:aa:13",
+                "level": -62,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "12:82:3d:4a:aa:14",
+                "level": -62,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "22:82:3d:4a:aa:13",
+                "level": -52,
+                "frequency": 5240
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "22:82:3d:4a:aa:15",
+                "level": -52,
+                "frequency": 5240
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "32:82:3d:4a:a9:f4",
+                "level": -92,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "32:82:3d:4a:a9:f5",
+                "level": -89,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "42:82:3d:4a:a9:f5",
+                "level": -87,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "42:82:3d:4a:a9:f7",
+                "level": -88,
+                "frequency": 5220
+            },
+            {
+                "ssid": "Galaxy A24 D614",
+                "bssid": "92:05:ae:12:fb:ca",
+                "level": -97,
+                "frequency": 2437
+            }
+        ]
+    },
+    {
+        "id": "525aacd0-3328-48e8-a3e5-9cc82e27703e",
+        "point": "486_emer_3_V2",
+        "dataDictAll": [
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "22:82:3d:4a:aa:13",
+                "level": -63,
+                "frequency": 5240
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "22:82:3d:4a:aa:15",
+                "level": -63,
+                "frequency": 5240
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "42:82:3d:4a:a9:f5",
+                "level": -89,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "42:82:3d:4a:a9:f7",
+                "level": -90,
+                "frequency": 5220
+            },
+            {
+                "ssid": "Redmi 9A",
+                "bssid": "8a:91:b3:b0:3d:8f",
+                "level": -91,
+                "frequency": 2472
+            },
+            {
+                "ssid": "Galaxy A24 D614",
+                "bssid": "92:05:ae:12:fb:ca",
+                "level": -58,
+                "frequency": 2437
+            }
+        ]
+    },
+    {
+        "id": "6ca212fa-9f2a-4247-b9f8-1529e015a440",
+        "point": "486_emer_3_V2",
+        "dataDictAll": [
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "12:82:3d:4a:aa:12",
+                "level": -61,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "12:82:3d:4a:aa:13",
+                "level": -63,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "12:82:3d:4a:aa:14",
+                "level": -63,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "22:82:3d:4a:aa:13",
+                "level": -53,
+                "frequency": 5240
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "22:82:3d:4a:aa:15",
+                "level": -53,
+                "frequency": 5240
+            },
+            {
+                "ssid": "Redmi 9A",
+                "bssid": "8a:91:b3:b0:3d:8f",
+                "level": -89,
+                "frequency": 2472
+            },
+            {
+                "ssid": "Galaxy A24 D614",
+                "bssid": "92:05:ae:12:fb:ca",
+                "level": -59,
+                "frequency": 2437
+            }
+        ]
+    },
+    {
+        "id": "059fc373-c0f3-4aa2-990a-33c7066b6475",
+        "point": "486_emer_3_V2",
+        "dataDictAll": [
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "12:82:3d:4a:aa:12",
+                "level": -53,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "12:82:3d:4a:aa:13",
+                "level": -52,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "12:82:3d:4a:aa:14",
+                "level": -53,
+                "frequency": 2462
+            },
+            {
+                "ssid": "Galaxy A24 D614",
+                "bssid": "92:05:ae:12:fb:ca",
+                "level": -49,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "d4:ad:71:66:83:ae",
+                "level": -88,
+                "frequency": 5180
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "d4:ad:71:66:83:af",
+                "level": -88,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CPE-858F",
+                "bssid": "e4:67:1e:31:85:92",
+                "level": -82,
+                "frequency": 2452
+            }
+        ]
+    },
+    {
+        "id": "e6081658-b0e9-4bf4-8b37-f89c34d67649",
+        "point": "337_ura_1_neuro",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "2c:1a:05:02:a7:20",
+                "level": -74,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "2c:1a:05:02:a7:21",
+                "level": -74,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "2c:1a:05:02:a7:2e",
+                "level": -83,
+                "frequency": 5180
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "2c:1a:05:02:a7:2f",
+                "level": -83,
+                "frequency": 5180
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1d:18",
+                "level": -79,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1d:dc",
+                "level": -95,
+                "frequency": 5220
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:21:38",
+                "level": -75,
+                "frequency": 2437
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:21:3c",
+                "level": -71,
+                "frequency": 5500
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:1c",
+                "level": -82,
+                "frequency": 5540
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6f:e8",
+                "level": -74,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6f:ec",
+                "level": -83,
+                "frequency": 5300
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:c9:a8",
+                "level": -87,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:12:46:0c",
+                "level": -86,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1d:18",
+                "level": -79,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1d:dc",
+                "level": -93,
+                "frequency": 5220
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:21:38",
+                "level": -73,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:21:3c",
+                "level": -71,
+                "frequency": 5500
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:1c",
+                "level": -81,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6f:e8",
+                "level": -74,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6f:ec",
+                "level": -84,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:52:46:0c",
+                "level": -87,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "70:f3:5a:4b:75:00",
+                "level": -85,
+                "frequency": 2412
+            },
+            {
+                "ssid": "OPPO A57",
+                "bssid": "9e:25:3b:e9:cf:65",
+                "level": -71,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7c:ff:ee",
+                "level": -90,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7c:ff:ef",
+                "level": -92,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:09:a0",
+                "level": -72,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:09:a2",
+                "level": -73,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:09:ae",
+                "level": -79,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:09:af",
+                "level": -78,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:15:40",
+                "level": -78,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:15:42",
+                "level": -78,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:15:4e",
+                "level": -76,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:15:4f",
+                "level": -76,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:23:80",
+                "level": -56,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:23:82",
+                "level": -55,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:27:e0",
+                "level": -77,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:27:e2",
+                "level": -76,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:27:ee",
+                "level": -51,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:27:ef",
+                "level": -50,
+                "frequency": 5700
+            }
+        ]
+    },
+    {
+        "id": "8697838b-872e-405b-b34b-735e86414191",
+        "point": "337_ura_1_neuro",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "2c:1a:05:02:a7:2e",
+                "level": -64,
+                "frequency": 5180
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "2c:1a:05:02:a7:2f",
+                "level": -64,
+                "frequency": 5180
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1d:18",
+                "level": -73,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1d:1c",
+                "level": -84,
+                "frequency": 5300
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:21:38",
+                "level": -72,
+                "frequency": 2437
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:21:3c",
+                "level": -86,
+                "frequency": 5500
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:18",
+                "level": -65,
+                "frequency": 2437
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:1c",
+                "level": -86,
+                "frequency": 5540
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6f:e8",
+                "level": -60,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:c9:ac",
+                "level": -89,
+                "frequency": 5785
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:12:46:0c",
+                "level": -85,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1d:18",
+                "level": -75,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1d:1c",
+                "level": -85,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:21:38",
+                "level": -72,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:21:3c",
+                "level": -87,
+                "frequency": 5500
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:18",
+                "level": -62,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:1c",
+                "level": -86,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6f:e8",
+                "level": -60,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:c9:ac",
+                "level": -90,
+                "frequency": 5785
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:52:46:0c",
+                "level": -85,
+                "frequency": 5745
+            },
+            {
+                "ssid": "OPPO A57",
+                "bssid": "9e:25:3b:e9:cf:65",
+                "level": -68,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:09:ae",
+                "level": -79,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:09:af",
+                "level": -79,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:15:40",
+                "level": -83,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:15:42",
+                "level": -82,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:15:4e",
+                "level": -81,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:15:4f",
+                "level": -81,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:23:80",
+                "level": -72,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:23:82",
+                "level": -73,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:27:ee",
+                "level": -53,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:27:ef",
+                "level": -54,
+                "frequency": 5700
+            },
+            {
+                "ssid": "\ubbf8\uc18c",
+                "bssid": "a2:7d:c8:10:57:40",
+                "level": -85,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "dc:f7:19:bb:2e:0e",
+                "level": -77,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "dc:f7:19:bb:2e:0f",
+                "level": -77,
+                "frequency": 5745
+            },
+            {
+                "ssid": "3BB_Chiangrai_5GHz",
+                "bssid": "f4:de:af:1c:69:74",
+                "level": -94,
+                "frequency": 5220
+            }
+        ]
+    },
+    {
+        "id": "6d12df49-1865-48d5-bcf5-07701aa0e855",
+        "point": "337_ura_1_neuro",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "2c:1a:05:02:a7:20",
+                "level": -74,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "2c:1a:05:02:a7:21",
+                "level": -75,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:0f:01:08",
+                "level": -84,
+                "frequency": 2462
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1d:18",
+                "level": -76,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:21:38",
+                "level": -77,
+                "frequency": 2437
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:21:3c",
+                "level": -86,
+                "frequency": 5500
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:18",
+                "level": -68,
+                "frequency": 2437
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6f:e8",
+                "level": -73,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6f:ec",
+                "level": -90,
+                "frequency": 5300
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:c9:a8",
+                "level": -84,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:12:46:0c",
+                "level": -86,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:4f:01:08",
+                "level": -84,
+                "frequency": 2462
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1d:18",
+                "level": -77,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:21:38",
+                "level": -77,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:21:3c",
+                "level": -86,
+                "frequency": 5500
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:18",
+                "level": -68,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6f:e8",
+                "level": -73,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6f:ec",
+                "level": -88,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:52:46:0c",
+                "level": -85,
+                "frequency": 5745
+            },
+            {
+                "ssid": "OPPO A57",
+                "bssid": "9e:25:3b:e9:cf:65",
+                "level": -75,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:09:a0",
+                "level": -66,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:09:a2",
+                "level": -66,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:09:ae",
+                "level": -74,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:09:af",
+                "level": -75,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:15:42",
+                "level": -80,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:15:4e",
+                "level": -85,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:15:4f",
+                "level": -85,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:23:80",
+                "level": -56,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:23:82",
+                "level": -56,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:27:e0",
+                "level": -77,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:27:e2",
+                "level": -77,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:27:ee",
+                "level": -55,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:27:ef",
+                "level": -54,
+                "frequency": 5700
+            },
+            {
+                "ssid": "\ubbf8\uc18c",
+                "bssid": "a2:7d:c8:10:57:40",
+                "level": -77,
+                "frequency": 2437
+            }
+        ]
+    },
+    {
+        "id": "c4feb0b5-f752-45e1-8847-3802e7b9ea7f",
+        "point": "337_ura_1_neuro",
+        "dataDictAll": [
+            {
+                "ssid": "realme C53",
+                "bssid": "26:c8:af:63:28:da",
+                "level": -90,
+                "frequency": 2472
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "2c:1a:05:02:a7:2e",
+                "level": -75,
+                "frequency": 5180
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "2c:1a:05:02:a7:2f",
+                "level": -74,
+                "frequency": 5180
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:0f:01:08",
+                "level": -74,
+                "frequency": 2462
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:0f:01:0c",
+                "level": -83,
+                "frequency": 5620
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1d:1c",
+                "level": -81,
+                "frequency": 5300
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:21:3c",
+                "level": -73,
+                "frequency": 5500
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:18",
+                "level": -69,
+                "frequency": 2437
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:1c",
+                "level": -69,
+                "frequency": 5540
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6f:e8",
+                "level": -72,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6f:ec",
+                "level": -70,
+                "frequency": 5300
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:c9:ac",
+                "level": -88,
+                "frequency": 5785
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:4f:01:08",
+                "level": -73,
+                "frequency": 2462
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:4f:01:0c",
+                "level": -83,
+                "frequency": 5620
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1d:1c",
+                "level": -81,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:21:3c",
+                "level": -72,
+                "frequency": 5500
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:1c",
+                "level": -68,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6f:e8",
+                "level": -73,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6f:ec",
+                "level": -70,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:c9:ac",
+                "level": -89,
+                "frequency": 5785
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "70:f3:5a:4b:75:0e",
+                "level": -83,
+                "frequency": 5200
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "70:f3:5a:4b:75:0f",
+                "level": -84,
+                "frequency": 5200
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7c:ff:ee",
+                "level": -89,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7c:ff:ef",
+                "level": -89,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:09:a0",
+                "level": -78,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:09:a2",
+                "level": -78,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:09:ae",
+                "level": -86,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:09:af",
+                "level": -86,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:15:42",
+                "level": -80,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:15:4e",
+                "level": -85,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:15:4f",
+                "level": -85,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:27:e2",
+                "level": -84,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:27:ee",
+                "level": -70,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:27:ef",
+                "level": -69,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:e2:ce:ee",
+                "level": -86,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:e2:ce:ef",
+                "level": -87,
+                "frequency": 5620
+            },
+            {
+                "ssid": "Galaxy A14 5G 9799",
+                "bssid": "e6:10:f2:d6:ad:05",
+                "level": -56,
+                "frequency": 2437
+            }
+        ]
+    },
+    {
+        "id": "35231575-17f6-48df-a574-85cfa40071ba",
+        "point": "337_ura_1_neuro",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "2c:1a:05:02:a7:20",
+                "level": -63,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "2c:1a:05:02:a7:21",
+                "level": -63,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "2c:1a:05:02:a7:2e",
+                "level": -69,
+                "frequency": 5180
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "2c:1a:05:02:a7:2f",
+                "level": -69,
+                "frequency": 5180
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:0f:01:0c",
+                "level": -89,
+                "frequency": 5620
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1d:18",
+                "level": -80,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1d:d8",
+                "level": -83,
+                "frequency": 2462
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:21:3c",
+                "level": -79,
+                "frequency": 5500
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:1c",
+                "level": -78,
+                "frequency": 5540
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6f:e8",
+                "level": -71,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6f:ec",
+                "level": -80,
+                "frequency": 5300
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:c9:a8",
+                "level": -86,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:c9:ac",
+                "level": -89,
+                "frequency": 5785
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:12:46:0c",
+                "level": -83,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:4f:01:0c",
+                "level": -87,
+                "frequency": 5620
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1d:18",
+                "level": -78,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1d:d8",
+                "level": -84,
+                "frequency": 2462
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:21:3c",
+                "level": -79,
+                "frequency": 5500
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:1c",
+                "level": -79,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6f:e8",
+                "level": -72,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6f:ec",
+                "level": -80,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:c9:a8",
+                "level": -85,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:c9:ac",
+                "level": -87,
+                "frequency": 5785
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:52:46:0c",
+                "level": -83,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "70:f3:5a:4b:75:0e",
+                "level": -83,
+                "frequency": 5200
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "70:f3:5a:4b:75:0f",
+                "level": -83,
+                "frequency": 5200
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "70:f3:5a:4c:74:0e",
+                "level": -89,
+                "frequency": 5745
+            },
+            {
+                "ssid": "OPPO A57",
+                "bssid": "9e:25:3b:e9:cf:65",
+                "level": -60,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7c:ff:ee",
+                "level": -85,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7c:ff:ef",
+                "level": -84,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:09:a0",
+                "level": -70,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:09:a2",
+                "level": -69,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:09:ae",
+                "level": -84,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:09:af",
+                "level": -83,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:15:42",
+                "level": -78,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:15:4e",
+                "level": -82,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:15:4f",
+                "level": -81,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:23:80",
+                "level": -64,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:23:82",
+                "level": -64,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:27:e0",
+                "level": -76,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:27:e2",
+                "level": -75,
+                "frequency": 2462
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "dc:f7:19:bb:2e:01",
+                "level": -84,
+                "frequency": 2462
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "dc:f7:19:bb:2e:0e",
+                "level": -77,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "dc:f7:19:bb:2e:0f",
+                "level": -76,
+                "frequency": 5745
+            },
+            {
+                "ssid": "Galaxy A14 5G 9799",
+                "bssid": "e6:10:f2:d6:ad:05",
+                "level": -55,
+                "frequency": 2437
+            }
+        ]
+    },
+    {
+        "id": "afd2de0e-080e-41de-b5a1-e2b6a1977ff1",
+        "point": "337_ura_1_neuro",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "2c:1a:05:02:a7:2e",
+                "level": -76,
+                "frequency": 5180
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "2c:1a:05:02:a7:2f",
+                "level": -77,
+                "frequency": 5180
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:0f:01:0c",
+                "level": -91,
+                "frequency": 5620
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1d:1c",
+                "level": -84,
+                "frequency": 5300
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1d:d8",
+                "level": -83,
+                "frequency": 2462
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:18",
+                "level": -69,
+                "frequency": 2437
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:1c",
+                "level": -82,
+                "frequency": 5540
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6f:ec",
+                "level": -77,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:4f:01:0c",
+                "level": -91,
+                "frequency": 5620
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1d:1c",
+                "level": -84,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1d:d8",
+                "level": -85,
+                "frequency": 2462
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:18",
+                "level": -69,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:1c",
+                "level": -81,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6f:ec",
+                "level": -76,
+                "frequency": 5300
+            },
+            {
+                "ssid": "Nice636_2.4GHz",
+                "bssid": "30:e9:8e:3a:58:48",
+                "level": -90,
+                "frequency": 2452
+            },
+            {
+                "ssid": "OPPO A57",
+                "bssid": "9e:25:3b:e9:cf:65",
+                "level": -77,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:09:a0",
+                "level": -70,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:09:a2",
+                "level": -69,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:09:ae",
+                "level": -77,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:09:af",
+                "level": -77,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:15:4e",
+                "level": -84,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:15:4f",
+                "level": -84,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:23:80",
+                "level": -66,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:23:82",
+                "level": -65,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:27:ee",
+                "level": -52,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:27:ef",
+                "level": -51,
+                "frequency": 5700
+            },
+            {
+                "ssid": "\ubbf8\uc18c",
+                "bssid": "a2:7d:c8:10:57:40",
+                "level": -65,
+                "frequency": 2437
+            },
+            {
+                "ssid": "Galaxy A14 5G 9799",
+                "bssid": "e6:10:f2:d6:ad:05",
+                "level": -75,
+                "frequency": 2437
+            }
+        ]
+    },
+    {
+        "id": "7a3f857a-bd57-43cd-993c-82f677021fb5",
+        "point": "700_radio_1_v2",
+        "dataDictAll": [
+            {
+                "ssid": "vivix_ap",
+                "bssid": "04:f0:21:3a:85:03",
+                "level": -82,
+                "frequency": 5745
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:36:b2:b4",
+                "level": -82,
+                "frequency": 5540
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:56:b2:b4",
+                "level": -82,
+                "frequency": 5540
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:8a:b2:b4",
+                "level": -49,
+                "frequency": 5620
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:c4:b2:b4",
+                "level": -82,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:86:00",
+                "level": -83,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:86:02",
+                "level": -83,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:87:22",
+                "level": -46,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8b:20",
+                "level": -90,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8b:22",
+                "level": -89,
+                "frequency": 5180
+            },
+            {
+                "ssid": "vivo 1906",
+                "bssid": "4e:90:b1:cc:04:be",
+                "level": -88,
+                "frequency": 2462
+            },
+            {
+                "ssid": "Sandy\ud83d\udc36\ud83d\udc37",
+                "bssid": "56:f4:ad:fc:8c:64",
+                "level": -78,
+                "frequency": 5745
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:19:30",
+                "level": -72,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:19:32",
+                "level": -71,
+                "frequency": 5260
+            },
+            {
+                "ssid": "4G Home WiFi_026660",
+                "bssid": "98:a9:42:7e:d7:52",
+                "level": -61,
+                "frequency": 2437
+            },
+            {
+                "ssid": "DIRECT-39-HP M282 LaserJet",
+                "bssid": "aa:3b:76:a6:fb:39",
+                "level": -75,
+                "frequency": 2437
+            },
+            {
+                "ssid": "DIRECT-5e-HP M282 LaserJet",
+                "bssid": "aa:3b:76:a6:fb:5e",
+                "level": -58,
+                "frequency": 2437
+            },
+            {
+                "ssid": "Galaxy S24 Ultra mook",
+                "bssid": "c2:5a:ef:9f:db:2e",
+                "level": -82,
+                "frequency": 2462
+            },
+            {
+                "ssid": "DIRECT-6a-HP M236 LaserJet",
+                "bssid": "ce:5e:f8:e2:71:6a",
+                "level": -67,
+                "frequency": 2437
+            },
+            {
+                "ssid": "S33x35V7K6",
+                "bssid": "e8:48:b8:90:57:07",
+                "level": -76,
+                "frequency": 2437
+            },
+            {
+                "ssid": "Tab S9 FE \u0e02\u0e2d\u0e07 Tikaew",
+                "bssid": "fa:5e:84:5f:ce:58",
+                "level": -74,
+                "frequency": 2462
+            }
+        ]
+    },
+    {
+        "id": "57563417-fb1c-4e0f-b70c-758b0fa09001",
+        "point": "700_radio_1_v2",
+        "dataDictAll": [
+            {
+                "ssid": "vivix_ap",
+                "bssid": "04:f0:21:3a:85:03",
+                "level": -69,
+                "frequency": 5745
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8b:20",
+                "level": -91,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8b:22",
+                "level": -91,
+                "frequency": 5180
+            },
+            {
+                "ssid": "Sandy\ud83d\udc36\ud83d\udc37",
+                "bssid": "56:f4:ad:fc:8c:64",
+                "level": -86,
+                "frequency": 5745
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:16:30",
+                "level": -84,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:16:31",
+                "level": -84,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Meetingroom",
+                "bssid": "98:48:74:43:16:33",
+                "level": -84,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "98:48:74:43:17:a4",
+                "level": -82,
+                "frequency": 2437
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "9c:27:02:45:b2:b4",
+                "level": -84,
+                "frequency": 5220
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:45:b2:b4",
+                "level": -68,
+                "frequency": 5620
+            },
+            {
+                "ssid": "DIRECT-39-HP M282 LaserJet",
+                "bssid": "aa:3b:76:a6:fb:39",
+                "level": -92,
+                "frequency": 2437
+            },
+            {
+                "ssid": "DIRECT-5e-HP M282 LaserJet",
+                "bssid": "aa:3b:76:a6:fb:5e",
+                "level": -83,
+                "frequency": 2437
+            },
+            {
+                "ssid": "Galaxy S24 Ultra mook",
+                "bssid": "c2:5a:ef:9f:db:2e",
+                "level": -84,
+                "frequency": 2462
+            },
+            {
+                "ssid": "DIRECT-6a-HP M236 LaserJet",
+                "bssid": "ce:5e:f8:e2:71:6a",
+                "level": -83,
+                "frequency": 2437
+            },
+            {
+                "ssid": "Tab S9 FE \u0e02\u0e2d\u0e07 Tikaew",
+                "bssid": "fa:5e:84:5f:ce:58",
+                "level": -87,
+                "frequency": 2462
+            }
+        ]
+    },
+    {
+        "id": "407e2f33-87d8-4f40-a56e-28b1bc9b9973",
+        "point": "700_radio_1_v2",
+        "dataDictAll": [
+            {
+                "ssid": "vivix_ap",
+                "bssid": "04:f0:21:3a:85:03",
+                "level": -89,
+                "frequency": 5745
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:56:b2:b4",
+                "level": -56,
+                "frequency": 5620
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:69:b2:b4",
+                "level": -56,
+                "frequency": 5620
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:8a:b2:b4",
+                "level": -56,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:84:80",
+                "level": -54,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:84:82",
+                "level": -55,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:87:20",
+                "level": -55,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:87:22",
+                "level": -56,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8b:20",
+                "level": -86,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8b:22",
+                "level": -87,
+                "frequency": 5180
+            },
+            {
+                "ssid": "Sandy\ud83d\udc36\ud83d\udc37",
+                "bssid": "56:f4:ad:fc:8c:64",
+                "level": -69,
+                "frequency": 5745
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "74:a4:00:48:b2:b4",
+                "level": -91,
+                "frequency": 5540
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "80:17:02:89:b2:b4",
+                "level": -54,
+                "frequency": 5300
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "80:17:02:c2:b2:b4",
+                "level": -54,
+                "frequency": 5300
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "80:17:02:c6:b2:b4",
+                "level": -53,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:16:30",
+                "level": -88,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:16:31",
+                "level": -87,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Meetingroom",
+                "bssid": "98:48:74:43:16:33",
+                "level": -87,
+                "frequency": 5220
+            },
+            {
+                "ssid": "DIRECT-5e-HP M282 LaserJet",
+                "bssid": "aa:3b:76:a6:fb:5e",
+                "level": -69,
+                "frequency": 2437
+            },
+            {
+                "ssid": "Redmi Note 9 Pro",
+                "bssid": "ca:a0:54:85:33:5d",
+                "level": -71,
+                "frequency": 2422
+            },
+            {
+                "ssid": "DIRECT-6a-HP M236 LaserJet",
+                "bssid": "ce:5e:f8:e2:71:6a",
+                "level": -71,
+                "frequency": 2437
+            },
+            {
+                "ssid": "S33x35V7K6",
+                "bssid": "e8:48:b8:90:57:07",
+                "level": -73,
+                "frequency": 2437
+            }
+        ]
+    },
+    {
+        "id": "c95120de-14f8-434c-875b-11121b819142",
+        "point": "700_radio_1_v2",
+        "dataDictAll": [
+            {
+                "ssid": "vivix_ap",
+                "bssid": "04:f0:21:3a:85:03",
+                "level": -86,
+                "frequency": 5745
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8b:20",
+                "level": -89,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8b:22",
+                "level": -89,
+                "frequency": 5180
+            },
+            {
+                "ssid": "Sandy\ud83d\udc36\ud83d\udc37",
+                "bssid": "56:f4:ad:fc:8c:64",
+                "level": -70,
+                "frequency": 5745
+            },
+            {
+                "ssid": "Redmi Note 9 Pro",
+                "bssid": "ca:a0:54:85:33:5d",
+                "level": -48,
+                "frequency": 2422
+            },
+            {
+                "ssid": "CT_CNPSK9T2CK_INR",
+                "bssid": "dc:b7:ac:f0:ea:f2",
+                "level": -92,
+                "frequency": 5500
+            },
+            {
+                "ssid": "Tab S9 FE \u0e02\u0e2d\u0e07 Tikaew",
+                "bssid": "fa:5e:84:5f:ce:58",
+                "level": -76,
+                "frequency": 2462
+            }
+        ]
+    },
+    {
+        "id": "fd032b9e-d599-4294-a5bc-6aaa19804e43",
+        "point": "700_radio_1_v2",
+        "dataDictAll": [
+            {
+                "ssid": "vivix_ap",
+                "bssid": "04:f0:21:3a:85:03",
+                "level": -84,
+                "frequency": 5745
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:69:b2:b4",
+                "level": -45,
+                "frequency": 5620
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:d9:b2:b4",
+                "level": -47,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:86:00",
+                "level": -78,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:86:02",
+                "level": -78,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:87:20",
+                "level": -46,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:87:22",
+                "level": -46,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8b:20",
+                "level": -80,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8b:22",
+                "level": -80,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8f:20",
+                "level": -88,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8f:22",
+                "level": -89,
+                "frequency": 5580
+            },
+            {
+                "ssid": "vivo 1906",
+                "bssid": "4e:90:b1:cc:04:be",
+                "level": -79,
+                "frequency": 2462
+            },
+            {
+                "ssid": "Sandy\ud83d\udc36\ud83d\udc37",
+                "bssid": "56:f4:ad:fc:8c:64",
+                "level": -78,
+                "frequency": 5745
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "74:a4:00:48:b2:b4",
+                "level": -90,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "98:48:74:43:16:24",
+                "level": -79,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:16:30",
+                "level": -69,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:16:31",
+                "level": -69,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Meetingroom",
+                "bssid": "98:48:74:43:16:33",
+                "level": -70,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:19:30",
+                "level": -73,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:19:32",
+                "level": -74,
+                "frequency": 5260
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "9c:27:02:45:b2:b4",
+                "level": -68,
+                "frequency": 5220
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:45:b2:b4",
+                "level": -47,
+                "frequency": 5620
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:9e:b2:b4",
+                "level": -46,
+                "frequency": 5620
+            },
+            {
+                "ssid": "Galaxy S24 Ultra mook",
+                "bssid": "c2:5a:ef:9f:db:2e",
+                "level": -77,
+                "frequency": 2462
+            },
+            {
+                "ssid": "Redmi Note 9 Pro",
+                "bssid": "ca:a0:54:85:33:5d",
+                "level": -52,
+                "frequency": 2422
+            },
+            {
+                "ssid": "Tab S9 FE \u0e02\u0e2d\u0e07 Tikaew",
+                "bssid": "fa:5e:84:5f:ce:58",
+                "level": -78,
+                "frequency": 2462
+            }
+        ]
+    },
+    {
+        "id": "949d4a58-22e8-4622-929b-fab47428716f",
+        "point": "700_radio_1_v2",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "00:78:88:29:b1:df",
+                "level": -85,
+                "frequency": 5500
+            },
+            {
+                "ssid": "vivix_ap",
+                "bssid": "04:f0:21:3a:85:03",
+                "level": -79,
+                "frequency": 5745
+            },
+            {
+                "ssid": "AIS 4G Hi-Speed Home WiFi_445679",
+                "bssid": "30:0a:c5:a1:55:b5",
+                "level": -85,
+                "frequency": 2462
+            },
+            {
+                "ssid": "DustBoyAP",
+                "bssid": "32:83:98:92:da:b5",
+                "level": -87,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:c0:8b:2e",
+                "level": -66,
+                "frequency": 5785
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:c0:8b:2f",
+                "level": -66,
+                "frequency": 5785
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:c1:31:6f",
+                "level": -86,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:84:80",
+                "level": -56,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:84:82",
+                "level": -56,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:86:00",
+                "level": -84,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8a:a0",
+                "level": -79,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8a:a2",
+                "level": -85,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8b:20",
+                "level": -78,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8b:22",
+                "level": -78,
+                "frequency": 5180
+            },
+            {
+                "ssid": "Sandy\ud83d\udc36\ud83d\udc37",
+                "bssid": "56:f4:ad:fc:8c:64",
+                "level": -76,
+                "frequency": 5745
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "74:a4:00:48:b2:b4",
+                "level": -87,
+                "frequency": 5540
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "80:17:02:89:b2:b4",
+                "level": -56,
+                "frequency": 5300
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "80:17:02:c2:b2:b4",
+                "level": -56,
+                "frequency": 5300
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "80:17:02:c6:b2:b4",
+                "level": -56,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:17:b0",
+                "level": -70,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:17:b1",
+                "level": -70,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-Meetingroom",
+                "bssid": "98:48:74:43:17:b3",
+                "level": -70,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:19:30",
+                "level": -70,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:19:32",
+                "level": -70,
+                "frequency": 5260
+            },
+            {
+                "ssid": "4G Home WiFi_026660",
+                "bssid": "98:a9:42:7e:d7:52",
+                "level": -58,
+                "frequency": 2437
+            },
+            {
+                "ssid": "DIRECT-39-HP M282 LaserJet",
+                "bssid": "aa:3b:76:a6:fb:39",
+                "level": -80,
+                "frequency": 2437
+            },
+            {
+                "ssid": "DIRECT-5e-HP M282 LaserJet",
+                "bssid": "aa:3b:76:a6:fb:5e",
+                "level": -80,
+                "frequency": 2437
+            },
+            {
+                "ssid": "Redmi Note 9 Pro",
+                "bssid": "ca:a0:54:85:33:5d",
+                "level": -47,
+                "frequency": 2422
+            },
+            {
+                "ssid": "Tab S9 FE \u0e02\u0e2d\u0e07 Tikaew",
+                "bssid": "fa:5e:84:5f:ce:58",
+                "level": -70,
+                "frequency": 2462
+            }
+        ]
+    },
+    {
+        "id": "ef50b039-755b-4a64-b42d-53f168760c4f",
+        "point": "700_radio_1_v2",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "00:78:88:29:b1:df",
+                "level": -80,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:84:80",
+                "level": -64,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:84:82",
+                "level": -64,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:87:22",
+                "level": -53,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8b:00",
+                "level": -85,
+                "frequency": 5785
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8b:02",
+                "level": -86,
+                "frequency": 5785
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8b:20",
+                "level": -77,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8b:22",
+                "level": -77,
+                "frequency": 5180
+            },
+            {
+                "ssid": "Sandy\ud83d\udc36\ud83d\udc37",
+                "bssid": "56:f4:ad:fc:8c:64",
+                "level": -86,
+                "frequency": 5745
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "80:17:02:89:b2:b4",
+                "level": -64,
+                "frequency": 5300
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "80:17:02:c2:b2:b4",
+                "level": -64,
+                "frequency": 5300
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "80:17:02:c6:b2:b4",
+                "level": -64,
+                "frequency": 5300
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "96:66:02:45:b2:b4",
+                "level": -57,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:16:30",
+                "level": -70,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:16:31",
+                "level": -70,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Meetingroom",
+                "bssid": "98:48:74:43:16:33",
+                "level": -70,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:19:30",
+                "level": -62,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:19:32",
+                "level": -61,
+                "frequency": 5260
+            },
+            {
+                "ssid": "Galaxy S24 Ultra mook",
+                "bssid": "c2:5a:ef:9f:db:2e",
+                "level": -70,
+                "frequency": 2462
+            },
+            {
+                "ssid": "Redmi Note 9 Pro",
+                "bssid": "ca:a0:54:85:33:5d",
+                "level": -74,
+                "frequency": 2422
+            },
+            {
+                "ssid": "Tab S9 FE \u0e02\u0e2d\u0e07 Tikaew",
+                "bssid": "fa:5e:84:5f:ce:58",
+                "level": -86,
+                "frequency": 2462
+            }
+        ]
+    },
+    {
+        "id": "e05b56d2-7220-4810-b709-94e2ed3de176",
+        "point": "700_radio_1_v2",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:c0:8b:2e",
+                "level": -76,
+                "frequency": 5785
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:c0:8b:2f",
+                "level": -76,
+                "frequency": 5785
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:3e:b2:b4",
+                "level": -59,
+                "frequency": 5300
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:7c:b2:b4",
+                "level": -77,
+                "frequency": 5540
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3a:4f:02:c4:b2:b4",
+                "level": -78,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:84:80",
+                "level": -62,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:84:82",
+                "level": -60,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:86:00",
+                "level": -78,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:86:02",
+                "level": -77,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8b:00",
+                "level": -85,
+                "frequency": 5785
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8b:02",
+                "level": -84,
+                "frequency": 5785
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8b:20",
+                "level": -79,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8b:22",
+                "level": -79,
+                "frequency": 5180
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "80:17:02:c2:b2:b4",
+                "level": -60,
+                "frequency": 5300
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "80:17:02:c6:b2:b4",
+                "level": -61,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:16:30",
+                "level": -71,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:16:31",
+                "level": -71,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Meetingroom",
+                "bssid": "98:48:74:43:16:33",
+                "level": -71,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:17:b0",
+                "level": -84,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:17:b1",
+                "level": -84,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-Meetingroom",
+                "bssid": "98:48:74:43:17:b3",
+                "level": -85,
+                "frequency": 5660
+            },
+            {
+                "ssid": "4G Home WiFi_026660",
+                "bssid": "98:a9:42:7e:d7:52",
+                "level": -53,
+                "frequency": 2437
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "9c:27:02:45:b2:b4",
+                "level": -59,
+                "frequency": 5300
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:45:b2:b4",
+                "level": -59,
+                "frequency": 5300
+            },
+            {
+                "ssid": "DIRECT-39-HP M282 LaserJet",
+                "bssid": "aa:3b:76:a6:fb:39",
+                "level": -73,
+                "frequency": 2437
+            },
+            {
+                "ssid": "DIRECT-5e-HP M282 LaserJet",
+                "bssid": "aa:3b:76:a6:fb:5e",
+                "level": -76,
+                "frequency": 2437
+            },
+            {
+                "ssid": "Galaxy S24 Ultra mook",
+                "bssid": "c2:5a:ef:9f:db:2e",
+                "level": -68,
+                "frequency": 2462
+            },
+            {
+                "ssid": "Redmi Note 9 Pro",
+                "bssid": "ca:a0:54:85:33:5d",
+                "level": -52,
+                "frequency": 2422
+            },
+            {
+                "ssid": "S33x35V7K6",
+                "bssid": "e8:48:b8:90:57:07",
+                "level": -62,
+                "frequency": 2437
+            },
+            {
+                "ssid": "Tab S9 FE \u0e02\u0e2d\u0e07 Tikaew",
+                "bssid": "fa:5e:84:5f:ce:58",
+                "level": -73,
+                "frequency": 2462
+            }
+        ]
+    },
+    {
+        "id": "581d8139-b28a-48f6-9e05-fb62b3afab63",
+        "point": "703_radio_4_v2",
+        "dataDictAll": [
+            {
+                "ssid": "y5360bs001",
+                "bssid": "04:18:d6:c4:6c:a4",
+                "level": -89,
+                "frequency": 5700
+            },
+            {
+                "ssid": "OPPO Reno11 5G",
+                "bssid": "32:1c:4e:65:e3:87",
+                "level": -77,
+                "frequency": 2412
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3c:d7:02:45:b2:b4",
+                "level": -54,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8f:00",
+                "level": -59,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8f:02",
+                "level": -59,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8f:40",
+                "level": -54,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8f:42",
+                "level": -54,
+                "frequency": 5620
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:45:b2:b4",
+                "level": -54,
+                "frequency": 5620
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:9e:b2:b4",
+                "level": -53,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-14349262",
+                "bssid": "ae:0b:fb:da:f3:ce",
+                "level": -76,
+                "frequency": 2412
+            }
+        ]
+    },
+    {
+        "id": "b4bc9d54-ab0c-4caf-b546-5615f513dc8d",
+        "point": "703_radio_4_v2",
+        "dataDictAll": [
+            {
+                "ssid": "Doi Khao Khwai",
+                "bssid": "04:18:d6:88:94:b3",
+                "level": -92,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8e:20",
+                "level": -88,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8e:22",
+                "level": -88,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "58:ae:a8:fa:85:71",
+                "level": -87,
+                "frequency": 2412
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:45:b2:b4",
+                "level": -58,
+                "frequency": 5540
+            }
+        ]
+    },
+    {
+        "id": "2a6d3c8c-5674-4ffc-ab10-18539a612831",
+        "point": "703_radio_4_v2",
+        "dataDictAll": [
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3c:d7:02:45:b2:b4",
+                "level": -56,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8f:40",
+                "level": -56,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8f:42",
+                "level": -56,
+                "frequency": 5620
+            },
+            {
+                "ssid": "3BB_Praphawarin_2.4GHz",
+                "bssid": "48:57:02:08:ec:3c",
+                "level": -95,
+                "frequency": 2427
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:45:b2:b4",
+                "level": -56,
+                "frequency": 5620
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:9e:b2:b4",
+                "level": -56,
+                "frequency": 5620
+            }
+        ]
+    },
+    {
+        "id": "81c38a68-08c7-435c-9203-1556fcbc4c31",
+        "point": "703_radio_4_v2",
+        "dataDictAll": [
+            {
+                "ssid": "DHDC1",
+                "bssid": "28:ff:3e:d9:d2:32",
+                "level": -92,
+                "frequency": 5180
+            },
+            {
+                "ssid": "OPPO Reno11 5G",
+                "bssid": "32:1c:4e:65:e3:87",
+                "level": -84,
+                "frequency": 2412
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "3c:d7:02:45:b2:b4",
+                "level": -64,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8e:20",
+                "level": -77,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8e:22",
+                "level": -77,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8f:00",
+                "level": -59,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8f:02",
+                "level": -64,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8f:40",
+                "level": -64,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8f:42",
+                "level": -65,
+                "frequency": 5620
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "9c:27:02:45:b2:b4",
+                "level": -77,
+                "frequency": 5220
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:45:b2:b4",
+                "level": -65,
+                "frequency": 5620
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:9e:b2:b4",
+                "level": -66,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-14349262",
+                "bssid": "ae:0b:fb:da:f3:ce",
+                "level": -80,
+                "frequency": 2412
+            }
+        ]
+    },
+    {
+        "id": "a24b90dd-ecfd-434a-83fa-34df496150f3",
+        "point": "703_radio_4_v2",
+        "dataDictAll": [
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "3c:ff:d8:a9:8d:c0",
+                "level": -89,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8d:c2",
+                "level": -85,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "3c:ff:d8:a9:8f:02",
+                "level": -57,
+                "frequency": 5540
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "a6:a5:02:45:b2:b4",
+                "level": -57,
+                "frequency": 5540
+            }
+        ]
+    },
+    {
+        "id": "ed98e433-632c-4134-8c83-62ed2c9294e7",
+        "point": "323_84y_2_med1m2_v2",
+        "dataDictAll": [
+            {
+                "ssid": "[air purifier] Samsung",
+                "bssid": "28:6d:97:8a:c5:84",
+                "level": -79,
+                "frequency": 2412
+            },
+            {
+                "ssid": "Galaxy A13 57BE",
+                "bssid": "9a:9e:7c:89:da:b7",
+                "level": -84,
+                "frequency": 2462
+            },
+            {
+                "ssid": "vivo Y20s [G]",
+                "bssid": "aa:05:b5:82:04:22",
+                "level": -70,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:e0",
+                "level": -82,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:30:e2",
+                "level": -81,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:30:ee",
+                "level": -84,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:ef",
+                "level": -84,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:80",
+                "level": -69,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:6c:82",
+                "level": -69,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:6c:8e",
+                "level": -67,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:8f",
+                "level": -66,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:40:ae",
+                "level": -77,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:40:af",
+                "level": -77,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:6b:ae",
+                "level": -93,
+                "frequency": 5320
+            }
+        ]
+    },
+    {
+        "id": "361705b1-9c1d-426b-adb9-e88246c5a10c",
+        "point": "323_84y_2_med1m2_v2",
+        "dataDictAll": [
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "04:00:08:04:cb:0c",
+                "level": -79,
+                "frequency": 5660
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "60:44:02:45:b2:b4",
+                "level": -78,
+                "frequency": 5660
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "7c:21:0e:e2:c3:ae",
+                "level": -80,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "7c:21:0e:e2:c3:af",
+                "level": -80,
+                "frequency": 5540
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:0d:70",
+                "level": -78,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:0d:72",
+                "level": -78,
+                "frequency": 5660
+            },
+            {
+                "ssid": "Jongpeeti_5G",
+                "bssid": "a8:42:a1:cc:f6:ab",
+                "level": -88,
+                "frequency": 5765
+            },
+            {
+                "ssid": "vivo Y20s [G]",
+                "bssid": "aa:05:b5:82:04:22",
+                "level": -86,
+                "frequency": 2437
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "ac:80:02:45:b2:b4",
+                "level": -78,
+                "frequency": 5660
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "ac:80:02:af:b2:b4",
+                "level": -78,
+                "frequency": 5660
+            },
+            {
+                "ssid": "Paisankit.cr_5G",
+                "bssid": "c0:f6:c2:c1:70:d0",
+                "level": -88,
+                "frequency": 5220
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:e0",
+                "level": -76,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:30:e2",
+                "level": -76,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:6c:8e",
+                "level": -90,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:6c:0e",
+                "level": -93,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:6c:0f",
+                "level": -93,
+                "frequency": 5180
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:f7:ee",
+                "level": -87,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:f7:ef",
+                "level": -87,
+                "frequency": 5300
+            }
+        ]
+    },
+    {
+        "id": "187cb0ff-0845-4085-8f4b-ca12014f483d",
+        "point": "323_84y_2_med1m2_v2",
+        "dataDictAll": [
+            {
+                "ssid": "vivo Y20s [G]",
+                "bssid": "aa:05:b5:82:04:22",
+                "level": -68,
+                "frequency": 2437
+            },
+            {
+                "ssid": "Paisankit.cr_5G",
+                "bssid": "c0:f6:c2:c1:70:d0",
+                "level": -90,
+                "frequency": 5220
+            },
+            {
+                "ssid": "OPPO A15s",
+                "bssid": "ca:e0:28:bb:71:b5",
+                "level": -90,
+                "frequency": 2462
+            },
+            {
+                "ssid": "vista120-4\/1",
+                "bssid": "e8:48:b8:ca:ce:7e",
+                "level": -81,
+                "frequency": 2422
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:e0",
+                "level": -54,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:30:e2",
+                "level": -55,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:80",
+                "level": -79,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:6c:82",
+                "level": -79,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:6c:8e",
+                "level": -70,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:8f",
+                "level": -70,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:40:ae",
+                "level": -65,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:40:af",
+                "level": -65,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:f7:e0",
+                "level": -65,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0e:f7:e2",
+                "level": -64,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:f7:ee",
+                "level": -67,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:f7:ef",
+                "level": -66,
+                "frequency": 5300
+            }
+        ]
+    },
+    {
+        "id": "2f8fe961-5816-4f45-8cdc-e168ba5c84ea",
+        "point": "323_84y_2_med1m2_v2",
+        "dataDictAll": [
+            {
+                "ssid": "[air purifier] Samsung",
+                "bssid": "28:6d:97:8a:c5:84",
+                "level": -85,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:30:e2",
+                "level": -76,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:30:ee",
+                "level": -73,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:ef",
+                "level": -73,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:52:e0",
+                "level": -85,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:80",
+                "level": -62,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:6c:82",
+                "level": -63,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:6c:8e",
+                "level": -57,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:8f",
+                "level": -57,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:40:ae",
+                "level": -71,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:40:af",
+                "level": -71,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0e:4d:a2",
+                "level": -80,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:f7:ee",
+                "level": -89,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:f7:ef",
+                "level": -90,
+                "frequency": 5300
+            }
+        ]
+    },
+    {
+        "id": "eb76fa2a-8e4a-4fa4-a6c4-20968c7a6157",
+        "point": "323_84y_2_med1m2_v2",
+        "dataDictAll": [
+            {
+                "ssid": "CRH-Meetingroom",
+                "bssid": "a0:f8:49:e2:af:6c",
+                "level": -88,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:e2:af:6e",
+                "level": -87,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:e2:af:6f",
+                "level": -88,
+                "frequency": 5580
+            },
+            {
+                "ssid": "vivo Y20s [G]",
+                "bssid": "aa:05:b5:82:04:22",
+                "level": -65,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:e0",
+                "level": -65,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:30:e2",
+                "level": -65,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:30:ee",
+                "level": -58,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:ef",
+                "level": -58,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:52:ee",
+                "level": -93,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:52:ef",
+                "level": -91,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:80",
+                "level": -71,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:6c:82",
+                "level": -73,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:6c:8e",
+                "level": -68,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:8f",
+                "level": -67,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0e:40:a2",
+                "level": -80,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:40:ae",
+                "level": -82,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:40:af",
+                "level": -83,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:f7:e0",
+                "level": -79,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0e:f7:e2",
+                "level": -80,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:f7:ee",
+                "level": -78,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:f7:ef",
+                "level": -78,
+                "frequency": 5300
+            }
+        ]
+    },
+    {
+        "id": "3426da2b-f976-486e-920e-7f4de1fa2006",
+        "point": "323_84y_2_med1m2_v2",
+        "dataDictAll": [
+            {
+                "ssid": "[air purifier] Samsung",
+                "bssid": "28:6d:97:8a:c5:84",
+                "level": -77,
+                "frequency": 2412
+            },
+            {
+                "ssid": "Galaxy A13 57BE",
+                "bssid": "9a:9e:7c:89:da:b7",
+                "level": -92,
+                "frequency": 2462
+            },
+            {
+                "ssid": "vivo Y20s [G]",
+                "bssid": "aa:05:b5:82:04:22",
+                "level": -74,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:e0",
+                "level": -78,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:30:e2",
+                "level": -78,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:30:ee",
+                "level": -80,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:ef",
+                "level": -80,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:80",
+                "level": -68,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:6c:82",
+                "level": -69,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:6c:8e",
+                "level": -67,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:8f",
+                "level": -67,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:40:ae",
+                "level": -68,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:40:af",
+                "level": -69,
+                "frequency": 5700
+            }
+        ]
+    },
+    {
+        "id": "c654e831-af51-4bcc-9635-d6f8e25086dc",
+        "point": "323_84y_2_med1m2_v2",
+        "dataDictAll": [
+            {
+                "ssid": "vivo Y20s [G]",
+                "bssid": "aa:05:b5:82:04:22",
+                "level": -53,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:e0",
+                "level": -78,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:30:e2",
+                "level": -78,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:30:ee",
+                "level": -73,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:ef",
+                "level": -73,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:80",
+                "level": -68,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:6c:82",
+                "level": -68,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:6c:8e",
+                "level": -60,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:8f",
+                "level": -60,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:40:ae",
+                "level": -53,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:40:af",
+                "level": -53,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:f7:ee",
+                "level": -87,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:f7:ef",
+                "level": -86,
+                "frequency": 5300
+            }
+        ]
+    },
+    {
+        "id": "75ec0fa4-e3cf-4137-bc4d-f17f66874de5",
+        "point": "323_84y_2_med1m2_v2",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "00:29:c2:2a:f0:6e",
+                "level": -83,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "00:29:c2:2a:f0:6f",
+                "level": -83,
+                "frequency": 5540
+            },
+            {
+                "ssid": "vivo Y20s [G]",
+                "bssid": "aa:05:b5:82:04:22",
+                "level": -53,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:e0",
+                "level": -70,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:30:ee",
+                "level": -77,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:30:ef",
+                "level": -77,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:80",
+                "level": -70,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0a:6c:82",
+                "level": -71,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0a:6c:8e",
+                "level": -69,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0a:6c:8f",
+                "level": -70,
+                "frequency": 5320
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:40:a0",
+                "level": -86,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:40:ae",
+                "level": -59,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:40:af",
+                "level": -59,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:f7:e0",
+                "level": -80,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "f0:1d:2d:0e:f7:e2",
+                "level": -80,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "f0:1d:2d:0e:f7:ee",
+                "level": -81,
+                "frequency": 5300
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "f0:1d:2d:0e:f7:ef",
+                "level": -79,
+                "frequency": 5300
+            }
+        ]
+    },
+    {
+        "id": "1899c8c9-cbb4-45c5-beed-c8872724124a",
+        "point": "384_50y_1_pharm",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "00:2f:5c:65:4b:cf",
+                "level": -84,
+                "frequency": 5500
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "0c:d0:f8:81:b7:6e",
+                "level": -82,
+                "frequency": 5200
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "0c:d0:f8:81:b7:6f",
+                "level": -81,
+                "frequency": 5200
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "0c:d0:f8:81:d8:2e",
+                "level": -69,
+                "frequency": 5220
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1e:78",
+                "level": -64,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1e:7c",
+                "level": -68,
+                "frequency": 5220
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:ec",
+                "level": -88,
+                "frequency": 5620
+            },
+            {
+                "ssid": "island-101BE0",
+                "bssid": "2c:5d:93:50:1b:e7",
+                "level": -76,
+                "frequency": 5220
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1e:78",
+                "level": -63,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1e:7c",
+                "level": -69,
+                "frequency": 5220
+            },
+            {
+                "ssid": "island-106520",
+                "bssid": "2c:5d:93:50:65:27",
+                "level": -94,
+                "frequency": 5180
+            },
+            {
+                "ssid": "island-106730",
+                "bssid": "2c:5d:93:50:67:37",
+                "level": -83,
+                "frequency": 5180
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:ec",
+                "level": -88,
+                "frequency": 5620
+            },
+            {
+                "ssid": "island-1B84E0",
+                "bssid": "2c:e6:cc:5b:84:e7",
+                "level": -82,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:5d:a8:22:ce:ee",
+                "level": -63,
+                "frequency": 5620
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:5d:a8:22:ce:ef",
+                "level": -63,
+                "frequency": 5620
+            },
+            {
+                "ssid": "Sunny5",
+                "bssid": "52:63:5c:80:59:ea",
+                "level": -73,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "70:f3:5a:4c:a4:8e",
+                "level": -80,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "70:f3:5a:4c:a4:8f",
+                "level": -81,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:0c:8e",
+                "level": -77,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:0c:8f",
+                "level": -77,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:1a:ce",
+                "level": -81,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1a:cf",
+                "level": -81,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:1b:6e",
+                "level": -89,
+                "frequency": 5680
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1b:6f",
+                "level": -88,
+                "frequency": 5680
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:1d:2e",
+                "level": -84,
+                "frequency": 5745
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:1d:4e",
+                "level": -67,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1d:4f",
+                "level": -68,
+                "frequency": 5580
+            }
+        ]
+    },
+    {
+        "id": "c38f7911-d04f-48d4-96fe-a7b1edeac00e",
+        "point": "384_50y_1_pharm",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "00:2f:5c:65:4b:ce",
+                "level": -83,
+                "frequency": 5500
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "00:2f:5c:65:4b:cf",
+                "level": -84,
+                "frequency": 5500
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "0c:d0:f8:81:b7:6e",
+                "level": -74,
+                "frequency": 5200
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "0c:d0:f8:81:b7:6f",
+                "level": -74,
+                "frequency": 5200
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "0c:d0:f8:81:d8:20",
+                "level": -69,
+                "frequency": 2462
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "0c:d0:f8:81:d8:21",
+                "level": -69,
+                "frequency": 2462
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1e:78",
+                "level": -64,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1e:7c",
+                "level": -71,
+                "frequency": 5220
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:ec",
+                "level": -89,
+                "frequency": 5620
+            },
+            {
+                "ssid": "island-101BE0",
+                "bssid": "2c:5d:93:50:1b:e3",
+                "level": -72,
+                "frequency": 2462
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1e:78",
+                "level": -62,
+                "frequency": 2412
+            },
+            {
+                "ssid": "island-106520",
+                "bssid": "2c:5d:93:50:65:27",
+                "level": -89,
+                "frequency": 5180
+            },
+            {
+                "ssid": "island-106730",
+                "bssid": "2c:5d:93:50:67:37",
+                "level": -83,
+                "frequency": 5180
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:ec",
+                "level": -90,
+                "frequency": 5620
+            },
+            {
+                "ssid": "island-1B84E0",
+                "bssid": "2c:e6:cc:5b:84:e7",
+                "level": -78,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:5d:a8:22:9d:0e",
+                "level": -84,
+                "frequency": 5320
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:5d:a8:22:9d:0f",
+                "level": -85,
+                "frequency": 5320
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:5d:a8:22:ce:ee",
+                "level": -72,
+                "frequency": 5620
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:5d:a8:22:ce:ef",
+                "level": -72,
+                "frequency": 5620
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:14:ae:20",
+                "level": -56,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:14:ae:21",
+                "level": -57,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:14:ae:2e",
+                "level": -48,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:14:ae:2f",
+                "level": -49,
+                "frequency": 5745
+            },
+            {
+                "ssid": "Sunny5",
+                "bssid": "52:63:5c:80:59:ea",
+                "level": -59,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "70:f3:5a:4c:a4:8e",
+                "level": -79,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "70:f3:5a:4c:a4:8f",
+                "level": -78,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:0c:8e",
+                "level": -79,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:0c:8f",
+                "level": -79,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:1a:ce",
+                "level": -81,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1a:cf",
+                "level": -80,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:1b:6e",
+                "level": -87,
+                "frequency": 5680
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1b:6f",
+                "level": -87,
+                "frequency": 5680
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1d:20",
+                "level": -84,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:1d:22",
+                "level": -85,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:1d:2e",
+                "level": -86,
+                "frequency": 5745
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1d:40",
+                "level": -75,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:1d:42",
+                "level": -77,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:1d:4e",
+                "level": -68,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1d:4f",
+                "level": -69,
+                "frequency": 5580
+            },
+            {
+                "ssid": "\u0e40\u0e40\u0e21\u0e48\u0e22\u0e38\u0e40\u0e2d\u0e07",
+                "bssid": "c2:21:d1:db:1f:73",
+                "level": -86,
+                "frequency": 2437
+            },
+            {
+                "ssid": "vivo NEX\u53cc\u5c4f\u7248",
+                "bssid": "d6:02:50:6c:7c:f3",
+                "level": -83,
+                "frequency": 2427
+            }
+        ]
+    },
+    {
+        "id": "ad7bcda3-3149-4ec9-9d69-b54a700d09cc",
+        "point": "384_50y_1_pharm",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "0c:d0:f8:09:58:8e",
+                "level": -77,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "0c:d0:f8:09:58:8f",
+                "level": -78,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "0c:d0:f8:81:d8:2f",
+                "level": -74,
+                "frequency": 5220
+            },
+            {
+                "ssid": "[LG_AirPurifier]f411",
+                "bssid": "1e:39:29:89:f4:11",
+                "level": -76,
+                "frequency": 2462
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1c:ec",
+                "level": -91,
+                "frequency": 5220
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1e:78",
+                "level": -60,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:1e:7c",
+                "level": -68,
+                "frequency": 5220
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:e8",
+                "level": -76,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:69:ec",
+                "level": -89,
+                "frequency": 5620
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6d:a8",
+                "level": -80,
+                "frequency": 2412
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6d:ac",
+                "level": -89,
+                "frequency": 5220
+            },
+            {
+                "ssid": "island-101BE0",
+                "bssid": "2c:5d:93:50:1b:e7",
+                "level": -75,
+                "frequency": 5220
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1c:e8",
+                "level": -80,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1c:ec",
+                "level": -91,
+                "frequency": 5220
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1e:78",
+                "level": -60,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:1e:7c",
+                "level": -69,
+                "frequency": 5220
+            },
+            {
+                "ssid": "island-106520",
+                "bssid": "2c:5d:93:50:65:27",
+                "level": -87,
+                "frequency": 5180
+            },
+            {
+                "ssid": "island-106730",
+                "bssid": "2c:5d:93:50:67:37",
+                "level": -86,
+                "frequency": 5180
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:e8",
+                "level": -74,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:69:ec",
+                "level": -89,
+                "frequency": 5620
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6d:a8",
+                "level": -79,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6d:ac",
+                "level": -88,
+                "frequency": 5220
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:5d:a8:22:ce:ee",
+                "level": -75,
+                "frequency": 5620
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:5d:a8:22:ce:ef",
+                "level": -75,
+                "frequency": 5620
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:14:ae:20",
+                "level": -55,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:14:ae:21",
+                "level": -55,
+                "frequency": 2412
+            },
+            {
+                "ssid": "Sunny5",
+                "bssid": "52:63:5c:80:59:ea",
+                "level": -69,
+                "frequency": 2437
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "70:f3:5a:4c:a4:8e",
+                "level": -72,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "70:f3:5a:4c:a4:8f",
+                "level": -72,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:1a:ce",
+                "level": -85,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1a:cf",
+                "level": -84,
+                "frequency": 5500
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:1b:6e",
+                "level": -88,
+                "frequency": 5680
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1b:6f",
+                "level": -87,
+                "frequency": 5680
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1d:40",
+                "level": -84,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "a0:f8:49:7d:1d:42",
+                "level": -84,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:1d:4e",
+                "level": -64,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "a0:f8:49:7d:1d:4f",
+                "level": -64,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "a0:f8:49:7d:2a:ce",
+                "level": -92,
+                "frequency": 5700
+            }
+        ]
+    },
+    {
+        "id": "76d380d1-6101-47fd-9d06-53c300efddf1",
+        "point": "314_monk_3_icu_v2",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "00:29:c2:2a:e3:ae",
+                "level": -63,
+                "frequency": 5785
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "00:29:c2:2a:e3:af",
+                "level": -63,
+                "frequency": 5785
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "00:29:c2:2a:ee:ce",
+                "level": -69,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "00:29:c2:2a:ee:cf",
+                "level": -68,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "00:29:c2:2a:f0:6e",
+                "level": -62,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "00:29:c2:2a:f0:6f",
+                "level": -62,
+                "frequency": 5540
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "02:00:08:04:cb:0c",
+                "level": -64,
+                "frequency": 5700
+            },
+            {
+                "ssid": "DIRECT-38-BRAVIA",
+                "bssid": "2a:24:ff:05:68:86",
+                "level": -82,
+                "frequency": 2462
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:bf:3e:0e",
+                "level": -47,
+                "frequency": 5220
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:bf:3e:0f",
+                "level": -47,
+                "frequency": 5220
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:bf:3e:2e",
+                "level": -71,
+                "frequency": 5240
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:bf:3e:2f",
+                "level": -71,
+                "frequency": 5240
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:c0:6a:8e",
+                "level": -60,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:c0:6a:8f",
+                "level": -60,
+                "frequency": 5745
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "4c:f1:02:92:b2:b4",
+                "level": -85,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:03:50",
+                "level": -65,
+                "frequency": 5745
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:03:52",
+                "level": -65,
+                "frequency": 5745
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "98:48:74:43:0b:c8",
+                "level": -80,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:0b:d0",
+                "level": -71,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:0b:d2",
+                "level": -68,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:18:30",
+                "level": -84,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:18:32",
+                "level": -84,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:18:72",
+                "level": -91,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "98:48:74:43:18:a8",
+                "level": -78,
+                "frequency": 2462
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:1a:f2",
+                "level": -64,
+                "frequency": 5700
+            },
+            {
+                "ssid": "Paisankit.cr_5G",
+                "bssid": "c0:f6:c2:c1:70:d0",
+                "level": -72,
+                "frequency": 5220
+            }
+        ]
+    },
+    {
+        "id": "9832c378-9740-4908-a132-4712ddd3db35",
+        "point": "314_monk_3_icu_v2",
+        "dataDictAll": [
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "00:29:c2:2a:e3:ae",
+                "level": -62,
+                "frequency": 5785
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "00:29:c2:2a:ee:c0",
+                "level": -64,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "00:29:c2:2a:ee:c1",
+                "level": -64,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "00:29:c2:2a:ee:ce",
+                "level": -68,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "00:29:c2:2a:ee:cf",
+                "level": -69,
+                "frequency": 5300
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "00:29:c2:2a:f0:6e",
+                "level": -50,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "00:29:c2:2a:f0:6f",
+                "level": -50,
+                "frequency": 5540
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "02:00:08:04:cb:0c",
+                "level": -66,
+                "frequency": 5660
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "02:7c:02:45:b2:b4",
+                "level": -53,
+                "frequency": 5580
+            },
+            {
+                "ssid": "DIRECT-b7-HP M102 LaserJet",
+                "bssid": "2a:56:5a:49:02:b7",
+                "level": -69,
+                "frequency": 2437
+            },
+            {
+                "ssid": "AIS SMART Login",
+                "bssid": "2c:5d:93:10:6e:28",
+                "level": -86,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ AIS SUPER WiFi",
+                "bssid": "2c:5d:93:50:6e:28",
+                "level": -85,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:bf:37:20",
+                "level": -77,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:bf:37:21",
+                "level": -76,
+                "frequency": 2412
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:bf:3e:0e",
+                "level": -47,
+                "frequency": 5220
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:bf:3e:0f",
+                "level": -47,
+                "frequency": 5220
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:bf:3e:2e",
+                "level": -76,
+                "frequency": 5240
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:bf:3e:2f",
+                "level": -77,
+                "frequency": 5240
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:c0:6a:80",
+                "level": -65,
+                "frequency": 2462
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:c0:6a:81",
+                "level": -65,
+                "frequency": 2462
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "34:f8:e7:c0:6a:8e",
+                "level": -64,
+                "frequency": 5745
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "34:f8:e7:c0:6a:8f",
+                "level": -65,
+                "frequency": 5745
+            },
+            {
+                "ssid": "Galaxy A22 5G4998",
+                "bssid": "36:be:ba:d4:57:0b",
+                "level": -79,
+                "frequency": 2437
+            },
+            {
+                "ssid": ".@ TrueMove H",
+                "bssid": "84:f1:47:b5:1f:4e",
+                "level": -76,
+                "frequency": 5540
+            },
+            {
+                "ssid": ".@ TRUEWIFI",
+                "bssid": "84:f1:47:b5:1f:4f",
+                "level": -76,
+                "frequency": 5540
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "86:01:18:8c:09:22",
+                "level": -66,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:03:50",
+                "level": -67,
+                "frequency": 5745
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:03:52",
+                "level": -67,
+                "frequency": 5745
+            },
+            {
+                "ssid": "CRH-IOT",
+                "bssid": "98:48:74:43:0b:c8",
+                "level": -75,
+                "frequency": 2412
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:0b:d0",
+                "level": -64,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:0b:d2",
+                "level": -63,
+                "frequency": 5620
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:0d:70",
+                "level": -68,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:0d:72",
+                "level": -66,
+                "frequency": 5660
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:14:d0",
+                "level": -52,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:14:d2",
+                "level": -52,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-Meetingroom",
+                "bssid": "98:48:74:43:16:73",
+                "level": -79,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:18:10",
+                "level": -79,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-Guest",
+                "bssid": "98:48:74:43:18:12",
+                "level": -79,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:18:13",
+                "level": -79,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:18:32",
+                "level": -68,
+                "frequency": 5580
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:18:b0",
+                "level": -85,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:18:b2",
+                "level": -85,
+                "frequency": 5260
+            },
+            {
+                "ssid": "CRH-WiFi",
+                "bssid": "98:48:74:43:1a:f0",
+                "level": -53,
+                "frequency": 5700
+            },
+            {
+                "ssid": "CRH-Staff",
+                "bssid": "98:48:74:43:1a:f2",
+                "level": -53,
+                "frequency": 5700
+            },
+            {
+                "ssid": "DIRECT-3C-EPSON-3F9890",
+                "bssid": "a6:d7:3c:3f:18:90",
+                "level": -88,
+                "frequency": 2437
+            },
+            {
+                "ssid": "Paisankit.cr_5G",
+                "bssid": "c0:f6:c2:c1:70:d0",
+                "level": -78,
+                "frequency": 5220
+            },
+            {
+                "ssid": "(hidden SSID)",
+                "bssid": "e8:21:02:45:b2:b4",
+                "level": -53,
+                "frequency": 5580
+            }
+        ]
+    }
+]

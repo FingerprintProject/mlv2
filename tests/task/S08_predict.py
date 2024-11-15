@@ -1,15 +1,17 @@
 from pprint import pp
 
 from mlv2.model import ModelLr
-from mlv2.preprocess import FpDict, FpLoader
+from mlv2.preprocess import FpDict, FpLoaderApi
 from mlv2.vectorize import FpVectUnsupervised
 
 from .S00_common import hospitalId, setupTask
-from .S00_data import data_normal_1, data_outside
+from .S00_data import data_15_normal_1, data_15_outside, data_41_normal_1
 
-
-# data = data_outside
-data = data_normal_1
+if hospitalId == 15:
+    # data = data_outside
+    data = data_15_normal_1
+elif hospitalId == 41:
+    data = data_41_normal_1
 
 
 def predict():
@@ -23,8 +25,8 @@ def predict():
     leZone = loader.pick([modelLr.id_leZone])
 
     # Load API data
-    fpLoader = FpLoader(pipeline=pl, logger=lg)
-    fpLoader.fitFromApi(data=data)
+    fpLoader = FpLoaderApi(pipeline=pl, logger=lg)
+    fpLoader.fit(data=data)
 
     # Preprocess
     fpDict = FpDict(pipeline=pl, logger=lg)

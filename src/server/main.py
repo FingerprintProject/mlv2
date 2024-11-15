@@ -8,7 +8,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, ValidationInfo, field_validator
 
 from mlv2.model import ModelLr
-from mlv2.preprocess import FpDict, FpLoader
+from mlv2.preprocess import FpDict, FpLoaderFile
 from mlv2.vectorize import FpVectUnsupervised
 from server.utils.common import PREDEFINED_TOKEN_HASH, hashString
 from server.utils.setup import setupTask
@@ -115,7 +115,7 @@ def prediction(
     pl, lg, leBssid, w2v, leZone, modelLr = serverLoadModel(hospitalId)
 
     # Load API data
-    fpLoader = FpLoader(pipeline=pl, logger=lg)
+    fpLoader = FpLoaderFile(pipeline=pl, logger=lg)
     fpLoader.fitFromApi(data=data)
 
     # Preprocess

@@ -1,6 +1,6 @@
 from pprint import pp
 
-from mlv2.preprocess import FpLoader, FpDict
+from mlv2.preprocess import FpLoaderFile, FpDict
 from mlv2.vectorize import FpVectUnsupervised
 from .S00_common import setupTask, hospitalId
 
@@ -16,13 +16,20 @@ def vectorize_unsup():
 
     # Unsupervised Date
     folder2 = "data/unsupervised_survey"
-    # filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590_small.json"
-    filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590.json"
-    fileData = [dict(filename=filename2, fileType="UNSUPV1")]
-
+    if hospitalId == 15:
+        # filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590_small.json"
+        filename2 = f"{folder2}/CRH_PROD_unsupervised_1729116590.json"
+        fileData = [
+            dict(fileName=filename2, fileType="PHP_SERVER", dataType="UNSUPERVISED")
+        ]
+    elif hospitalId == 41:
+        filename2 = f"{folder2}/HID_41_unsup.json"
+        fileData = [
+            dict(fileName=filename2, fileType="BIG_QUERY", dataType="UNSUPERVISED")
+        ]
     # Load data
-    loader = FpLoader(pipeline=pl, logger=lg)
-    loader.fitFromFile(fileData=fileData, info=dict(src=fileData))
+    loader = FpLoaderFile(pipeline=pl, logger=lg)
+    loader.fit(fileData=fileData, info=dict(src=fileData))
 
     # Preprocess
     fpDict = FpDict(pipeline=pl, logger=lg)

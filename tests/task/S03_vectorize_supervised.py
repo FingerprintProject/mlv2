@@ -1,6 +1,6 @@
 from pprint import pp
 
-from mlv2.preprocess import FpLoader, FpDict
+from mlv2.preprocess import FpLoaderFile, FpDict
 from mlv2.vectorize import FpVectSupervised
 from .S00_common import setupTask, hospitalId
 
@@ -18,13 +18,17 @@ def vectorize_sup():
 
     # Supervised data
     folder1 = "data/supervised_survey"
-    # filename1 = f"{folder1}/admin_json_hospital_id_15_small.json"
-    filename1 = f"{folder1}/admin_json_hospital_id_15.json"
-    fileData = [dict(filename=filename1, fileType="SUPV2")]
+    if hospitalId == 15:
+        # filename1 = f"{folder1}/HID_15_sup_small.json"
+        filename1 = f"{folder1}/HID_15_sup.json"
+    elif hospitalId == 41:
+        filename1 = f"{folder1}/HID_41_sup.json"
+
+    fileData = [dict(fileName=filename1, fileType="BIG_QUERY", dataType="SUPERVISED")]
 
     # Load data
-    loader = FpLoader(pipeline=pl, logger=lg)
-    loader.fitFromFile(fileData=fileData, info=dict(src=fileData))
+    loader = FpLoaderFile(pipeline=pl, logger=lg)
+    loader.fit(fileData=fileData, info=dict(src=fileData))
 
     # Preprocess
     fpDict = FpDict(pipeline=pl, logger=lg)

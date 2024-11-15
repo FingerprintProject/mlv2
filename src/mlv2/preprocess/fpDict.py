@@ -47,6 +47,7 @@ class FpDict(FpBaseModel):
         self.data = data
         self.determineDataType()
         self.formatBssid()
+        self.removeDuplicatedBssid()
         self.formatZoneName()
         self.ignoredBssid = ignoredBssid
         self.removeIgnoredBssid()
@@ -79,6 +80,21 @@ class FpDict(FpBaseModel):
         self.data.loc[idx, "zoneName"] = self.data.loc[idx, "zoneName"].apply(
             lambda name: name.strip()
         )
+
+    def removeDuplicatedBssid(self) -> None:
+        def rowFN(fp):
+            dft = pd.DataFrame.from_dict(fp)
+            dft = dft.sort_values(by="level", ascending=True)
+            filtDup = dft["bssid"].duplicated(keep="last")
+            numFilt = filtDup.sum()
+            if numFilt > 0:
+                self.logger.warning(
+                    f"Found duplicated bssid {dft[filtDup][["ssid", "bssid"]].to_json(orient="records")}"
+                )
+            dataDict = dft[~filtDup].to_dict(orient="records")
+            return dataDict
+
+        self.data["fingerprint"] = self.data["fingerprint"].apply(rowFN)
 
     def removeIgnoredBssid(self):
         self._remove_bssid_from_fp(

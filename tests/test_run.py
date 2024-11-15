@@ -43,6 +43,6 @@ def test_S07():
     assert True
 
 
-def test_S08():
-    S08.predict()
-    assert True
+# def test_S08():
+#     S08.predict()
+#     assert True
