@@ -54,7 +54,7 @@ def serverLoadModel(hospitalId):
     pl, lg, _, loader = setupTask(hospitalId=hospitalId, modelName="S07")
 
     # Load models
-    loader.fitFromModelName(name="S07")
+    modelId = loader.fitFromModelName(name="S07")
     modelLr: ModelLr = loader.pick(["ModelLr_"])
     leBssid = loader.pick([modelLr.id_leBssid])
     w2v = loader.pick([modelLr.id_vectorizer])
@@ -62,7 +62,7 @@ def serverLoadModel(hospitalId):
     w2v.logger.disable()
     leZone.logger.disable()
 
-    return pl, lg, leBssid, w2v, leZone, modelLr
+    return pl, lg, leBssid, w2v, leZone, modelLr, modelId
 
 
 app = FastAPI()
@@ -112,7 +112,7 @@ def prediction(
     hospitalId = payload.hospitalID
 
     # Loading (this can take long, so avoid this step as much as possible)
-    pl, lg, leBssid, w2v, leZone, modelLr = serverLoadModel(hospitalId)
+    pl, lg, leBssid, w2v, leZone, modelLr, modelId = serverLoadModel(hospitalId)
 
     # Load API data
     fpLoader = FpLoaderApi(pipeline=pl, logger=lg)
@@ -148,7 +148,7 @@ def prediction(
         predictions=resOut.to_dict(orient="records"),
         error=None,
         warning=None,
-        modelId=modelLr.uuid,
+        modelID=modelId,
     )
     return output
 

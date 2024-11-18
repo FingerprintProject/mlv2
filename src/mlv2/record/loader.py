@@ -23,7 +23,7 @@ class Loader(FpBaseModel):
 
     @logPipeline()
     def fitFromModelName(self, name):
-        pickleContents = self.fpModelRepository.getModelRecord(
+        modelId, pickleContents = self.fpModelRepository.getModelRecord(
             data=dict(name=name, hospitalId=self.hospitalId)
         )
         data = []
@@ -38,6 +38,7 @@ class Loader(FpBaseModel):
             )
             data.append(DataSchema(**tmp))
         self.data = data
+        return modelId
 
     @logPipeline()
     def fitFromPath(self, path):

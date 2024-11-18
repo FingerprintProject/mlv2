@@ -114,6 +114,6 @@ class FpModelRepository(FpBaseModel):
                 self.logger.warning("Found multiple active models. Choose latest model")
 
             res = resesActive[-1]
-
+            modelId = res.id
             pickleContents = [*filter(lambda x: "pickle" in x["path"], res.contents)]
-            return pickleContents
+            return modelId, pickleContents

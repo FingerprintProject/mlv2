@@ -18,7 +18,7 @@ def predict():
     pl, lg, saver, loader = setupTask(hospitalId=hospitalId, modelName="S07")
 
     # Load models
-    loader.fitFromModelName(name="S07")
+    modelId = loader.fitFromModelName(name="S07")
     modelLr: ModelLr = loader.pick(["ModelLr_"])
     leBssid = loader.pick([modelLr.id_leBssid])
     w2v = loader.pick([modelLr.id_vectorizer])
@@ -58,7 +58,7 @@ def predict():
         predictions=resOut.to_dict(orient="records"),
         error=None,
         warning=None,
-        modelId=modelLr.uuid,
+        modelID=modelId,
     )
     pp(output)
 
