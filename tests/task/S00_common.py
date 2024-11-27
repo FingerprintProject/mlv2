@@ -15,14 +15,16 @@ from mlv2.record import (
 from mlv2.utils import Logger, Pipeline
 
 # hospitalId = 15
+# hospitalZoneCSV = "data/other/hospital_zones_hid_15_202411280013.csv"
+
 hospitalId = 41
+hospitalZoneCSV = "data/other/hospital_zones_hid_41_202411280018.csv"
 
 # DB_LOCATION = "LOCAL"
 DB_LOCATION = "CLOUD"
 
 
 def setupTask(hospitalId, modelName, dbLocation=DB_LOCATION):
-
     pl = Pipeline(filenamePrefix="pipeline")
     lg = Logger(filenamePrefix="logs", now=pl.now)
 
