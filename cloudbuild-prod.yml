@@ -1,0 +1,61 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - "-t"
+      - "$_GCR_HOSTNAME/$_PROJECT_ID/$_ARTIFACT_REGISTRY/$_SERVICE_NAME:latest"
+      - .
+      - "-f"
+      - Dockerfile
+    id: Build
+
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - "$_GCR_HOSTNAME/$_PROJECT_ID/$_ARTIFACT_REGISTRY/$_SERVICE_NAME:latest"
+    id: Push
+
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - run
+      - deploy
+      - $_SERVICE_NAME
+      - --image=$_GCR_HOSTNAME/$_PROJECT_ID/$_ARTIFACT_REGISTRY/$_SERVICE_NAME:latest
+      - --region=$_DEPLOY_REGION
+      - --platform=managed
+      - --allow-unauthenticated
+      - --set-env-vars
+      - "PROJECT_NAME=$_PROJECT_NAME"
+      - --set-env-vars
+      - "PROJECT_ID=$_PROJECT_ID"
+      - --set-env-vars
+      - "PROJECT_NUMBER=$_PROJECT_NUMBER"
+      - --set-env-vars
+      - "ENVIRONMENT=$_ENVIRONMENT"
+      - --set-env-vars
+      - "PREDEFINED_TOKEN_HASH=$_PREDEFINED_TOKEN_HASH"
+      - --set-env-vars
+      - "SECRET_ID=$_SECRET_ID"
+      - --set-env-vars
+      - "BUCKET_NAME=$_BUCKET_NAME"
+      - --set-env-vars
+      - "VERSION_ID=$_VERSION_ID"
+
+    id: Deploy
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _DEPLOY_REGION: asia-southeast1
+  _GCR_HOSTNAME: asia-southeast1-docker.pkg.dev
+  _ARTIFACT_REGISTRY: daywork-service
+  _PROJECT_ID: daywork-prod
+  _PROJECT_NAME: daywork-prod
+  _PROJECT_NUMBER: "101193729599"
+  _SECRET_ID: python-wifi-api
+  _VERSION_ID: "3"
+  _BUCKET_NAME: wifi-localization-model-prod
+  _SERVICE_NAME: daywork-wifi-python-service
+  _PREDEFINED_TOKEN_HASH: af949ebd22fee1d84c377e7f10b624b6294e1cde9d8e0031ec687b2d706c5d87
+  _ENVIRONMENT: CLOUD_RUN
