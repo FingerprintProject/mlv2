@@ -2,7 +2,9 @@
 
 ## Dev
 
-- `pdm install`
+- `uv sync`
+- `uv pip install -e .`
+- Restart VSCode for `pytest` to work
 - Docker up
   - `docker compose -f ./docker/docker-compose-dev.yml --env-file ./.env.dev up -d --force-recreate`
 - Docker down (with volume)

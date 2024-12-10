@@ -24,19 +24,13 @@ requires-python = ">=3.12"
 readme = "README.md"
 license = { text = "MIT" }
 
-[tool.pdm]
-distribution = true
-
-[tool.pdm.dev-dependencies]
-dev = [
+[tool.uv]
+dev-dependencies = [
     "jupyterlab>=4.2.5",
     "pytest>=8.3.3",
     "matplotlib>=3.9.2",
     "seaborn>=0.13.2",
 ]
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
 
-[tool.pdm.scripts]
-dev = "fastapi dev src/server/main.py --reload"
+# [project.scripts]
+# dev = "fastapi dev src/server/main.py --reload"
